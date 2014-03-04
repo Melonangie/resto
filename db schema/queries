@@ -15335,3 +15335,1108 @@ SET search_path TO "inventario", "$user"
 [2014-02-27 12:39:49] [006663] [vagrant] [PGSQL]
 SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'inventario'
 
+[2014-02-27 16:31:18] [004092] [vagrant] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+[2014-02-27 16:31:20] [004126] [vagrant] [PGSQL]
+SELECT oid, typname FROM pg_type
+
+[2014-02-27 16:31:20] [004126] [vagrant] [PGSQL]
+SELECT n.nspname, n.oid, pg_get_userbyid(n.nspowner) AS owner, n.nspacl, obj_description(n.oid) AS comment, COALESCE((n.nspname = current_schema()), FALSE) AS default FROM pg_catalog.pg_namespace n LEFT JOIN pg_catalog.pg_user u ON nspowner = usesysid 
+
+[2014-02-27 16:31:22] [004126] [vagrant] [PGSQL]
+SET search_path TO "inventario", "$user"
+
+[2014-02-27 16:31:22] [004126] [vagrant] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'inventario'
+
+[2014-02-27 16:31:22] [004126] [vagrant] [PGSQL]
+SET search_path TO "inventario", "$user"
+
+[2014-02-27 16:31:22] [004126] [vagrant] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'inventario'
+
+[2014-02-27 16:31:22] [004126] [vagrant] [PGSQL]
+SELECT col.table_name, col.column_name, col.character_maximum_length, col.is_nullable, col.numeric_precision, col.numeric_scale, col.datetime_precision, col.ordinal_position, b.atttypmod, b.attndims, b.attacl, col.data_type AS col_type, et.typelem, et.typlen, et.typtype, nbt.nspname as elem_schema , bt.typname as elem_name, b.atttypid, col.udt_schema, col.udt_name, col.column_default AS col_default, col.domain_catalog, col.domain_schema, col.domain_name, col_description(c.oid, col.ordinal_position) AS comment FROM information_schema.columns AS col LEFT JOIN pg_namespace ns ON ns.nspname = col.table_schema LEFT JOIN pg_class c ON col.table_name = c.relname AND c.relnamespace = ns.oid LEFT JOIN pg_attrdef a ON c.oid = a.adrelid AND col.ordinal_position = a.adnum LEFT JOIN pg_attribute b ON b.attrelid = c.oid AND b.attname = col.column_name LEFT JOIN pg_type et ON et.oid = b.atttypid LEFT JOIN pg_type bt on et.typelem = bt.oid LEFT JOIN pg_namespace nbt on bt.typnamespace = nbt.oid WHERE col.table_schema = 'inventario' ORDER BY col.table_name, col.ordinal_position
+
+[2014-02-27 16:31:23] [004126] [vagrant] [PGSQL]
+SELECT col.table_name, col.column_name, col.character_maximum_length, col.is_nullable, col.numeric_precision, col.numeric_scale, col.datetime_precision, col.ordinal_position, b.atttypmod, b.attndims, b.attacl, col.data_type AS col_type, et.typelem, et.typlen, et.typtype, nbt.nspname as elem_schema , bt.typname as elem_name, b.atttypid, col.udt_schema, col.udt_name, col.column_default AS col_default, col.domain_catalog, col.domain_schema, col.domain_name, col_description(c.oid, col.ordinal_position) AS comment FROM information_schema.columns AS col LEFT JOIN pg_namespace ns ON ns.nspname = col.table_schema LEFT JOIN pg_class c ON col.table_name = c.relname AND c.relnamespace = ns.oid LEFT JOIN pg_attrdef a ON c.oid = a.adrelid AND col.ordinal_position = a.adnum LEFT JOIN pg_attribute b ON b.attrelid = c.oid AND b.attname = col.column_name LEFT JOIN pg_type et ON et.oid = b.atttypid LEFT JOIN pg_type bt on et.typelem = bt.oid LEFT JOIN pg_namespace nbt on bt.typnamespace = nbt.oid WHERE col.table_schema = 'inventario' ORDER BY col.table_name, col.ordinal_position
+
+[2014-02-27 16:31:23] [004126] [vagrant] [PGSQL]
+SELECT c.oid, c.conname, c.contype, c.condeferrable, c.condeferred, c.conkey, c.confupdtype, c.confdeltype, c.consrc, t.relname, fns.nspname AS foreign_schema, f.relname AS foreign_table, ts.spcname, i.reloptions AS param, obj_description(c.oid) AS comment FROM pg_constraint c LEFT JOIN pg_namespace ns ON (c.connamespace = ns.oid) LEFT JOIN pg_class t ON (c.conrelid = t.oid) LEFT JOIN pg_class i ON (c.conname = i.relname) AND (c.connamespace = i.relnamespace) LEFT JOIN pg_class f ON (c.confrelid = f.oid) LEFT JOIN pg_namespace fns ON (f.relnamespace = fns.oid) LEFT JOIN pg_tablespace ts ON (i.reltablespace = ts.oid) WHERE ns.nspname = 'inventario'
+
+[2014-02-27 16:31:23] [004126] [vagrant] [PGSQL]
+SELECT t.relname, fns.nspname AS foreign_schema, f.relname AS foreign_table, c.conname, c.confkey, a.attname AS foreign_field, a.attnum FROM pg_constraint c LEFT JOIN pg_namespace ns ON (c.connamespace = ns.oid) LEFT JOIN pg_class t ON (c.conrelid = t.oid) INNER JOIN pg_class f ON (c.confrelid = f.oid) LEFT JOIN pg_namespace fns ON (f.relnamespace = fns.oid) INNER JOIN pg_attribute a ON (a.attrelid = f.oid) WHERE a.attnum > 0 AND ns.nspname = 'inventario' ORDER BY t.relname, c.conname, a.attnum
+
+
+
+[2014-03-01 17:15:44] [059532] [(null)] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+[2014-03-01 17:15:44] [059532] [(null)] [PGSQL]
+SELECT rolname, oid, rolcreatedb, rolsuper, rolcatupdate, rolvaliduntil, rolinherit, rolcreaterole, rolcanlogin, rolconnlimit FROM pg_roles ORDER BY rolname ASC
+
+[2014-03-01 17:15:45] [059532] [(null)] [PGSQL]
+SELECT r1.rolname, r2.rolname AS memname, m.admin_option FROM pg_roles r1, pg_auth_members m, pg_roles r2 WHERE r1.oid = m.roleid AND m.member = r2.oid ORDER BY r1.rolname
+
+[2014-03-01 17:16:14] [059539] [(null)] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+[2014-03-01 17:16:21] [059532] [(null)] [PGSQL]
+SELECT rolname, oid, rolcreatedb, rolsuper, rolcatupdate, rolvaliduntil, rolinherit, rolcreaterole, rolcanlogin, rolconnlimit FROM pg_roles ORDER BY rolname ASC
+
+[2014-03-01 17:16:21] [059532] [(null)] [PGSQL]
+SELECT r1.rolname, r2.rolname AS memname, m.admin_option FROM pg_roles r1, pg_auth_members m, pg_roles r2 WHERE r1.oid = m.roleid AND m.member = r2.oid ORDER BY r1.rolname
+
+[2014-03-01 17:16:21] [059532] [(null)] [PGSQL]
+SELECT rolname, oid, rolcreatedb, rolsuper, rolcatupdate, rolvaliduntil, rolinherit, rolcreaterole, rolcanlogin, rolconnlimit FROM pg_roles ORDER BY rolname ASC
+
+[2014-03-01 17:16:21] [059532] [(null)] [PGSQL]
+SELECT r1.rolname, r2.rolname AS memname, m.admin_option FROM pg_roles r1, pg_auth_members m, pg_roles r2 WHERE r1.oid = m.roleid AND m.member = r2.oid ORDER BY r1.rolname
+
+[2014-03-01 17:16:22] [059532] [(null)] [PGSQL]
+SELECT rolname, oid, rolcreatedb, rolsuper, rolcatupdate, rolvaliduntil, rolinherit, rolcreaterole, rolcanlogin, rolconnlimit FROM pg_roles ORDER BY rolname ASC
+
+[2014-03-01 17:16:22] [059532] [(null)] [PGSQL]
+SELECT r1.rolname, r2.rolname AS memname, m.admin_option FROM pg_roles r1, pg_auth_members m, pg_roles r2 WHERE r1.oid = m.roleid AND m.member = r2.oid ORDER BY r1.rolname
+
+[2014-03-01 17:16:22] [059532] [(null)] [PGSQL]
+SELECT rolname, oid, rolcreatedb, rolsuper, rolcatupdate, rolvaliduntil, rolinherit, rolcreaterole, rolcanlogin, rolconnlimit FROM pg_roles ORDER BY rolname ASC
+
+[2014-03-01 17:16:22] [059532] [(null)] [PGSQL]
+SELECT r1.rolname, r2.rolname AS memname, m.admin_option FROM pg_roles r1, pg_auth_members m, pg_roles r2 WHERE r1.oid = m.roleid AND m.member = r2.oid ORDER BY r1.rolname
+
+[2014-03-01 17:16:26] [059532] [(null)] [PGSQL]
+SELECT oid, spcname, spcowner, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
+
+[2014-03-01 17:16:37] [059532] [(null)] [PGSQL]
+CREATE DATABASE "test"  WITH OWNER "admin" ENCODING 'UTF8';
+
+
+[2014-03-01 17:16:38] [059532] [(null)] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+[2014-03-01 17:16:38] [059532] [(null)] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+[2014-03-01 17:16:46] [059541] [(null)] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+[2014-03-01 17:16:48] [059542] [(null)] [PGSQL]
+SELECT n.nspname, n.oid, pg_get_userbyid(n.nspowner) AS owner, n.nspacl, obj_description(n.oid) AS comment, COALESCE((n.nspname = current_schema()), FALSE) AS default FROM pg_catalog.pg_namespace n LEFT JOIN pg_catalog.pg_user u ON nspowner = usesysid 
+
+[2014-03-01 17:16:56] [059532] [(null)] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+[2014-03-01 17:16:56] [059543] [(null)] [PGSQL]
+SELECT oid, typname FROM pg_type
+
+[2014-03-01 17:16:56] [059543] [(null)] [PGSQL]
+SELECT n.nspname, n.oid, pg_get_userbyid(n.nspowner) AS owner, n.nspacl, obj_description(n.oid) AS comment, COALESCE((n.nspname = current_schema()), FALSE) AS default FROM pg_catalog.pg_namespace n LEFT JOIN pg_catalog.pg_user u ON nspowner = usesysid 
+
+[2014-03-01 17:16:56] [059544] [(null)] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-01 17:16:56] [059544] [(null)] [PGSQL]
+SELECT n.nspname, n.oid, pg_get_userbyid(n.nspowner) AS owner, n.nspacl, obj_description(n.oid) AS comment, COALESCE((n.nspname = current_schema()), FALSE) AS default FROM pg_catalog.pg_namespace n LEFT JOIN pg_catalog.pg_user u ON nspowner = usesysid 
+
+[2014-03-01 17:16:56] [059544] [(null)] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-01 17:16:56] [059544] [(null)] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-01 17:16:56] [059544] [(null)] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-01 17:16:56] [059544] [(null)] [PGSQL]
+SELECT c.oid, c.relname, c.relacl, pg_get_userbyid(c.relowner) AS viewowner, pg_get_viewdef(c.oid) AS definition, obj_description(c.oid) AS comment FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.relkind = 'v'::"char" AND n.nspname = 'public'
+
+[2014-03-01 17:16:56] [059544] [(null)] [PGSQL]
+SELECT t.oid, t.typname, n.nspname FROM pg_type t LEFT JOIN pg_namespace n ON t.typnamespace = n.oid ORDER BY t.oid
+
+[2014-03-01 17:16:56] [059544] [(null)] [PGSQL]
+SELECT n.nspname AS schema, 		 p.proname AS name, 		 p.proargtypes AS params, 		 p.prorettype AS ret, 		 prosrc AS definition, 		 COALESCE(lanname,'') AS lang, 		 p.proisstrict AS strict, 		 CASE WHEN p.provolatile = 'i' THEN 'IMMUTABLE' 			  WHEN p.provolatile = 's' THEN 'STABLE' 			  ELSE 'VOLATILE' END AS volatile, 		p.prosecdef AS securitydefiner, 		p.proretset AS returnset, 		COALESCE(u.usename,'') AS owner, 		p.probin as obj_file, 		obj_description(p.oid) AS comment, 		p.proacl, 		(p.oid <= d.datlastsysoid) AS systable, 		p.oid, 		typns.nspname as rettypeschema		, p.proargnames AS paramnames, p.proargmodes AS parammodes, p.proallargtypes AS paramalltypes, p.procost AS estimcost, p.prorows AS estimrows, p.proconfig AS configparams, pg_get_expr(p.proargdefaults,'pg_proc'::regclass) AS defaultvalues FROM	pg_proc p JOIN	pg_namespace n ON p.pronamespace = n.oid LEFT JOIN pg_language l ON p.prolang = l.oid LEFT JOIN pg_user u ON p.proowner = u.usesysid LEFT JOIN pg_database d on d.datname = current_database() LEFT JOIN pg_type typ on typ.oid = p.prorettype LEFT JOIN pg_namespace typns ON typns.oid = typ.typnamespace WHERE	p.proisagg = 'f' 		AND p.prorettype <> 'trigger'::regtype 		AND n.nspname = 'public'
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : 127.0.0.1
+Source Server Version : 50612
+Source Host           : localhost:3306
+Source Database       : cocina-taikishi
+
+Target Server Type    : PGSQL
+Target Server Version : 90100
+File Encoding         : 65001
+
+Date: 2014-02-28 22:26:47
+*/
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for bienes
+-- ----------------------------
+DROP TABLE IF EXISTS "bienes"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "bienes" (
+"id_bienes" int4 NOT NULL,
+"descripcion" varchar(50) NOT NULL,
+"tipo" varchar(30) NOT NULL,
+"unidad_medida" varchar(20) NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of bienes
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for cargo
+-- ----------------------------
+DROP TABLE IF EXISTS "cargo"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "cargo" (
+"id_cargo" int4 NOT NULL,
+"nom_cargo" varchar(30) NOT NULL,
+"Descripcion" varchar(45) NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of cargo
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for clientes
+-- ----------------------------
+DROP TABLE IF EXISTS "clientes"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "clientes" (
+"id_clientes" int4 NOT NULL,
+"nom_cliente" varchar(45) NOT NULL,
+"descripcion" varchar(45) NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of clientes
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for egreso
+-- ----------------------------
+DROP TABLE IF EXISTS "egreso"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "egreso" (
+"id_egreso" int4 NOT NULL,
+"id_solicitud_receta" int4 NOT NULL,
+"fecha_egreso" date NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of egreso
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for ingreso
+-- ----------------------------
+DROP TABLE IF EXISTS "ingreso"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "ingreso" (
+"id_ingreso" int4 NOT NULL,
+"id_solicitud_bienes" int4 NOT NULL,
+"fecha_ingreso" date NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of ingreso
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for inventario
+-- ----------------------------
+DROP TABLE IF EXISTS "inventario"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "inventario" (
+"id_inventario" int4 NOT NULL,
+"id_bienes" int4 NOT NULL,
+"Cantidad" int4 NOT NULL,
+"id_ingreso" int4 NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of inventario
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for producto
+-- ----------------------------
+DROP TABLE IF EXISTS "producto"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "producto" (
+"id_producto" int4 NOT NULL,
+"descripcion" varchar(45) NOT NULL,
+"tipo" varchar(45) NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of producto
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for producto-uso
+-- ----------------------------
+DROP TABLE IF EXISTS "producto-uso"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "producto-uso" (
+"id_prod_uso" int4 NOT NULL,
+"id_inventario" int4 NOT NULL,
+"cantidad" float8 NOT NULL,
+"procentaje" float8 NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of producto-uso
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for proveedor
+-- ----------------------------
+DROP TABLE IF EXISTS "proveedor"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "proveedor" (
+"id_proveedor" int4 NOT NULL,
+"nom_provedor" varchar(45) NOT NULL,
+"id_producto" int4 NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of proveedor
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for recetas
+-- ----------------------------
+DROP TABLE IF EXISTS "recetas"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "recetas" (
+"id_receta" int4 NOT NULL,
+"nombre" varchar(45) NOT NULL,
+"id_prod_uso" int4 NOT NULL,
+"descripcion" varchar(45) NOT NULL,
+"porcentaje" float8 NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of recetas
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for responsable
+-- ----------------------------
+DROP TABLE IF EXISTS "responsable"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "responsable" (
+"id_responsable" int4 NOT NULL,
+"nombre_responsable" varchar(30) NOT NULL,
+"id_cargo" int4 NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of responsable
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for solicitud
+-- ----------------------------
+DROP TABLE IF EXISTS "solicitud"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "solicitud" (
+"id_solicitud" int4 NOT NULL,
+"id_clientes" int4 NOT NULL,
+"fecha_solicitud" date NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of solicitud
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for solicitud_bienes
+-- ----------------------------
+DROP TABLE IF EXISTS "solicitud_bienes"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "solicitud_bienes" (
+"id_solicitud_bienes" int4 NOT NULL,
+"id_proveedor" int4 NOT NULL,
+"cantidad" int4 NOT NULL,
+"id_responsable" int4 NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of solicitud_bienes
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Table structure for solicitud_receta
+-- ----------------------------
+DROP TABLE IF EXISTS "solicitud_receta"
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE TABLE "solicitud_receta" (
+"id_solicitud_receta" int4 NOT NULL,
+"id_solicitud" int4 NOT NULL,
+"cantidad" float8 NOT NULL,
+"id_receta" int4 NOT NULL
+)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Records of solicitud_receta
+-- ----------------------------
+BEGIN
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+COMMIT
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table bienes
+-- ----------------------------
+ALTER TABLE "bienes" ADD PRIMARY KEY ("id_bienes")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table cargo
+-- ----------------------------
+ALTER TABLE "cargo" ADD PRIMARY KEY ("id_cargo")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table clientes
+-- ----------------------------
+ALTER TABLE "clientes" ADD PRIMARY KEY ("id_clientes")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Indexes structure for table egreso
+-- ----------------------------
+CREATE INDEX "id_solicitud_bienes_idx" ON "egreso" USING btree (id_solicitud_receta)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table egreso
+-- ----------------------------
+ALTER TABLE "egreso" ADD PRIMARY KEY ("id_egreso")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Indexes structure for table ingreso
+-- ----------------------------
+CREATE INDEX "id_orden_compara_idx" ON "ingreso" USING btree (id_solicitud_bienes)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table ingreso
+-- ----------------------------
+ALTER TABLE "ingreso" ADD PRIMARY KEY ("id_ingreso")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Indexes structure for table inventario
+-- ----------------------------
+CREATE INDEX "id_bienes_idx" ON "inventario" USING btree (id_bienes)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE INDEX "id_ingreso_idx" ON "inventario" USING btree (id_ingreso)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table inventario
+-- ----------------------------
+ALTER TABLE "inventario" ADD PRIMARY KEY ("id_inventario")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table producto
+-- ----------------------------
+ALTER TABLE "producto" ADD PRIMARY KEY ("id_producto")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Indexes structure for table producto-uso
+-- ----------------------------
+CREATE INDEX "id_inventario_idx" ON "producto-uso" USING btree (id_inventario)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table producto-uso
+-- ----------------------------
+ALTER TABLE "producto-uso" ADD PRIMARY KEY ("id_prod_uso")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Indexes structure for table proveedor
+-- ----------------------------
+CREATE INDEX "id_producto_idx" ON "proveedor" USING btree (id_producto)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table proveedor
+-- ----------------------------
+ALTER TABLE "proveedor" ADD PRIMARY KEY ("id_proveedor")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Indexes structure for table recetas
+-- ----------------------------
+CREATE INDEX "id_prod_uso_idx" ON "recetas" USING btree (id_prod_uso)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table recetas
+-- ----------------------------
+ALTER TABLE "recetas" ADD PRIMARY KEY ("id_receta")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Indexes structure for table responsable
+-- ----------------------------
+CREATE INDEX "id_cargo_idx" ON "responsable" USING btree (id_cargo)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table responsable
+-- ----------------------------
+ALTER TABLE "responsable" ADD PRIMARY KEY ("id_responsable")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Indexes structure for table solicitud
+-- ----------------------------
+CREATE INDEX "id_clientes_idx" ON "solicitud" USING btree (id_clientes)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table solicitud
+-- ----------------------------
+ALTER TABLE "solicitud" ADD PRIMARY KEY ("id_solicitud")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Indexes structure for table solicitud_bienes
+-- ----------------------------
+CREATE INDEX "id_proveedor_idx" ON "solicitud_bienes" USING btree (id_proveedor)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE INDEX "id_responsable_idx" ON "solicitud_bienes" USING btree (id_responsable)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table solicitud_bienes
+-- ----------------------------
+ALTER TABLE "solicitud_bienes" ADD PRIMARY KEY ("id_solicitud_bienes")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Indexes structure for table solicitud_receta
+-- ----------------------------
+CREATE INDEX "id_solicitud_idx" ON "solicitud_receta" USING btree (id_solicitud)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+CREATE INDEX "id_receta_idx" ON "solicitud_receta" USING btree (id_receta)
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Primary Key structure for table solicitud_receta
+-- ----------------------------
+ALTER TABLE "solicitud_receta" ADD PRIMARY KEY ("id_solicitud_receta")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Foreign Key structure for table "egreso"
+-- ----------------------------
+ALTER TABLE "egreso" ADD FOREIGN KEY ("id_solicitud_receta") REFERENCES "solicitud_receta" ("id_solicitud_receta")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Foreign Key structure for table "ingreso"
+-- ----------------------------
+ALTER TABLE "ingreso" ADD FOREIGN KEY ("id_solicitud_bienes") REFERENCES "solicitud_bienes" ("id_solicitud_bienes")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Foreign Key structure for table "inventario"
+-- ----------------------------
+ALTER TABLE "inventario" ADD FOREIGN KEY ("id_bienes") REFERENCES "bienes" ("id_bienes")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+ALTER TABLE "inventario" ADD FOREIGN KEY ("id_ingreso") REFERENCES "ingreso" ("id_ingreso")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Foreign Key structure for table "producto-uso"
+-- ----------------------------
+ALTER TABLE "producto-uso" ADD FOREIGN KEY ("id_inventario") REFERENCES "inventario" ("id_inventario")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Foreign Key structure for table "proveedor"
+-- ----------------------------
+ALTER TABLE "proveedor" ADD FOREIGN KEY ("id_producto") REFERENCES "producto" ("id_producto")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Foreign Key structure for table "recetas"
+-- ----------------------------
+ALTER TABLE "recetas" ADD FOREIGN KEY ("id_prod_uso") REFERENCES "producto-uso" ("id_prod_uso")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Foreign Key structure for table "responsable"
+-- ----------------------------
+ALTER TABLE "responsable" ADD FOREIGN KEY ("id_cargo") REFERENCES "cargo" ("id_cargo")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Foreign Key structure for table "solicitud"
+-- ----------------------------
+ALTER TABLE "solicitud" ADD FOREIGN KEY ("id_clientes") REFERENCES "clientes" ("id_clientes")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Foreign Key structure for table "solicitud_bienes"
+-- ----------------------------
+ALTER TABLE "solicitud_bienes" ADD FOREIGN KEY ("id_proveedor") REFERENCES "proveedor" ("id_proveedor")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+ALTER TABLE "solicitud_bienes" ADD FOREIGN KEY ("id_responsable") REFERENCES "responsable" ("id_responsable")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+-- ----------------------------
+-- Foreign Key structure for table "solicitud_receta"
+-- ----------------------------
+ALTER TABLE "solicitud_receta" ADD FOREIGN KEY ("id_receta") REFERENCES "recetas" ("id_receta")
+
+[2014-03-01 17:17:04] [059547] [(null)] [PGSQL]
+ALTER TABLE "solicitud_receta" ADD FOREIGN KEY ("id_solicitud") REFERENCES "solicitud" ("id_solicitud")
+
+[2014-03-01 17:17:11] [059543] [(null)] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-01 17:17:11] [059543] [(null)] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-01 17:17:12] [059543] [(null)] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-01 17:17:12] [059543] [(null)] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-01 17:17:12] [059543] [(null)] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-01 17:17:12] [059543] [(null)] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-01 17:17:12] [059543] [(null)] [PGSQL]
+SELECT col.table_name, col.column_name, col.character_maximum_length, col.is_nullable, col.numeric_precision, col.numeric_scale, col.datetime_precision, col.ordinal_position, b.atttypmod, b.attndims, b.attacl, col.data_type AS col_type, et.typelem, et.typlen, et.typtype, nbt.nspname as elem_schema , bt.typname as elem_name, b.atttypid, col.udt_schema, col.udt_name, col.column_default AS col_default, col.domain_catalog, col.domain_schema, col.domain_name, cl.collname, col_description(c.oid, col.ordinal_position) AS comment FROM information_schema.columns AS col LEFT JOIN pg_namespace ns ON ns.nspname = col.table_schema LEFT JOIN pg_class c ON col.table_name = c.relname AND c.relnamespace = ns.oid LEFT JOIN pg_attrdef a ON c.oid = a.adrelid AND col.ordinal_position = a.adnum LEFT JOIN pg_attribute b ON b.attrelid = c.oid AND b.attname = col.column_name LEFT JOIN pg_collation cl ON cl.oid = b.attcollation LEFT JOIN pg_type et ON et.oid = b.atttypid LEFT JOIN pg_type bt on et.typelem = bt.oid LEFT JOIN pg_namespace nbt on bt.typnamespace = nbt.oid WHERE col.table_schema = 'public' ORDER BY col.table_name, col.ordinal_position
+
+[2014-03-01 17:17:12] [059543] [(null)] [PGSQL]
+SELECT col.table_name, col.column_name, col.character_maximum_length, col.is_nullable, col.numeric_precision, col.numeric_scale, col.datetime_precision, col.ordinal_position, b.atttypmod, b.attndims, b.attacl, col.data_type AS col_type, et.typelem, et.typlen, et.typtype, nbt.nspname as elem_schema , bt.typname as elem_name, b.atttypid, col.udt_schema, col.udt_name, col.column_default AS col_default, col.domain_catalog, col.domain_schema, col.domain_name, cl.collname, col_description(c.oid, col.ordinal_position) AS comment FROM information_schema.columns AS col LEFT JOIN pg_namespace ns ON ns.nspname = col.table_schema LEFT JOIN pg_class c ON col.table_name = c.relname AND c.relnamespace = ns.oid LEFT JOIN pg_attrdef a ON c.oid = a.adrelid AND col.ordinal_position = a.adnum LEFT JOIN pg_attribute b ON b.attrelid = c.oid AND b.attname = col.column_name LEFT JOIN pg_collation cl ON cl.oid = b.attcollation LEFT JOIN pg_type et ON et.oid = b.atttypid LEFT JOIN pg_type bt on et.typelem = bt.oid LEFT JOIN pg_namespace nbt on bt.typnamespace = nbt.oid WHERE col.table_schema = 'public' ORDER BY col.table_name, col.ordinal_position
+
+[2014-03-01 17:17:12] [059543] [(null)] [PGSQL]
+SELECT opr.oid, opr.oprname, nsp.nspname FROM pg_operator opr JOIN pg_namespace nsp ON nsp.oid=opr.oprnamespace
+
+[2014-03-01 17:17:12] [059543] [(null)] [PGSQL]
+SELECT op.oid, op.oprname, ns.nspname, pg_get_userbyid(op.oprowner) AS opowner, op.oprkind, op.oprcanhash, op.oprleft, op.oprright, lt.oid AS ltoid, lt.typname AS lefttype, rt.oid AS rtoid, rt.typname AS righttype, ltns.nspname AS ltschema, rtns.nspname AS rtschema, op.oprcom, op.oprnegate, op.oprcanmerge, prc.proname AS operproc, nsc.nspname AS operns, prr.proname AS restproc, nsr.nspname AS restns, prj.proname AS joinproc, nsj.nspname AS joinns, obj_description(op.oid) AS description FROM pg_operator op LEFT JOIN pg_namespace ns ON ns.oid=op.oprnamespace LEFT JOIN pg_type lt ON lt.oid=op.oprleft LEFT JOIN pg_namespace ltns ON ltns.oid=lt.typnamespace LEFT JOIN pg_type rt ON rt.oid=op.oprright LEFT JOIN pg_namespace rtns ON rtns.oid=rt.typnamespace LEFT JOIN pg_proc prc ON prc.oid=op.oprcode LEFT JOIN pg_namespace nsc ON nsc.oid=prc.pronamespace LEFT JOIN pg_proc prr ON prr.oid=op.oprrest LEFT JOIN pg_namespace nsr ON nsr.oid=prr.pronamespace LEFT JOIN pg_proc prj ON prj.oid=op.oprjoin LEFT JOIN pg_namespace nsj ON nsj.oid=prj.pronamespace
+
+[2014-03-01 17:17:13] [059543] [(null)] [PGSQL]
+SELECT c.oid, c.conname, c.contype, c.condeferrable, c.condeferred, c.conkey, c.confupdtype, c.confdeltype, c.consrc, t.relname, fns.nspname AS foreign_schema, f.relname AS foreign_table, ts.spcname, i.reloptions AS param, c.conexclop, am.amname, pg_get_expr(idx.indpred, idx.indexrelid, true) AS exclude_predicate, obj_description(c.oid) AS comment FROM pg_constraint c LEFT JOIN pg_namespace ns ON (c.connamespace = ns.oid) LEFT JOIN pg_class t ON (c.conrelid = t.oid) LEFT JOIN pg_class i ON (c.conname = i.relname) AND (c.connamespace = i.relnamespace) LEFT JOIN pg_class f ON (c.confrelid = f.oid) LEFT JOIN pg_namespace fns ON (f.relnamespace = fns.oid) LEFT JOIN pg_tablespace ts ON (i.reltablespace = ts.oid) LEFT JOIN pg_class p ON p.oid = c.conindid LEFT JOIN pg_am am ON am.oid = p.relam LEFT JOIN pg_index idx ON idx.indexrelid = C.conindid WHERE ns.nspname = 'public'
+
+[2014-03-01 17:17:13] [059543] [(null)] [PGSQL]
+SELECT t.relname, fns.nspname AS foreign_schema, f.relname AS foreign_table, c.conname, c.confkey, a.attname AS foreign_field, a.attnum FROM pg_constraint c LEFT JOIN pg_namespace ns ON (c.connamespace = ns.oid) LEFT JOIN pg_class t ON (c.conrelid = t.oid) INNER JOIN pg_class f ON (c.confrelid = f.oid) LEFT JOIN pg_namespace fns ON (f.relnamespace = fns.oid) INNER JOIN pg_attribute a ON (a.attrelid = f.oid) WHERE a.attnum > 0 AND ns.nspname = 'public' ORDER BY t.relname, c.conname, a.attnum
+
+[2014-03-01 17:17:13] [059543] [(null)] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-01 17:17:13] [059543] [(null)] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-01 18:44:36] [059543] [(null)] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-01 18:44:37] [059543] [(null)] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+
+
+[2014-03-02 12:19:03] [062964] [localhost] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+[2014-03-02 12:19:05] [062965] [localhost] [PGSQL]
+SELECT oid, typname FROM pg_type
+
+[2014-03-02 12:19:05] [062965] [localhost] [PGSQL]
+SELECT n.nspname, n.oid, pg_get_userbyid(n.nspowner) AS owner, n.nspacl, obj_description(n.oid) AS comment, COALESCE((n.nspname = current_schema()), FALSE) AS default FROM pg_catalog.pg_namespace n LEFT JOIN pg_catalog.pg_user u ON nspowner = usesysid 
+
+[2014-03-02 12:19:07] [062965] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 12:19:07] [062965] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 12:19:07] [062965] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 12:19:07] [062965] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 12:19:07] [062965] [localhost] [PGSQL]
+SELECT col.table_name, col.column_name, col.character_maximum_length, col.is_nullable, col.numeric_precision, col.numeric_scale, col.datetime_precision, col.ordinal_position, b.atttypmod, b.attndims, b.attacl, col.data_type AS col_type, et.typelem, et.typlen, et.typtype, nbt.nspname as elem_schema , bt.typname as elem_name, b.atttypid, col.udt_schema, col.udt_name, col.column_default AS col_default, col.domain_catalog, col.domain_schema, col.domain_name, cl.collname, col_description(c.oid, col.ordinal_position) AS comment FROM information_schema.columns AS col LEFT JOIN pg_namespace ns ON ns.nspname = col.table_schema LEFT JOIN pg_class c ON col.table_name = c.relname AND c.relnamespace = ns.oid LEFT JOIN pg_attrdef a ON c.oid = a.adrelid AND col.ordinal_position = a.adnum LEFT JOIN pg_attribute b ON b.attrelid = c.oid AND b.attname = col.column_name LEFT JOIN pg_collation cl ON cl.oid = b.attcollation LEFT JOIN pg_type et ON et.oid = b.atttypid LEFT JOIN pg_type bt on et.typelem = bt.oid LEFT JOIN pg_namespace nbt on bt.typnamespace = nbt.oid WHERE col.table_schema = 'public' ORDER BY col.table_name, col.ordinal_position
+
+[2014-03-02 12:19:07] [062965] [localhost] [PGSQL]
+SELECT col.table_name, col.column_name, col.character_maximum_length, col.is_nullable, col.numeric_precision, col.numeric_scale, col.datetime_precision, col.ordinal_position, b.atttypmod, b.attndims, b.attacl, col.data_type AS col_type, et.typelem, et.typlen, et.typtype, nbt.nspname as elem_schema , bt.typname as elem_name, b.atttypid, col.udt_schema, col.udt_name, col.column_default AS col_default, col.domain_catalog, col.domain_schema, col.domain_name, cl.collname, col_description(c.oid, col.ordinal_position) AS comment FROM information_schema.columns AS col LEFT JOIN pg_namespace ns ON ns.nspname = col.table_schema LEFT JOIN pg_class c ON col.table_name = c.relname AND c.relnamespace = ns.oid LEFT JOIN pg_attrdef a ON c.oid = a.adrelid AND col.ordinal_position = a.adnum LEFT JOIN pg_attribute b ON b.attrelid = c.oid AND b.attname = col.column_name LEFT JOIN pg_collation cl ON cl.oid = b.attcollation LEFT JOIN pg_type et ON et.oid = b.atttypid LEFT JOIN pg_type bt on et.typelem = bt.oid LEFT JOIN pg_namespace nbt on bt.typnamespace = nbt.oid WHERE col.table_schema = 'public' ORDER BY col.table_name, col.ordinal_position
+
+[2014-03-02 12:19:07] [062965] [localhost] [PGSQL]
+SELECT opr.oid, opr.oprname, nsp.nspname FROM pg_operator opr JOIN pg_namespace nsp ON nsp.oid=opr.oprnamespace
+
+[2014-03-02 12:19:07] [062965] [localhost] [PGSQL]
+SELECT op.oid, op.oprname, ns.nspname, pg_get_userbyid(op.oprowner) AS opowner, op.oprkind, op.oprcanhash, op.oprleft, op.oprright, lt.oid AS ltoid, lt.typname AS lefttype, rt.oid AS rtoid, rt.typname AS righttype, ltns.nspname AS ltschema, rtns.nspname AS rtschema, op.oprcom, op.oprnegate, op.oprcanmerge, prc.proname AS operproc, nsc.nspname AS operns, prr.proname AS restproc, nsr.nspname AS restns, prj.proname AS joinproc, nsj.nspname AS joinns, obj_description(op.oid) AS description FROM pg_operator op LEFT JOIN pg_namespace ns ON ns.oid=op.oprnamespace LEFT JOIN pg_type lt ON lt.oid=op.oprleft LEFT JOIN pg_namespace ltns ON ltns.oid=lt.typnamespace LEFT JOIN pg_type rt ON rt.oid=op.oprright LEFT JOIN pg_namespace rtns ON rtns.oid=rt.typnamespace LEFT JOIN pg_proc prc ON prc.oid=op.oprcode LEFT JOIN pg_namespace nsc ON nsc.oid=prc.pronamespace LEFT JOIN pg_proc prr ON prr.oid=op.oprrest LEFT JOIN pg_namespace nsr ON nsr.oid=prr.pronamespace LEFT JOIN pg_proc prj ON prj.oid=op.oprjoin LEFT JOIN pg_namespace nsj ON nsj.oid=prj.pronamespace
+
+[2014-03-02 12:19:08] [062965] [localhost] [PGSQL]
+SELECT c.oid, c.conname, c.contype, c.condeferrable, c.condeferred, c.conkey, c.confupdtype, c.confdeltype, c.consrc, t.relname, fns.nspname AS foreign_schema, f.relname AS foreign_table, ts.spcname, i.reloptions AS param, c.conexclop, am.amname, pg_get_expr(idx.indpred, idx.indexrelid, true) AS exclude_predicate, obj_description(c.oid) AS comment FROM pg_constraint c LEFT JOIN pg_namespace ns ON (c.connamespace = ns.oid) LEFT JOIN pg_class t ON (c.conrelid = t.oid) LEFT JOIN pg_class i ON (c.conname = i.relname) AND (c.connamespace = i.relnamespace) LEFT JOIN pg_class f ON (c.confrelid = f.oid) LEFT JOIN pg_namespace fns ON (f.relnamespace = fns.oid) LEFT JOIN pg_tablespace ts ON (i.reltablespace = ts.oid) LEFT JOIN pg_class p ON p.oid = c.conindid LEFT JOIN pg_am am ON am.oid = p.relam LEFT JOIN pg_index idx ON idx.indexrelid = C.conindid WHERE ns.nspname = 'public'
+
+[2014-03-02 12:19:08] [062965] [localhost] [PGSQL]
+SELECT t.relname, fns.nspname AS foreign_schema, f.relname AS foreign_table, c.conname, c.confkey, a.attname AS foreign_field, a.attnum FROM pg_constraint c LEFT JOIN pg_namespace ns ON (c.connamespace = ns.oid) LEFT JOIN pg_class t ON (c.conrelid = t.oid) INNER JOIN pg_class f ON (c.confrelid = f.oid) LEFT JOIN pg_namespace fns ON (f.relnamespace = fns.oid) INNER JOIN pg_attribute a ON (a.attrelid = f.oid) WHERE a.attnum > 0 AND ns.nspname = 'public' ORDER BY t.relname, c.conname, a.attnum
+
+[2014-03-02 13:21:57] [062965] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 13:21:57] [062965] [localhost] [PGSQL]
+SELECT c.oid, c.relname, c.relacl, pg_get_userbyid(c.relowner) AS viewowner, pg_get_viewdef(c.oid) AS definition, obj_description(c.oid) AS comment FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.relkind = 'v'::"char" AND n.nspname = 'public'
+
+[2014-03-02 13:21:58] [062965] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 13:21:58] [062965] [localhost] [PGSQL]
+SELECT c.oid, c.relname, c.relacl, pg_get_userbyid(c.relowner) AS viewowner, pg_get_viewdef(c.oid) AS definition, obj_description(c.oid) AS comment FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace WHERE c.relkind = 'v'::"char" AND n.nspname = 'public'
+
+[2014-03-02 13:22:05] [062965] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 13:22:05] [062965] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 13:22:06] [062965] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 13:22:06] [062965] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 13:22:29] [062965] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 13:22:29] [062965] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 13:22:41] [062965] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 13:22:41] [062965] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 13:22:45] [062965] [localhost] [PGSQL]
+SELECT amname FROM pg_catalog.pg_am order by amname
+
+[2014-03-02 13:22:45] [062964] [localhost] [PGSQL]
+SELECT oid, spcname, spcowner, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
+
+[2014-03-02 13:22:45] [062964] [localhost] [PGSQL]
+SELECT rolname, oid, rolcreatedb, rolsuper, rolcatupdate, rolvaliduntil, rolinherit, rolcreaterole, rolcanlogin, rolconnlimit FROM pg_roles ORDER BY rolname ASC
+
+[2014-03-02 13:22:45] [062964] [localhost] [PGSQL]
+SELECT r1.rolname, r2.rolname AS memname, m.admin_option FROM pg_roles r1, pg_auth_members m, pg_roles r2 WHERE r1.oid = m.roleid AND m.member = r2.oid ORDER BY r1.rolname
+
+[2014-03-02 13:22:45] [062965] [localhost] [PGSQL]
+SELECT c.oid, n.nspname AS schemaname, c.relname AS tablename FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace WHERE (c.relkind = 'r'::"char")ORDER BY n.nspname, c.relname
+
+[2014-03-02 13:22:45] [062965] [localhost] [PGSQL]
+select (case when s.oid <> pg_cat.oid then quote_ident(nspname)::text else ''::text end) as prefix, (case when s.oid <> pg_cat.oid then quote_ident(_typname) else _typname end) as type_name from (SELECT case typname when 'bpchar' then 'char' when 'char' then '"char"' when 'varbit' then 'bit varying' else typname end as _typname,  case typname when 'bpchar' then 'char' when 'char' then 'chaqz~' when 'varbit' then 'bit varying' else typname end as namekey,  oid, * FROM pg_type    UNION ALL  SELECT 'varbit', 'varbit', oid, * FROM pg_type WHERE typname = 'varbit' AND typnamespace = ((select oid from pg_namespace where nspname = 'pg_catalog'))  ) AS t  inner join pg_namespace s on s.oid = t.typnamespace  , (select oid from pg_namespace where nspname = 'pg_catalog') as pg_cat where (t.typtype = 'b' AND t.typinput <> 'array_in'::regproc) order by prefix ASC, namekey ASC
+
+[2014-03-02 13:22:45] [062964] [localhost] [PGSQL]
+SELECT oid, spcname, spcowner, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
+
+[2014-03-02 13:22:45] [062964] [localhost] [PGSQL]
+SELECT oid, spcname, spcowner, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
+
+[2014-03-02 13:22:45] [062964] [localhost] [PGSQL]
+SELECT oid, spcname, spcowner, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
+
+[2014-03-02 13:23:05] [062965] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 13:23:05] [062965] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 13:23:05] [062965] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 13:23:05] [062965] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 13:23:07] [062965] [localhost] [PGSQL]
+SELECT amname FROM pg_catalog.pg_am order by amname
+
+[2014-03-02 13:23:07] [062964] [localhost] [PGSQL]
+SELECT oid, spcname, spcowner, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
+
+[2014-03-02 13:23:07] [062965] [localhost] [PGSQL]
+SELECT c.oid, n.nspname AS schemaname, c.relname AS tablename FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace WHERE (c.relkind = 'r'::"char")ORDER BY n.nspname, c.relname
+
+[2014-03-02 13:23:07] [062965] [localhost] [PGSQL]
+select (case when s.oid <> pg_cat.oid then quote_ident(nspname)::text else ''::text end) as prefix, (case when s.oid <> pg_cat.oid then quote_ident(_typname) else _typname end) as type_name from (SELECT case typname when 'bpchar' then 'char' when 'char' then '"char"' when 'varbit' then 'bit varying' else typname end as _typname,  case typname when 'bpchar' then 'char' when 'char' then 'chaqz~' when 'varbit' then 'bit varying' else typname end as namekey,  oid, * FROM pg_type    UNION ALL  SELECT 'varbit', 'varbit', oid, * FROM pg_type WHERE typname = 'varbit' AND typnamespace = ((select oid from pg_namespace where nspname = 'pg_catalog'))  ) AS t  inner join pg_namespace s on s.oid = t.typnamespace  , (select oid from pg_namespace where nspname = 'pg_catalog') as pg_cat where (t.typtype = 'b' AND t.typinput <> 'array_in'::regproc) order by prefix ASC, namekey ASC
+
+[2014-03-02 13:23:07] [062964] [localhost] [PGSQL]
+SELECT oid, spcname, spcowner, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
+
+[2014-03-02 13:23:07] [062964] [localhost] [PGSQL]
+SELECT oid, spcname, spcowner, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
+
+[2014-03-02 13:23:07] [062964] [localhost] [PGSQL]
+SELECT oid, spcname, spcowner, spcacl, shobj_description(oid, 'pg_tablespace') AS comment FROM pg_tablespace
+
+[2014-03-02 13:24:00] [062965] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 13:24:00] [062965] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 13:24:00] [062965] [localhost] [PGSQL]
+SELECT col.table_name, col.column_name, col.character_maximum_length, col.is_nullable, col.numeric_precision, col.numeric_scale, col.datetime_precision, col.ordinal_position, b.atttypmod, b.attndims, b.attacl, col.data_type AS col_type, et.typelem, et.typlen, et.typtype, nbt.nspname as elem_schema , bt.typname as elem_name, b.atttypid, col.udt_schema, col.udt_name, col.column_default AS col_default, col.domain_catalog, col.domain_schema, col.domain_name, cl.collname, col_description(c.oid, col.ordinal_position) AS comment FROM information_schema.columns AS col LEFT JOIN pg_namespace ns ON ns.nspname = col.table_schema LEFT JOIN pg_class c ON col.table_name = c.relname AND c.relnamespace = ns.oid LEFT JOIN pg_attrdef a ON c.oid = a.adrelid AND col.ordinal_position = a.adnum LEFT JOIN pg_attribute b ON b.attrelid = c.oid AND b.attname = col.column_name LEFT JOIN pg_collation cl ON cl.oid = b.attcollation LEFT JOIN pg_type et ON et.oid = b.atttypid LEFT JOIN pg_type bt on et.typelem = bt.oid LEFT JOIN pg_namespace nbt on bt.typnamespace = nbt.oid WHERE col.table_schema = 'public' ORDER BY col.table_name, col.ordinal_position
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT col.table_name, col.column_name, col.character_maximum_length, col.is_nullable, col.numeric_precision, col.numeric_scale, col.datetime_precision, col.ordinal_position, b.atttypmod, b.attndims, b.attacl, col.data_type AS col_type, et.typelem, et.typlen, et.typtype, nbt.nspname as elem_schema , bt.typname as elem_name, b.atttypid, col.udt_schema, col.udt_name, col.column_default AS col_default, col.domain_catalog, col.domain_schema, col.domain_name, cl.collname, col_description(c.oid, col.ordinal_position) AS comment FROM information_schema.columns AS col LEFT JOIN pg_namespace ns ON ns.nspname = col.table_schema LEFT JOIN pg_class c ON col.table_name = c.relname AND c.relnamespace = ns.oid LEFT JOIN pg_attrdef a ON c.oid = a.adrelid AND col.ordinal_position = a.adnum LEFT JOIN pg_attribute b ON b.attrelid = c.oid AND b.attname = col.column_name LEFT JOIN pg_collation cl ON cl.oid = b.attcollation LEFT JOIN pg_type et ON et.oid = b.atttypid LEFT JOIN pg_type bt on et.typelem = bt.oid LEFT JOIN pg_namespace nbt on bt.typnamespace = nbt.oid WHERE col.table_schema = 'public' ORDER BY col.table_name, col.ordinal_position
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT n.nspname, n.oid, pg_get_userbyid(n.nspowner) AS owner, n.nspacl, obj_description(n.oid) AS comment, COALESCE((n.nspname = current_schema()), FALSE) AS default FROM pg_catalog.pg_namespace n LEFT JOIN pg_catalog.pg_user u ON nspowner = usesysid 
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT opr.oid, opr.oprname, nsp.nspname FROM pg_operator opr JOIN pg_namespace nsp ON nsp.oid=opr.oprnamespace
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT op.oid, op.oprname, ns.nspname, pg_get_userbyid(op.oprowner) AS opowner, op.oprkind, op.oprcanhash, op.oprleft, op.oprright, lt.oid AS ltoid, lt.typname AS lefttype, rt.oid AS rtoid, rt.typname AS righttype, ltns.nspname AS ltschema, rtns.nspname AS rtschema, op.oprcom, op.oprnegate, op.oprcanmerge, prc.proname AS operproc, nsc.nspname AS operns, prr.proname AS restproc, nsr.nspname AS restns, prj.proname AS joinproc, nsj.nspname AS joinns, obj_description(op.oid) AS description FROM pg_operator op LEFT JOIN pg_namespace ns ON ns.oid=op.oprnamespace LEFT JOIN pg_type lt ON lt.oid=op.oprleft LEFT JOIN pg_namespace ltns ON ltns.oid=lt.typnamespace LEFT JOIN pg_type rt ON rt.oid=op.oprright LEFT JOIN pg_namespace rtns ON rtns.oid=rt.typnamespace LEFT JOIN pg_proc prc ON prc.oid=op.oprcode LEFT JOIN pg_namespace nsc ON nsc.oid=prc.pronamespace LEFT JOIN pg_proc prr ON prr.oid=op.oprrest LEFT JOIN pg_namespace nsr ON nsr.oid=prr.pronamespace LEFT JOIN pg_proc prj ON prj.oid=op.oprjoin LEFT JOIN pg_namespace nsj ON nsj.oid=prj.pronamespace
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT c.oid, c.conname, c.contype, c.condeferrable, c.condeferred, c.conkey, c.confupdtype, c.confdeltype, c.consrc, t.relname, fns.nspname AS foreign_schema, f.relname AS foreign_table, ts.spcname, i.reloptions AS param, c.conexclop, am.amname, pg_get_expr(idx.indpred, idx.indexrelid, true) AS exclude_predicate, obj_description(c.oid) AS comment FROM pg_constraint c LEFT JOIN pg_namespace ns ON (c.connamespace = ns.oid) LEFT JOIN pg_class t ON (c.conrelid = t.oid) LEFT JOIN pg_class i ON (c.conname = i.relname) AND (c.connamespace = i.relnamespace) LEFT JOIN pg_class f ON (c.confrelid = f.oid) LEFT JOIN pg_namespace fns ON (f.relnamespace = fns.oid) LEFT JOIN pg_tablespace ts ON (i.reltablespace = ts.oid) LEFT JOIN pg_class p ON p.oid = c.conindid LEFT JOIN pg_am am ON am.oid = p.relam LEFT JOIN pg_index idx ON idx.indexrelid = C.conindid WHERE ns.nspname = 'public'
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT t.relname, fns.nspname AS foreign_schema, f.relname AS foreign_table, c.conname, c.confkey, a.attname AS foreign_field, a.attnum FROM pg_constraint c LEFT JOIN pg_namespace ns ON (c.connamespace = ns.oid) LEFT JOIN pg_class t ON (c.conrelid = t.oid) INNER JOIN pg_class f ON (c.confrelid = f.oid) LEFT JOIN pg_namespace fns ON (f.relnamespace = fns.oid) INNER JOIN pg_attribute a ON (a.attrelid = f.oid) WHERE a.attnum > 0 AND ns.nspname = 'public' ORDER BY t.relname, c.conname, a.attnum
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT oid, collname FROM pg_collation
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT i.indrelid AS oid, ci.relname AS index_name, ct.relname AS table_name, am.amname, i.indexrelid, i.indisunique, i.indisclustered, i.indisprimary, i.indkey, i.indclass, obj_description(i.indexrelid) AS comment, i.indnatts AS indnatts, pg_get_expr(i.indpred, i.indrelid, true) AS indconstraint, pa.rolname AS owner, ts.spcname, ci.reloptions AS param, i.indoption, i.indcollation , 8 *(ci.relpages) As index_size FROM pg_index i LEFT JOIN pg_class ct ON ct.oid = i.indrelid LEFT JOIN pg_class ci ON ci.oid = i.indexrelid LEFT JOIN pg_namespace tns ON tns.oid = ct.relnamespace LEFT JOIN pg_namespace ins ON ins.oid = ci.relnamespace LEFT JOIN pg_tablespace ts ON ci.reltablespace = ts.oid LEFT JOIN pg_am am ON ci.relam = am.oid LEFT JOIN pg_depend dep ON dep.classid = ci.tableoid AND dep.objid = ci.oid AND dep.refobjsubid = '0' LEFT JOIN pg_constraint con ON con.tableoid = dep.refclassid AND con.oid = dep.refobjid LEFT JOIN pg_roles pa ON pa.oid = ci.relowner WHERE tns.nspname = 'public' ORDER BY ct.relname, ins.nspname, ci.relname
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16429, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16431, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16433, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16436, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16435, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16438, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16439, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16441, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16442, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16443, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16445, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16447, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16448, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16450, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16451, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16453, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16454, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16456, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16457, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16459, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16460, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16462, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16463, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16464, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16467, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16466, 1, true)
+
+[2014-03-02 13:24:01] [062965] [localhost] [PGSQL]
+SELECT pg_get_indexdef(16468, 1, true)
+
+[2014-03-02 13:24:52] [062965] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 13:24:52] [062965] [localhost] [PGSQL]
+SELECT t.oid, t.typname, n.nspname FROM pg_type t LEFT JOIN pg_namespace n ON t.typnamespace = n.oid ORDER BY t.oid
+
+[2014-03-02 13:24:52] [062965] [localhost] [PGSQL]
+SELECT n.nspname AS schema, 		 p.proname AS name, 		 p.proargtypes AS params, 		 p.prorettype AS ret, 		 prosrc AS definition, 		 COALESCE(lanname,'') AS lang, 		 p.proisstrict AS strict, 		 CASE WHEN p.provolatile = 'i' THEN 'IMMUTABLE' 			  WHEN p.provolatile = 's' THEN 'STABLE' 			  ELSE 'VOLATILE' END AS volatile, 		p.prosecdef AS securitydefiner, 		p.proretset AS returnset, 		COALESCE(u.usename,'') AS owner, 		p.probin as obj_file, 		obj_description(p.oid) AS comment, 		p.proacl, 		(p.oid <= d.datlastsysoid) AS systable, 		p.oid, 		typns.nspname as rettypeschema		, p.proargnames AS paramnames, p.proargmodes AS parammodes, p.proallargtypes AS paramalltypes, p.procost AS estimcost, p.prorows AS estimrows, p.proconfig AS configparams, pg_get_expr(p.proargdefaults,'pg_proc'::regclass) AS defaultvalues FROM	pg_proc p JOIN	pg_namespace n ON p.pronamespace = n.oid LEFT JOIN pg_language l ON p.prolang = l.oid LEFT JOIN pg_user u ON p.proowner = u.usesysid LEFT JOIN pg_database d on d.datname = current_database() LEFT JOIN pg_type typ on typ.oid = p.prorettype LEFT JOIN pg_namespace typns ON typns.oid = typ.typnamespace WHERE	p.proisagg = 'f' 		AND p.prorettype <> 'trigger'::regtype 		AND n.nspname = 'public'
+
+
+[2014-03-02 14:20:04] [063479] [localhost] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+[2014-03-02 14:20:06] [063480] [localhost] [PGSQL]
+SELECT oid, typname FROM pg_type
+
+[2014-03-02 14:20:06] [063480] [localhost] [PGSQL]
+SELECT n.nspname, n.oid, pg_get_userbyid(n.nspowner) AS owner, n.nspacl, obj_description(n.oid) AS comment, COALESCE((n.nspname = current_schema()), FALSE) AS default FROM pg_catalog.pg_namespace n LEFT JOIN pg_catalog.pg_user u ON nspowner = usesysid 
+
+[2014-03-02 14:20:09] [063480] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 14:20:09] [063480] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 14:20:09] [063480] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 14:20:09] [063480] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 14:20:09] [063480] [localhost] [PGSQL]
+SELECT col.table_name, col.column_name, col.character_maximum_length, col.is_nullable, col.numeric_precision, col.numeric_scale, col.datetime_precision, col.ordinal_position, b.atttypmod, b.attndims, b.attacl, col.data_type AS col_type, et.typelem, et.typlen, et.typtype, nbt.nspname as elem_schema , bt.typname as elem_name, b.atttypid, col.udt_schema, col.udt_name, col.column_default AS col_default, col.domain_catalog, col.domain_schema, col.domain_name, cl.collname, col_description(c.oid, col.ordinal_position) AS comment FROM information_schema.columns AS col LEFT JOIN pg_namespace ns ON ns.nspname = col.table_schema LEFT JOIN pg_class c ON col.table_name = c.relname AND c.relnamespace = ns.oid LEFT JOIN pg_attrdef a ON c.oid = a.adrelid AND col.ordinal_position = a.adnum LEFT JOIN pg_attribute b ON b.attrelid = c.oid AND b.attname = col.column_name LEFT JOIN pg_collation cl ON cl.oid = b.attcollation LEFT JOIN pg_type et ON et.oid = b.atttypid LEFT JOIN pg_type bt on et.typelem = bt.oid LEFT JOIN pg_namespace nbt on bt.typnamespace = nbt.oid WHERE col.table_schema = 'public' ORDER BY col.table_name, col.ordinal_position
+
+[2014-03-02 14:20:10] [063480] [localhost] [PGSQL]
+SELECT col.table_name, col.column_name, col.character_maximum_length, col.is_nullable, col.numeric_precision, col.numeric_scale, col.datetime_precision, col.ordinal_position, b.atttypmod, b.attndims, b.attacl, col.data_type AS col_type, et.typelem, et.typlen, et.typtype, nbt.nspname as elem_schema , bt.typname as elem_name, b.atttypid, col.udt_schema, col.udt_name, col.column_default AS col_default, col.domain_catalog, col.domain_schema, col.domain_name, cl.collname, col_description(c.oid, col.ordinal_position) AS comment FROM information_schema.columns AS col LEFT JOIN pg_namespace ns ON ns.nspname = col.table_schema LEFT JOIN pg_class c ON col.table_name = c.relname AND c.relnamespace = ns.oid LEFT JOIN pg_attrdef a ON c.oid = a.adrelid AND col.ordinal_position = a.adnum LEFT JOIN pg_attribute b ON b.attrelid = c.oid AND b.attname = col.column_name LEFT JOIN pg_collation cl ON cl.oid = b.attcollation LEFT JOIN pg_type et ON et.oid = b.atttypid LEFT JOIN pg_type bt on et.typelem = bt.oid LEFT JOIN pg_namespace nbt on bt.typnamespace = nbt.oid WHERE col.table_schema = 'public' ORDER BY col.table_name, col.ordinal_position
+
+[2014-03-02 14:20:10] [063480] [localhost] [PGSQL]
+SELECT opr.oid, opr.oprname, nsp.nspname FROM pg_operator opr JOIN pg_namespace nsp ON nsp.oid=opr.oprnamespace
+
+[2014-03-02 14:20:10] [063480] [localhost] [PGSQL]
+SELECT op.oid, op.oprname, ns.nspname, pg_get_userbyid(op.oprowner) AS opowner, op.oprkind, op.oprcanhash, op.oprleft, op.oprright, lt.oid AS ltoid, lt.typname AS lefttype, rt.oid AS rtoid, rt.typname AS righttype, ltns.nspname AS ltschema, rtns.nspname AS rtschema, op.oprcom, op.oprnegate, op.oprcanmerge, prc.proname AS operproc, nsc.nspname AS operns, prr.proname AS restproc, nsr.nspname AS restns, prj.proname AS joinproc, nsj.nspname AS joinns, obj_description(op.oid) AS description FROM pg_operator op LEFT JOIN pg_namespace ns ON ns.oid=op.oprnamespace LEFT JOIN pg_type lt ON lt.oid=op.oprleft LEFT JOIN pg_namespace ltns ON ltns.oid=lt.typnamespace LEFT JOIN pg_type rt ON rt.oid=op.oprright LEFT JOIN pg_namespace rtns ON rtns.oid=rt.typnamespace LEFT JOIN pg_proc prc ON prc.oid=op.oprcode LEFT JOIN pg_namespace nsc ON nsc.oid=prc.pronamespace LEFT JOIN pg_proc prr ON prr.oid=op.oprrest LEFT JOIN pg_namespace nsr ON nsr.oid=prr.pronamespace LEFT JOIN pg_proc prj ON prj.oid=op.oprjoin LEFT JOIN pg_namespace nsj ON nsj.oid=prj.pronamespace
+
+[2014-03-02 14:20:10] [063480] [localhost] [PGSQL]
+SELECT c.oid, c.conname, c.contype, c.condeferrable, c.condeferred, c.conkey, c.confupdtype, c.confdeltype, c.consrc, t.relname, fns.nspname AS foreign_schema, f.relname AS foreign_table, ts.spcname, i.reloptions AS param, c.conexclop, am.amname, pg_get_expr(idx.indpred, idx.indexrelid, true) AS exclude_predicate, obj_description(c.oid) AS comment FROM pg_constraint c LEFT JOIN pg_namespace ns ON (c.connamespace = ns.oid) LEFT JOIN pg_class t ON (c.conrelid = t.oid) LEFT JOIN pg_class i ON (c.conname = i.relname) AND (c.connamespace = i.relnamespace) LEFT JOIN pg_class f ON (c.confrelid = f.oid) LEFT JOIN pg_namespace fns ON (f.relnamespace = fns.oid) LEFT JOIN pg_tablespace ts ON (i.reltablespace = ts.oid) LEFT JOIN pg_class p ON p.oid = c.conindid LEFT JOIN pg_am am ON am.oid = p.relam LEFT JOIN pg_index idx ON idx.indexrelid = C.conindid WHERE ns.nspname = 'public'
+
+[2014-03-02 14:20:10] [063480] [localhost] [PGSQL]
+SELECT t.relname, fns.nspname AS foreign_schema, f.relname AS foreign_table, c.conname, c.confkey, a.attname AS foreign_field, a.attnum FROM pg_constraint c LEFT JOIN pg_namespace ns ON (c.connamespace = ns.oid) LEFT JOIN pg_class t ON (c.conrelid = t.oid) INNER JOIN pg_class f ON (c.confrelid = f.oid) LEFT JOIN pg_namespace fns ON (f.relnamespace = fns.oid) INNER JOIN pg_attribute a ON (a.attrelid = f.oid) WHERE a.attnum > 0 AND ns.nspname = 'public' ORDER BY t.relname, c.conname, a.attnum
+
+[2014-03-02 15:16:21] [063754] [localhost] [PGSQL]
+SELECT oid, typname FROM pg_type
+
+[2014-03-02 15:16:21] [063754] [localhost] [PGSQL]
+SELECT n.nspname, n.oid, pg_get_userbyid(n.nspowner) AS owner, n.nspacl, obj_description(n.oid) AS comment, COALESCE((n.nspname = current_schema()), FALSE) AS default FROM pg_catalog.pg_namespace n LEFT JOIN pg_catalog.pg_user u ON nspowner = usesysid 
+
+[2014-03-02 15:16:22] [063754] [localhost] [PGSQL]
+SELECT oid, typname FROM pg_type
+
+[2014-03-02 15:16:22] [063754] [localhost] [PGSQL]
+SELECT n.nspname, n.oid, pg_get_userbyid(n.nspowner) AS owner, n.nspacl, obj_description(n.oid) AS comment, COALESCE((n.nspname = current_schema()), FALSE) AS default FROM pg_catalog.pg_namespace n LEFT JOIN pg_catalog.pg_user u ON nspowner = usesysid 
+
+[2014-03-02 15:16:26] [063754] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 15:16:26] [063754] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 15:16:26] [063754] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 15:16:26] [063754] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 15:16:26] [063754] [localhost] [PGSQL]
+SELECT col.table_name, col.column_name, col.character_maximum_length, col.is_nullable, col.numeric_precision, col.numeric_scale, col.datetime_precision, col.ordinal_position, b.atttypmod, b.attndims, b.attacl, col.data_type AS col_type, et.typelem, et.typlen, et.typtype, nbt.nspname as elem_schema , bt.typname as elem_name, b.atttypid, col.udt_schema, col.udt_name, col.column_default AS col_default, col.domain_catalog, col.domain_schema, col.domain_name, cl.collname, col_description(c.oid, col.ordinal_position) AS comment FROM information_schema.columns AS col LEFT JOIN pg_namespace ns ON ns.nspname = col.table_schema LEFT JOIN pg_class c ON col.table_name = c.relname AND c.relnamespace = ns.oid LEFT JOIN pg_attrdef a ON c.oid = a.adrelid AND col.ordinal_position = a.adnum LEFT JOIN pg_attribute b ON b.attrelid = c.oid AND b.attname = col.column_name LEFT JOIN pg_collation cl ON cl.oid = b.attcollation LEFT JOIN pg_type et ON et.oid = b.atttypid LEFT JOIN pg_type bt on et.typelem = bt.oid LEFT JOIN pg_namespace nbt on bt.typnamespace = nbt.oid WHERE col.table_schema = 'public' ORDER BY col.table_name, col.ordinal_position
+
+[2014-03-02 15:16:27] [063754] [localhost] [PGSQL]
+SELECT col.table_name, col.column_name, col.character_maximum_length, col.is_nullable, col.numeric_precision, col.numeric_scale, col.datetime_precision, col.ordinal_position, b.atttypmod, b.attndims, b.attacl, col.data_type AS col_type, et.typelem, et.typlen, et.typtype, nbt.nspname as elem_schema , bt.typname as elem_name, b.atttypid, col.udt_schema, col.udt_name, col.column_default AS col_default, col.domain_catalog, col.domain_schema, col.domain_name, cl.collname, col_description(c.oid, col.ordinal_position) AS comment FROM information_schema.columns AS col LEFT JOIN pg_namespace ns ON ns.nspname = col.table_schema LEFT JOIN pg_class c ON col.table_name = c.relname AND c.relnamespace = ns.oid LEFT JOIN pg_attrdef a ON c.oid = a.adrelid AND col.ordinal_position = a.adnum LEFT JOIN pg_attribute b ON b.attrelid = c.oid AND b.attname = col.column_name LEFT JOIN pg_collation cl ON cl.oid = b.attcollation LEFT JOIN pg_type et ON et.oid = b.atttypid LEFT JOIN pg_type bt on et.typelem = bt.oid LEFT JOIN pg_namespace nbt on bt.typnamespace = nbt.oid WHERE col.table_schema = 'public' ORDER BY col.table_name, col.ordinal_position
+
+[2014-03-02 15:16:27] [063754] [localhost] [PGSQL]
+SELECT opr.oid, opr.oprname, nsp.nspname FROM pg_operator opr JOIN pg_namespace nsp ON nsp.oid=opr.oprnamespace
+
+[2014-03-02 15:16:28] [063754] [localhost] [PGSQL]
+SELECT op.oid, op.oprname, ns.nspname, pg_get_userbyid(op.oprowner) AS opowner, op.oprkind, op.oprcanhash, op.oprleft, op.oprright, lt.oid AS ltoid, lt.typname AS lefttype, rt.oid AS rtoid, rt.typname AS righttype, ltns.nspname AS ltschema, rtns.nspname AS rtschema, op.oprcom, op.oprnegate, op.oprcanmerge, prc.proname AS operproc, nsc.nspname AS operns, prr.proname AS restproc, nsr.nspname AS restns, prj.proname AS joinproc, nsj.nspname AS joinns, obj_description(op.oid) AS description FROM pg_operator op LEFT JOIN pg_namespace ns ON ns.oid=op.oprnamespace LEFT JOIN pg_type lt ON lt.oid=op.oprleft LEFT JOIN pg_namespace ltns ON ltns.oid=lt.typnamespace LEFT JOIN pg_type rt ON rt.oid=op.oprright LEFT JOIN pg_namespace rtns ON rtns.oid=rt.typnamespace LEFT JOIN pg_proc prc ON prc.oid=op.oprcode LEFT JOIN pg_namespace nsc ON nsc.oid=prc.pronamespace LEFT JOIN pg_proc prr ON prr.oid=op.oprrest LEFT JOIN pg_namespace nsr ON nsr.oid=prr.pronamespace LEFT JOIN pg_proc prj ON prj.oid=op.oprjoin LEFT JOIN pg_namespace nsj ON nsj.oid=prj.pronamespace
+
+[2014-03-02 15:16:28] [063754] [localhost] [PGSQL]
+SELECT c.oid, c.conname, c.contype, c.condeferrable, c.condeferred, c.conkey, c.confupdtype, c.confdeltype, c.consrc, t.relname, fns.nspname AS foreign_schema, f.relname AS foreign_table, ts.spcname, i.reloptions AS param, c.conexclop, am.amname, pg_get_expr(idx.indpred, idx.indexrelid, true) AS exclude_predicate, obj_description(c.oid) AS comment FROM pg_constraint c LEFT JOIN pg_namespace ns ON (c.connamespace = ns.oid) LEFT JOIN pg_class t ON (c.conrelid = t.oid) LEFT JOIN pg_class i ON (c.conname = i.relname) AND (c.connamespace = i.relnamespace) LEFT JOIN pg_class f ON (c.confrelid = f.oid) LEFT JOIN pg_namespace fns ON (f.relnamespace = fns.oid) LEFT JOIN pg_tablespace ts ON (i.reltablespace = ts.oid) LEFT JOIN pg_class p ON p.oid = c.conindid LEFT JOIN pg_am am ON am.oid = p.relam LEFT JOIN pg_index idx ON idx.indexrelid = C.conindid WHERE ns.nspname = 'public'
+
+[2014-03-02 15:16:28] [063754] [localhost] [PGSQL]
+SELECT t.relname, fns.nspname AS foreign_schema, f.relname AS foreign_table, c.conname, c.confkey, a.attname AS foreign_field, a.attnum FROM pg_constraint c LEFT JOIN pg_namespace ns ON (c.connamespace = ns.oid) LEFT JOIN pg_class t ON (c.conrelid = t.oid) INNER JOIN pg_class f ON (c.confrelid = f.oid) LEFT JOIN pg_namespace fns ON (f.relnamespace = fns.oid) INNER JOIN pg_attribute a ON (a.attrelid = f.oid) WHERE a.attnum > 0 AND ns.nspname = 'public' ORDER BY t.relname, c.conname, a.attnum
+
+[2014-03-02 15:16:29] [063754] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 15:16:29] [063754] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+[2014-03-02 21:47:26] [063754] [localhost] [PGSQL]
+SET search_path TO "public", "$user", public
+
+[2014-03-02 21:47:26] [063754] [localhost] [PGSQL]
+SELECT c.oid, obj_description(c.oid) AS comment, c.relhasoids AS hasoids, n.nspname AS schemaname, c.relname AS tablename, pg_get_userbyid(c.relowner) AS tableowner, t.spcname AS "tablespace", c.relhasindex AS hasindexes, c.relhasrules AS hasrules, c.relhastriggers AS hastriggers, c.relacl, c.reltuples, COALESCE(con.conname, '') as prikey, (SELECT count(*) FROM pg_inherits WHERE inhparent = c.oid) AS inhtablecount, i2.relname AS inhtablename, c.reloptions AS param FROM pg_class c LEFT JOIN pg_namespace n ON n.oid = c.relnamespace LEFT JOIN pg_tablespace t ON t.oid = c.reltablespace LEFT JOIN pg_constraint con ON c.oid = con.conrelid AND con.contype = 'p' LEFT JOIN (pg_inherits i INNER JOIN pg_class c2 ON i.inhparent = c2.oid) i2 ON i2.inhrelid = c.oid WHERE (c.relkind = 'r'::"char") AND n.nspname = 'public'
+
+
+[2014-03-03 10:00:50] [067098] [localhost] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+[2014-03-03 10:00:52] [067099] [localhost] [PGSQL]
+SELECT oid, typname FROM pg_type
+
+[2014-03-03 10:00:52] [067099] [localhost] [PGSQL]
+SELECT n.nspname, n.oid, pg_get_userbyid(n.nspowner) AS owner, n.nspacl, obj_description(n.oid) AS comment, COALESCE((n.nspname = current_schema()), FALSE) AS default FROM pg_catalog.pg_namespace n LEFT JOIN pg_catalog.pg_user u ON nspowner = usesysid 
+
+
+[2014-03-04 07:03:16] [073576] [localhost] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+[2014-03-04 07:03:18] [073576] [localhost] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+[2014-03-04 07:03:30] [073576] [localhost] [PGSQL]
+DROP DATABASE "taikishi"
+
+[2014-03-04 07:03:31] [073576] [localhost] [PGSQL]
+SELECT d.datname, d.oid, pg_get_userbyid(d.datdba) AS owner, shobj_description(d.oid, 'pg_database') AS comment, t.spcname, d.datacl, d.datlastsysoid, d.datconnlimit, d.datcollate, d.datctype,d.encoding, pg_encoding_to_char(d.encoding) AS encodingname FROM pg_database d LEFT JOIN pg_tablespace t ON d.dattablespace = t.oid
+
+
