@@ -1,0 +1,12 @@
+tocTab[tocTab.length] = new Array("0.1.1.1.1:1", "", "Compra Test Cases", "EARoot/EA1/EA1/EA1/EA1/EA43.htm", "188.png", "140", "0", "", "Custom diagram0","{2A659E31-A690-48ce-800C-5FD6BD5A2C49}");
+tocTab[tocTab.length] = new Array("0.1.1.1.1:2", "", "«TestCase» Administrar Compras", "EARoot/EA1/EA1/EA1/EA1/EA45.htm", "7.png", "758", "0", "", "UseCase0","{C828B629-D6A2-433b-A245-7D5BD8EAA3AB}");
+tocTab[tocTab.length] = new Array("0.1.1.1.1:3", "", "«TestCase» Administrar ordenes de compra", "EARoot/EA1/EA1/EA1/EA1/EA46.htm", "7.png", "756", "0", "", "UseCase0","{D1B838D7-9EDB-4540-9D9E-1D60816815B2}");
+tocTab[tocTab.length] = new Array("0.1.1.1.1:4", "", "«TestCase» Ingreso por orden de compra", "EARoot/EA1/EA1/EA1/EA1/EA47.htm", "7.png", "764", "0", "", "UseCase0","{FCA948BF-C635-40d1-BFDE-763D7A2BE52F}");
+tocTab[tocTab.length] = new Array("0.1.1.1.1:5", "", "«TestCase» Lista de ordenes", "EARoot/EA1/EA1/EA1/EA1/EA48.htm", "7.png", "759", "0", "", "UseCase0","{BA887CD9-F268-4a33-A55F-7C44627B8ADD}");
+tocTab[tocTab.length] = new Array("0.1.1.1.1:6", "", "«TestCase» Pago de orden", "EARoot/EA1/EA1/EA1/EA1/EA49.htm", "7.png", "760", "0", "", "UseCase0","{49F7AF16-9D60-4c36-8C84-41EF0CEAB4B3}");
+tocTab[tocTab.length] = new Array("0.1.1.1.1:7", "", "«TestCase» Persistir la informacion e la base de datos", "EARoot/EA1/EA1/EA1/EA1/EA50.htm", "7.png", "766", "0", "", "UseCase0","{6A2B1985-14D7-423a-A9C8-E862F2BB7F80}");
+tocTab[tocTab.length] = new Array("0.1.1.1.1:8", "", "«TestCase» Poner  Orden de Compra", "EARoot/EA1/EA1/EA1/EA1/EA51.htm", "7.png", "762", "0", "", "UseCase0","{AAFDD5AB-E749-4416-AAF9-81F201D9D1BC}");
+tocTab[tocTab.length] = new Array("0.1.1.1.1:9", "", "«TestCase» Proceso de compra<br />", "EARoot/EA1/EA1/EA1/EA1/EA52.htm", "7.png", "765", "0", "", "UseCase0","{D2DD8AB1-5C3D-4cf1-A589-806387B1F33F}");
+tocTab[tocTab.length] = new Array("0.1.1.1.1:10", "", "«TestCase» Recibir orden de compra", "EARoot/EA1/EA1/EA1/EA1/EA53.htm", "7.png", "763", "0", "", "UseCase0","{72AC0846-82B5-4188-84B2-D7E7A65808CB}");
+tocTab[tocTab.length] = new Array("0.1.1.1.1:11", "", "«TestCase» Reglas", "EARoot/EA1/EA1/EA1/EA1/EA54.htm", "7.png", "761", "0", "", "UseCase0","{265EE9A4-7670-459c-A179-33C2D89D4D7F}");
+tocTab[tocTab.length] = new Array("0.1.1.1.1:12", "", "«TestCase» Status de ordenes", "EARoot/EA1/EA1/EA1/EA1/EA55.htm", "7.png", "757", "0", "", "UseCase0","{7DAFA896-66DB-42bb-9335-23D510A0CE91}");

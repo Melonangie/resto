@@ -1,0 +1,8 @@
+tocTab[tocTab.length] = new Array("0.1.1.8:1", "", "Usuarios - Requerimentos", "EARoot/EA1/EA1/EA8/EA140.htm", "188.png", "27", "0", "", "Custom diagram0","{35EA6A29-062A-4364-B1F5-C84B785A5157}");
+tocTab[tocTab.length] = new Array("0.1.1.8:2", "", "«Functional» Administrar Usuarios", "EARoot/EA1/EA1/EA8/EA143.htm", "19.png", "48", "0", "", "Requirement0","{39F5AFD4-12B2-4958-9616-4121CE4EB579}");
+tocTab[tocTab.length] = new Array("0.1.1.8:3", "", "«Functional» Crear cuentas de usuarios", "EARoot/EA1/EA1/EA8/EA144.htm", "19.png", "49", "0", "", "Requirement0","{9A798697-A91A-446f-ACC8-8E3F60BBA715}");
+tocTab[tocTab.length] = new Array("0.1.1.8:4", "", "«Functional» Editar cuentas de usuarios", "EARoot/EA1/EA1/EA8/EA145.htm", "19.png", "50", "0", "", "Requirement0","{736EBD6B-1696-476d-82FF-221A8D359D86}");
+tocTab[tocTab.length] = new Array("0.1.1.8:5", "", "«Functional» Administrar Niveles de Cuentas", "EARoot/EA1/EA1/EA8/EA146.htm", "19.png", "52", "0", "", "Requirement0","{73C603B7-FCFC-40c0-B10E-AAE91DA2D2A2}");
+tocTab[tocTab.length] = new Array("0.1.1.8:6", "", "«Functional» Autenticacion", "EARoot/EA1/EA1/EA8/EA147.htm", "19.png", "53", "0", "", "Requirement0","{A5FE6CA2-F647-4351-876E-93443E1ADADE}");
+tocTab[tocTab.length] = new Array("0.1.1.8:7", "", "«Functional» Reglas de acceso", "EARoot/EA1/EA1/EA8/EA148.htm", "19.png", "51", "0", "", "Requirement0","{3F075D63-3947-4259-ADEB-1E83138630DC}");
+tocTab[tocTab.length] = new Array("0.1.1.8:8", "", "«Functional» Persistir en base de datos", "EARoot/EA1/EA1/EA8/EA149.htm", "19.png", "54", "0", "", "Requirement0","{82CE0F21-F9D5-462e-8D95-43D60395026E}");

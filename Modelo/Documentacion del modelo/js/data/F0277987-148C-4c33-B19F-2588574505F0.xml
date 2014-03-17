@@ -1,0 +1,13 @@
+tocTab[tocTab.length] = new Array("0.1.1.2:1", "", "Contabilidad - Requerimentos", "EARoot/EA1/EA1/EA2/EA56.htm", "188.png", "21", "0", "", "Custom diagram0","{2612B399-1D09-4490-873F-ACC19917BE00}");
+tocTab[tocTab.length] = new Array("0.1.1.2:2", "", "«Functional» Persistir en base de datos<br />", "EARoot/EA1/EA1/EA2/EA59.htm", "19.png", "372", "0", "", "Requirement0","{0DEBD9FD-9011-47fd-890C-0D4A5A979387}");
+tocTab[tocTab.length] = new Array("0.1.1.2:3", "", "«Functional» Contabilidad", "EARoot/EA1/EA1/EA2/EA60.htm", "19.png", "359", "0", "", "Requirement0","{8151F166-AD7C-4a55-9892-0D0FFF29E26B}");
+tocTab[tocTab.length] = new Array("0.1.1.2:4", "", "«Functional» Configuraciones", "EARoot/EA1/EA1/EA2/EA61.htm", "19.png", "369", "0", "", "Requirement0","{60D07004-6EF7-47bf-997E-21E70305A3D8}");
+tocTab[tocTab.length] = new Array("0.1.1.2:5", "", "«Functional» Administracion", "EARoot/EA1/EA1/EA2/EA62.htm", "19.png", "370", "0", "", "Requirement0","{6E433775-F1E1-4acc-A699-B635B25E60C8}");
+tocTab[tocTab.length] = new Array("0.1.1.2:6", "", "«Functional» Cuentas por cobrar", "EARoot/EA1/EA1/EA2/EA63.htm", "19.png", "362", "0", "", "Requirement0","{3A9C8870-F1FF-4ebd-9DAC-DFA8F19401DB}");
+tocTab[tocTab.length] = new Array("0.1.1.2:7", "", "«Functional» Cuentas por pagar", "EARoot/EA1/EA1/EA2/EA64.htm", "19.png", "363", "0", "", "Requirement0","{5AFA71DF-AF2B-4197-AD4E-396574E92228}");
+tocTab[tocTab.length] = new Array("0.1.1.2:8", "", "«Functional» Administrar impuesto", "EARoot/EA1/EA1/EA2/EA65.htm", "19.png", "366", "369", "", "Requirement0","{F4305A6C-3FBB-48b1-8745-A87892736264}");
+tocTab[tocTab.length] = new Array("0.1.1.2:9", "", "«Functional» Administrar plazo de pago", "EARoot/EA1/EA1/EA2/EA66.htm", "19.png", "368", "369", "", "Requirement0","{08D40BD4-B9CD-4f88-BB1A-87DCAD35AE9B}");
+tocTab[tocTab.length] = new Array("0.1.1.2:10", "", "«Functional» Administrar tipo de pago", "EARoot/EA1/EA1/EA2/EA67.htm", "19.png", "365", "369", "", "Requirement0","{EAAB102F-6707-4982-AD5D-93CEE988E8ED}");
+tocTab[tocTab.length] = new Array("0.1.1.2:11", "", "«Functional» Bancos", "EARoot/EA1/EA1/EA2/EA68.htm", "19.png", "364", "370", "", "Requirement0","{4FE978C9-9E53-4e28-8C5C-96837CB2871B}");
+tocTab[tocTab.length] = new Array("0.1.1.2:12", "", "«Functional» Cuentas", "EARoot/EA1/EA1/EA2/EA69.htm", "19.png", "360", "370", "", "Requirement0","{0D57648C-13BB-4cc5-9813-73223296BAC2}");
+tocTab[tocTab.length] = new Array("0.1.1.2:13", "", "«Functional» Facturas cliente", "EARoot/EA1/EA1/EA2/EA70.htm", "19.png", "367", "370", "", "Requirement0","{EA9D7EFC-3FB0-4185-A7DC-4F4573B8ED51}");

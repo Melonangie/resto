@@ -1,0 +1,5 @@
+tocTab[tocTab.length] = new Array("0.3.2:1", "", "Primary Use Cases", "EARoot/EA3/EA2/EA304.htm", "180.png", "99", "0", "", "Use Case diagram0","{DB73BB19-7276-4be1-B89F-D59739EB7F9A}");
+tocTab[tocTab.length] = new Array("0.3.2:3", "", "Use Case1", "EARoot/EA3/EA2/EA310.htm", "7.png", "517", "0", "", "UseCase0","{6C8A9056-2275-4b3a-AAEF-AE224CC81BE6}");
+tocTab[tocTab.length] = new Array("0.3.2:4", "", "Use Case2", "EARoot/EA3/EA2/EA311.htm", "7.png", "518", "0", "", "UseCase0","{3890BB1E-5614-4dcb-BAE9-7984CAB668E5}");
+tocTab[tocTab.length] = new Array("0.3.2:2", "", "Use Case1", "EARoot/EA3/EA2/EA306.htm", "185.png", "100", "517", "", "Sequence diagram0","{C8152824-9D84-46fc-AED5-AF5CE5BE0C5F}");
+tocTab[tocTab.length] = new Array("0.3.2:5", "", "Object1", "EARoot/EA3/EA2/EA312.htm", "57.png", "519", "517", "", "Sequence0","{B09873FC-E19C-4521-A770-44D3D57E6115}");
