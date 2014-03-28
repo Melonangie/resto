@@ -1,12 +1,26 @@
-/cgi-bin
-/error
-/html
-/icons
-/vagrant/.vagrant
-/documentacion/Copia de seguridad de Rabelero (TRABAJO RECEPCIONAL.wbk
+/documentacion/Copia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
+/documentacion/~$pia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
+/documentacion/Backup of Rabelero (TRABAJO RECEPCIONAL).wbk
 /documentacion/~$belero (TRABAJO RECEPCIONAL.docx
-.vagrant
+/documentacion/summary.txt
+/foundation/bower_components/foundation/bower.json
+/foundation/bower_components/foundation/sache.json
+/foundation/bower_components/jquery-placeholder
+/foundation/bower_components/jquery.cookie
+/foundation/bower_components/fastclick
+/foundation/bower_components/modernizr
+/foundation/bower_components/jquery
+/foundation/node_modules
+/foundation/bower.json
+/foundation/Gruntfile.js
+/foundation/package.json
+/foundation/.bowerrc
+scss/.sass-cache
 .DS_Store
 Thumbs.db
 .wbk
-~$belero (TRABAJO RECEPCIONAL.docx
+.bowerrc
+.sass-cache
+.codekit
+.bower.json
+.editorconfig

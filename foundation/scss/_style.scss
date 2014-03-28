@@ -1,0 +1,29 @@
+body,html {
+    height: 100%;
+    width: 100%;
+}
+
+.off-canvas-wrap,.inner-wrap {
+    height: 100%;
+}
+
+#wrapper {
+    #container {
+    color: #6F7B8A;
+    position: relative;
+    background-color: #E5E9EC;
+    overflow: auto;
+    padding: 0;
+    height: 100%;
+        .top-bar {
+            background: white;
+            box-shadow: 1px 0 3px rgba(0, 0, 0, 0.15);
+            & .name a {
+                color: #222;
+            }
+            @media #{$medium-up} {
+                margin-right: 250px;
+            }
+        }
+    }
+}

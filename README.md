@@ -1,13 +1,13 @@
 resto
 =====
 
-Sistema para el control de inventarios. 
+Sistema para el control de inventarios.
 
 Tenologias usadas:
-- Vagrant
 - Framwork Laravel
 - Base de datos PostgreSql
 - Kendo UI
+- Foundation
 
 Funciones Principales:
 - Registro de material
