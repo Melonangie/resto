@@ -1,0 +1,120 @@
+/*** Basic Page needs  ***/
+body,html {
+    min-width: rem-calc(320px);
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    background: url(../img/bg.jpg) no-repeat bottom center fixed;
+    background-size:cover;
+}
+
+/* html {
+    min-width: 320px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+ */
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+textarea {
+    resize: vertical;
+    @include transition(height 0.2s);
+}
+
+a, li {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a, button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+    outline: 0;
+    outline: thin;
+}
+
+.box-circle,
+img.circle,
+ul.circle li img,
+.widget-friend ul li:last-child i,
+.widget-friend ul li.online:after,
+.widget-friend ul li.busy:after,
+.avatar-slide .avatar-link a em:after,
+.avatar-slide .avatar-link a em:before,
+.easychart .percent,
+ol.rounded-list a:before {
+    border-radius: 50%;
+}
+
+i {
+    @include transform(translate3d(0, 0, 0));
+}
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+a {
+    color: #098e83;
+    &:hover {
+        color: #088379;
+        text-decoration: none;
+    }
+    .toggle-column-hide {
+        color: #cccccc !important;
+        text-decoration: line-through;
+    }
+}
+
+label {
+    color: #A1A1A1;
+    font-family: "Arial", sans-serif;
+    font-size: 12px;
+    .lighter {
+        font-weight: 300;
+    }
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}

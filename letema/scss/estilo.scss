@@ -1,0 +1,174 @@
+/*
+00 - Variables
+------------------------------------------------------------*/
+$naranja: orange;
+$verdecito: #0aa699;
+
+/*** marca  ***/
+$green: #18c53d;
+$orange: #ff5a00;
+$black: #050708;
+$black-font: #666666;
+$orange-dark: #a94f00;
+$orange-medium: #c45c00;
+$orange-light: #d0711a;
+$orange-bright: #e88e45;
+$orange-font: #ffc29f;
+
+/*
+01 - Off Canvas
+------------------------------------------------------------*/
+
+.inner-wrap,
+.left-off-canvas-menu,
+.right-off-canvas-menu {
+    height: 100%;
+}
+
+@media #{$large-up} {
+    .left-off-canvas-menu,
+    .right-off-canvas-menu {
+        position: static;
+        @include transform(none);
+        float: left;
+    }
+    .move-right > .inner-wrap {
+        @include transform(none);
+    }
+}
+
+/*
+02 - Main Header
+------------------------------------------------------------*/
+header {
+    border-bottom: 5px $verdecito solid;
+    box-shadow:2px 0 4px rgba(0, 0, 0, 0.15);
+    .top-bar {
+        .logo-area {
+            display: block;
+            width: rem-calc(300px);
+            text-align: center;
+        }
+        li a {
+            //  @include transform(0.6s ease-in-out 0s);
+            // line-height: rem-calc(28px);
+            &:hover {
+                // background-color: #F7F6F1;
+                // color: #A1A1A1;
+                // text-decoration: none;
+
+            }
+            /* i {
+                height: rem-calc(17px);
+                margin-right: rem-calc(3px);
+                text-align: center;
+                width: rem-calc(17px);
+            } */
+            .icon-right li a i {
+                float: right;
+                margin-right: rem-calc(-3px);
+                margin-top: rem-calc(6px);
+            }
+        }
+        li {
+            a {
+                color: #A1A1A1;
+                @include transition(all 0.25s);
+                &:hover {
+                    color: #C1C1C1;
+                    background-color: transparent;
+                }
+                i.dropdown-icon {
+                    margin: 0 0 0 5px;
+                    position: relative;
+                    top: rem-calc(1px);
+                }
+                img {
+                    @include transition(all 0.5s);
+                    left: 50%;
+                    margin-left: rem-calc(-17px);
+                    margin-top: rem-calc(-17px);
+                    position: absolute;
+                    top: 50%;
+                    width: rem-calc(34px);
+                }
+                .icon-toolsbar {
+                    color: #08897e;
+                    font-size: rem-calc(21px);
+                    padding: 0 25px;
+                }
+                .avatar-header {
+                    height: rem-calc(60px);
+                    padding: 0;
+                    position: relative;
+                    width: rem-calc(34px);
+                    img {
+                        @include transition(all 0.5s);
+                        left: 50%;
+                        margin-left: rem-calc(-17px);
+                        margin-top: rem-calc(-17px);
+                        position: absolute;
+                        top: 50%;
+                        width: rem-calc(34px);
+                    }
+                    &:hover img {
+                        //filter: alpha(opacity = 70);
+                        opacity: 0.7;
+                    }
+                    .badge {
+                        background-color: #f35958;
+                        font-weight: 300;
+                        height: rem-calc(19px);
+                        line-height: rem-calc(19px);
+                        min-width: rem-calc(19px);
+                        padding: 0 6px;
+                        position: absolute;
+                        right: rem-calc(-8px);
+                        text-align: center;
+                        top: rem-calc(4px);
+                        z-index: 2;
+                    }
+                }
+                .icon-toolsbar {
+                    color: #08897e;
+                    font-size: rem-calc(21px);
+                    padding: 0 25px;
+                }
+            }
+            button {
+                width: rem-calc(34px);
+                height: rem-calc(34px);
+                text-align: center;
+                padding: 0;
+                background-color: #f6f6f6;
+                border-color: #f6f6f6;
+                .btn-header-search {
+                    margin: 8px 15px 0 0;
+                }
+                .btn-header-search i {
+                    position: absolute;
+                    color: #A1A1A1;
+                    top: rem-calc(18px);
+                    left: rem-calc(9px);
+                }
+            }
+            /* .divider {
+                   border-left: 1px solid #eeeeee;
+                   height: rem-calc(60px);
+                   &:before {
+                       border-left: 1px solid #62707D;
+                       content: "";
+                       height: rem-calc(14px);
+                       left: rem-calc(-10px);
+                       margin: 0px 10px 0px 10px;
+                       position: absolute;
+                       top: rem-calc(19px);
+                   }
+               } */
+        }
+    }
+}
+
+/*
+03 - Aside Menu
+------------------------------------------------------------*/
