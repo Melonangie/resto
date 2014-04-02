@@ -1505,6 +1505,20 @@ span.iconset {
 .showcase-chart-knob span:nth-child(2) a {
   padding-right: 20px;
 }
+
+label.color, label span.color, label.version {
+    display: inline-block;
+    background-color: #CCCCCC;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 400;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+    padding: 0 15px;
+    text-align: left;
+}
 /* ==========================================================================
    Page Container
    ========================================================================== */
@@ -2189,7 +2203,7 @@ span.iconset {
     font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /* Breadcrumb */
- .page-content .breadcrumb {
+ .breadcrumb {
     font-family:'Open Sans';
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
@@ -2202,6 +2216,7 @@ span.iconset {
     margin-top: 65px;
     background-color: #F1F3F5;
     box-shadow: 1px 0 3px rgba(0, 0, 0, 0.15);
+    padding-left: 20px;
 }
 .page-content .breadcrumb i, .page-content .breadcrumb span, .page-content .breadcrumb li {
     color:#515050;
@@ -2211,19 +2226,20 @@ span.iconset {
 .page-content .breadcrumb li a {
     font-size: 12.5px !important;
     font-weight:400;
-    margin-left:10px;
-    color: #FF5A00;
+    /*margin-left:10px;*/
+    color: #17C53D;
     padding-top: 15px !important;
 }
 .page-content .breadcrumb li.active {
-    /*font-weight:600;*/
+    font-weight:600;
     font-size: 14px;
     color:#7b7d82;
 }
 .breadcrumb>li+li:before {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     color: #515050;
+    font-weight:400;
     font-family: FontAwesome;
     content:"\f105";
 }
@@ -3035,7 +3051,6 @@ form legend, .form-view legend {
 }
 .grid-title {
     margin-bottom: 15px;
-    border-bottom: 1px solid #eee;
 }
 .grid-title h4 {
     display: inline-block;
@@ -3043,6 +3058,15 @@ form legend, .form-view legend {
     font-weight: 400;
     margin: 0;
     padding: 0;
+    margin-bottom: 7px;
+    width:60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.grid-title h3 {
+    display: inline-block;
+    margin-top: 0;
     margin-bottom: 7px;
     width:60%;
     white-space: nowrap;
@@ -3291,6 +3315,8 @@ form legend, .form-view legend {
 .grid.simple .grid-body.no-border {
     border:0px;
     padding-top:1px;
+
+    border-bottom: 1px solid #EDEDED;
 }
 .grid.simple .grid-body h4 {
     color:#282323;
@@ -3305,7 +3331,7 @@ form legend, .form-view legend {
 }
 .grid.simple .grid-title.no-border {
     border:0px;
-    border-bottom:0px;
+    border-bottom: 2px solid #EDEDED;
 }
 .grid.simple.transparent .grid-title {
     border:none;
