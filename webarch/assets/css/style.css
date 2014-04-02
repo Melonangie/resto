@@ -167,7 +167,7 @@ blockquote small {
     border-bottom: 5px #18C53D solid;
 }
 .header-seperation {
-    background-color: #393B41;
+    /*background-color: #393B41;*/
     /*background-color:#22262e;*/
 }
 .header .navbar-inner {
