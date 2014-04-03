@@ -219,11 +219,11 @@ and (min-width : 1824px) {
 	}
 
 	.page-sidebar{
-		 background-color: #0aa699 !important;
+		 background-color: #18C53D !important;
 	}
 	.page-sidebar > ul > li >a:hover,
 	.page-sidebar > ul > li:hover >a {
-		background: #0b9c8f;
+		background: #FF691A;
 	}
 	.page-sidebar > ul > li.open > a, .page-sidebar > ul > li > a:hover, .page-sidebar > ul > li:hover > a{
 		padding: 13px;
@@ -250,7 +250,7 @@ and (min-width : 1824px) {
 		min-height: 911px;
 	}
 	.page-content .content{
-		padding-top: 95px;
+		padding-top: 35px;
 	}
 
 	.inner-menu-layout .page-content{
@@ -483,6 +483,7 @@ and (orientation : portrait) {
 		z-index:999;
 		text-align:center;
 		min-height:60px;
+		background-color: #FFFFFF;
 	}
 	.header .notifcation-center{
 		margin-left:15px;
@@ -498,7 +499,7 @@ and (orientation : portrait) {
 	/*** Page content ***/
 	.page-content .content {
 		padding:8px;
-		padding-top:95px;
+		padding-top:25px;
 	}
 	/*** Page title	***/
 	.page-title {
@@ -559,6 +560,7 @@ and (orientation : portrait) {
 }
 /*** Phones ***/
 @media (max-width: 480px) {
+
 
 	.page-title h3{
 		width:80%;

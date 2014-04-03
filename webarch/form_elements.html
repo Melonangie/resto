@@ -58,57 +58,54 @@
 <body>
     <!-- Header Sction
     ================================================== -->
+    <!-- <div class="header navbar navbar-inverse "> -->
     <div class="header navbar ">
-        <!-- BEGIN TOP NAVIGATION BAR -->
-        <!-- <div class="header navbar navbar-inverse "> -->
-        <div class="header navbar ">
-            <div class="header-seperation">
-                <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">
+        <div class="header-seperation">
+            <ul class="nav pull-left notifcation-center" id="main-menu-toggle-wrapper" style="display:none">
+                <li class="dropdown">
+                    <a id="main-menu-toggle" href="#main-menu" class="">
+                        <div class="iconset top-menu-toggle-white"></div>
+                    </a>
+                </li>
+            </ul>
+            <!-- BEGIN LOGO -->
+            <a href="index-2.html">
+                <img src="assets/img/logo.png" class="logo" alt="" data-src="assets/img/logo.png" data-src-retina="assets/img/logo2x.png" width="130" height="23" />
+            </a>
+            <!-- END LOGO -->
+            <ul class="nav pull-right notifcation-center visible-xs">
+                <li class="dropdown" id="header_inbox_bar notifcation-center">
+                    <a href="email.html" class="dropdown-toggle active">
+                        <div class="iconset top-messages"></div>
+                        <span class="badge" id="msgs-badge">2</span>
+                    </a>
+                </li>
+                <li class="dropdown" id="portrait-chat-toggler">
+                    <a href="#sidr" class="chat-menu-toggle">
+                        <div class="iconset top-chat-white "></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <div class="header-quick-nav">
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="pull-left">
+                <ul class="nav quick-section visible-xs">
+                    <li class="quicklinks">
+                        <a href="#" class="" id="layout-condensed-toggle">
+                            <div class="iconset top-menu-toggle-dark"></div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav quick-section">
+                    <li class="quicklinks">
+                        <span class="h-seperate"></span>
+                    </li>
                     <li class="dropdown">
-                        <a id="main-menu-toggle" href="#main-menu" class="">
-                            <div class="iconset top-menu-toggle-white"></div>
-                        </a>
-                    </li>
-                </ul>
-                <!-- BEGIN LOGO -->
-                <a href="index-2.html">
-                    <img src="assets/img/logo.png" class="logo" alt="" data-src="assets/img/logo.png" data-src-retina="assets/img/logo2x.png" width="126" height="21" />
-                </a>
-                <!-- END LOGO -->
-                <ul class="nav pull-right notifcation-center">
-                    <li class="dropdown" id="header_task_bar">
-                        <a href="index-2.html" class="dropdown-toggle active" data-toggle="">
-                            <div class="iconset top-home"></div>
-                        </a>
-                    </li>
-                    <li class="dropdown" id="header_inbox_bar">
-                        <a href="email.html" class="dropdown-toggle">
-                            <div class="iconset top-messages"></div>
-                            <span class="badge" id="msgs-badge">2</span>
-                        </a>
-                    </li>
-                    <li class="dropdown" id="portrait-chat-toggler" style="display:none">
-                        <a href="#sidr" class="chat-menu-toggle">
-                            <div class="iconset top-chat-white "></div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- END RESPONSIVE MENU TOGGLER -->
-            <div class="header-quick-nav">
-                <!-- BEGIN TOP NAVIGATION MENU -->
-                <div class="pull-left">
-                    <ul class="nav quick-section visible-xs">
-                        <li class="quicklinks">
-                            <a href="#" class="" id="layout-condensed-toggle">
-                                <div class="iconset top-menu-toggle-dark"></div>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav quick-section">
                         <li class="quicklinks">
                             <a href="#" class="">
-                                <div class="iconset top-reload"></div>
+                                <div class="iconset top-home"></div>
                             </a>
                         </li>
                         <li class="quicklinks">
@@ -116,132 +113,139 @@
                         </li>
                         <li class="quicklinks">
                             <a href="#" class="">
-                                <div class="iconset top-tiles"></div>
+                                <div class="iconset top-messages"></div>
                             </a>
                         </li>
+                        <li class="quicklinks">
+                            <span class="h-seperate"></span>
+                        </li>
+
                         <li class="m-r-10 input-prepend inside search-form no-boarder">
                             <span class="add-on">
                                 <span class="iconset top-search"></span>
                             </span>
                             <input name="" type="text" class="no-boarder " placeholder="¿Buscas algo?" style="width:250px;">
                         </li>
-                    </ul>
-                </div>
-                <!-- END TOP NAVIGATION MENU -->
-                <!-- BEGIN CHAT TOGGLER -->
-                <div class="pull-right">
-                    <div class="chat-toggler">
-                        <a href="#" class="dropdown-toggle" id="my-task-list" data-placement="bottom" data-content='' data-toggle="dropdown" data-original-title="Mensajes">
-                            <div class="user-details">
-                                <div class="username">
-                                    <span class="bold">Maria Rabelero</span>
-                                </div>
-                            </div>
-                            <div class="iconset top-down-arrow"></div>
-                        </a>
-                        <div id="notification-list" style="display:none">
-                            <div style="width:300px">
-                                <div class="notification-messages info">
-                                    <div class="user-profile">
-                                        <img src="assets/img/profiles/d.jpg" alt="" data-src="assets/img/profiles/d.jpg" data-src-retina="assets/img/profiles/d2x.jpg" width="35" height="35">
-                                    </div>
-                                    <div class="message-wrapper">
-                                        <div class="heading">
-                                            Clara Hernandez
-                                        </div>
-                                        <div class="description">
-                                            Junta a las 3 de la tarde.
-                                        </div>
-                                        <div class="date pull-left">
-                                            Mensaje
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="notification-messages danger">
-                                    <div class="iconholder">
-                                        <i class="icon-warning-sign"></i>
-                                    </div>
-                                    <div class="message-wrapper">
-                                        <div class="heading">
-                                            Envio de reporte
-                                        </div>
-                                        <div class="description">
-                                            No se ha enviado el reporte.
-                                        </div>
-                                        <div class="date pull-left">
-                                            2 mins
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="notification-messages success">
-                                    <div class="user-profile">
-                                        <img src="assets/img/profiles/h.jpg" alt="" data-src="assets/img/profiles/h.jpg" data-src-retina="assets/img/profiles/h2x.jpg" width="35" height="35">
-                                    </div>
-                                    <div class="message-wrapper">
-                                        <div class="heading">
-                                            Tienes 5 mensajes
-                                        </div>
-                                        <div class="description">
-                                            5 mensajes sin leer.
-                                        </div>
-                                        <div class="date pull-left">
-                                            1 hora
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="profile-pic">
-                            <img src="assets/img/profiles/avatar_small.jpg" alt="" data-src="assets/img/profiles/avatar_small.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="35" height="35" />
-                        </div>
-                    </div>
-                    <ul class="nav quick-section ">
-                        <li class="quicklinks">
-                            <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">
-                                <div class="iconset top-settings-dark "></div>
-                            </a>
-                            <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
-                                <li><a href="user-profile.html"> Mi Cuenta </a>
-                                </li>
-                                <li><a href="calender.html"> Preferencias </a>
-                                </li>
-                                <li><a href="email.html"> Mis mensajes <span class="badge badge-important animated bounceIn">2</span></a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="login.html"><i class="icon-off"></i> Salir </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="quicklinks">
-                            <span class="h-seperate"></span>
-                        </li>
-                        <li class="quicklinks">
-                            <a id="chat-menu-toggle" href="#sidr" class="chat-menu-toggle">
-                                <div class="iconset top-chat-dark ">
-                                    <!--   <span class="badge badge-important hide" id="chat-message-count">1</span> -->
-                                </div>
-                            </a>
-                            <div class="simple-chat-popup chat-menu-toggle hide">
-                                <div class="simple-chat-popup-arrow"></div>
-                                <div class="simple-chat-popup-inner">
-                                    <div style="width:100px">
-                                        <div class="semi-bold">David Salas</div>
-                                        <div class="message">Corte de caja a la 1pm.</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <!-- END CHAT TOGGLER -->
+                </ul>
             </div>
             <!-- END TOP NAVIGATION MENU -->
-
+            <!-- BEGIN CHAT TOGGLER -->
+            <div class="pull-right">
+                <div class="chat-toggler">
+                    <a href="#" class="dropdown-toggle" id="my-task-list" data-placement="bottom" data-content='' data-toggle="dropdown" data-original-title="Mensajes">
+                        <div class="user-details">
+                            <div class="username">
+                                <span class="bold">Maria Rabelero</span>
+                            </div>
+                        </div>
+                        <div class="iconset top-down-arrow"></div>
+                    </a>
+                    <div id="notification-list" style="display:none">
+                        <div style="width:300px">
+                            <div class="notification-messages info">
+                                <div class="user-profile">
+                                    <img src="assets/img/profiles/d.jpg" alt="" data-src="assets/img/profiles/d.jpg" data-src-retina="assets/img/profiles/d2x.jpg" width="35" height="35">
+                                </div>
+                                <div class="message-wrapper">
+                                    <div class="heading">
+                                        Clara Hernandez
+                                    </div>
+                                    <div class="description">
+                                        Junta a las 3 de la tarde.
+                                    </div>
+                                    <div class="date pull-left">
+                                        Mensaje
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="notification-messages danger">
+                                <div class="iconholder">
+                                    <i class="icon-warning-sign"></i>
+                                </div>
+                                <div class="message-wrapper">
+                                    <div class="heading">
+                                        Envio de reporte
+                                    </div>
+                                    <div class="description">
+                                        No se ha enviado el reporte.
+                                    </div>
+                                    <div class="date pull-left">
+                                        2 mins
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="notification-messages success">
+                                <div class="user-profile">
+                                    <img src="assets/img/profiles/h.jpg" alt="" data-src="assets/img/profiles/h.jpg" data-src-retina="assets/img/profiles/h2x.jpg" width="35" height="35">
+                                </div>
+                                <div class="message-wrapper">
+                                    <div class="heading">
+                                        Tienes 5 mensajes
+                                    </div>
+                                    <div class="description">
+                                        5 mensajes sin leer.
+                                    </div>
+                                    <div class="date pull-left">
+                                        1 hora
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-pic">
+                        <img src="assets/img/profiles/avatar_small.jpg" alt="" data-src="assets/img/profiles/avatar_small.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="35" height="35" />
+                    </div>
+                </div>
+                <ul class="nav quick-section ">
+                    <li class="quicklinks">
+                        <span class="h-seperate"></span>
+                    </li>
+                    <li class="quicklinks">
+                        <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">
+                            <div class="iconset top-settings-dark "></div>
+                        </a>
+                        <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
+                            <li><a href="user-profile.html"> Mi Cuenta </a>
+                            </li>
+                            <li><a href="calender.html"> Preferencias </a>
+                            </li>
+                            <li><a href="email.html"> Mis mensajes <span class="badge badge-important animated bounceIn">2</span></a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="login.html"><i class="icon-off"></i> Salir </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="quicklinks">
+                        <span class="h-seperate"></span>
+                    </li>
+                    <li class="quicklinks">
+                        <a id="chat-menu-toggle" href="#sidr" class="chat-menu-toggle">
+                            <div class="iconset top-chat-dark ">
+                                <!--   <span class="badge badge-important hide" id="chat-message-count">1</span> -->
+                            </div>
+                        </a>
+                        <div class="simple-chat-popup chat-menu-toggle hide">
+                            <div class="simple-chat-popup-arrow"></div>
+                            <div class="simple-chat-popup-inner">
+                                <div style="width:100px">
+                                    <div class="semi-bold">David Salas</div>
+                                    <div class="message">Corte de caja a la 1pm.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- END CHAT TOGGLER -->
         </div>
-        <!-- END TOP NAVIGATION BAR -->
+        <!-- END TOP NAVIGATION MENU -->
+
+    </div>
+    <!-- END TOP NAVIGATION BAR -->
     </div>
 
     <!-- Contenedor
@@ -251,10 +255,8 @@
         <div class="page-sidebar" id="main-menu">
             <!-- BEGIN MINI-PROFILE -->
             <div class="avatar-slide visible-md visible-lg">
-                <span class="easy-chart avatar-chart" data-color="theme-inverse" data-percent="69" data-track-color="rgba(255,255,255,0.1)" data-line-width="5" data-size="118">
-                    <!-- <span style="line-height: 118px;" class="percent">69</span> -->
-                    <img src="assets/img/profiles/avatar.jpg" class="img-circle" alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar2x.jpg" width="89" height="89" />
-                    <canvas width="118" height="118"></canvas>
+                <span class="avatar-chart" >
+                    <img src="assets/img/profiles/avatar.jpg" class="circle" alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar2x.jpg"  />
                 </span>
                 <div class="avatar-detail">
                     <p>
@@ -262,7 +264,7 @@
                         Gerente</p>
                     <p><a href="#">Taikishi Rio</a>
                     </p>
-                    <span>12:00 PM</span>
+                    <!-- <span>12:00 PM</span> -->
                     <span>Turno Matutino</span>
                 </div>
             </div>
@@ -274,6 +276,7 @@
 
             <!-- BEGIN SIDEBAR MENU -->
 
+            <p class="menu-title visible-lg visible-md">MENU</p>
             <ul>
                 <!-- <li class="start active ">
                     <a href="index-2.html"> <i class="icon-custom-home"></i>
@@ -446,11 +449,11 @@
             </ul>
             <div class="content">
 
-                <!--    <div class="page-title"> <i class="icon-custom-left"></i>
+                <div class="page-title"> <i class="icon-custom-left"></i>
                     <h3>Nueva
                         <span class="semi-bold">orden</span>
                     </h3>
-                </div> -->
+                </div>
                 <!-- BEGIN BASIC FORM ELEMENTS-->
                 <div class="row">
                     <div class="col-md-12">
@@ -1288,40 +1291,46 @@
                 </div>
             </div>
             <div class="side-widget">
-                <div class="side-widget-title">group chats</div>
-                <div class="side-widget-content">
-                    <div id="groups-list">
-                        <ul class="groups">
-                            <li>
-                                <a href="#">
-                                    <div class="status-icon green"></div>Office work</a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="status-icon green"></div>Personal vibes</a>
-                            </li>
-                        </ul>
+                <div class="side-widget-title">Restaurante</div>
+                <div class="user-details-wrapper active">
+                    <div class="user-profile">
+                        <img src="assets/img/profiles/d.jpg" alt="" data-src="assets/img/profiles/d.jpg" data-src-retina="assets/img/profiles/d2x.jpg" width="35" height="35">
                     </div>
+                    <div class="user-details">
+                        <div class="user-name">
+                            Janet Padilla
+                        </div>
+                        <div class="user-more">
+                            Se acabo el cambio
+                        </div>
+                    </div>
+                    <div class="user-details-status-wrapper">
+                        <span class="badge badge-important">3</span>
+                    </div>
+                    <div class="user-details-count-wrapper">
+                        <div class="status-icon red"></div>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
             <div class="side-widget">
-                <div class="side-widget-title">favourites</div>
+                <div class="side-widget-title">Gerencia</div>
                 <div id="favourites-list">
                     <div class="side-widget-content">
-                        <div class="user-details-wrapper active">
+                        <div class="user-details-wrapper">
                             <div class="user-profile">
                                 <img src="assets/img/profiles/d.jpg" alt="" data-src="assets/img/profiles/d.jpg" data-src-retina="assets/img/profiles/d2x.jpg" width="35" height="35">
                             </div>
                             <div class="user-details">
                                 <div class="user-name">
-                                    Jane Smith
+                                    Janet Padilla
                                 </div>
                                 <div class="user-more">
-                                    Hello you there?
+                                    Se acabo el cambio
                                 </div>
                             </div>
                             <div class="user-details-status-wrapper">
-                                <span class="badge badge-important">3</span>
+
                             </div>
                             <div class="user-details-count-wrapper">
                                 <div class="status-icon green"></div>
@@ -1334,14 +1343,17 @@
                             </div>
                             <div class="user-details">
                                 <div class="user-name">
-                                    David Nester
+                                    David Perez
                                 </div>
                                 <div class="user-more">
-                                    Busy, Do not disturb
+                                    En hora de comida
                                 </div>
                             </div>
                             <div class="user-details-status-wrapper">
                                 <div class="clearfix"></div>
+                            </div>
+                            <div class="user-details-status-wrapper">
+                                <span class="badge badge-important">3</span>
                             </div>
                             <div class="user-details-count-wrapper">
                                 <div class="status-icon red"></div>
@@ -1352,7 +1364,7 @@
                 </div>
             </div>
             <div class="side-widget">
-                <div class="side-widget-title">more friends</div>
+                <div class="side-widget-title">Comisariato</div>
                 <div class="side-widget-content" id="friends-list">
                     <div class="user-details-wrapper">
                         <div class="user-profile">
@@ -1360,10 +1372,10 @@
                         </div>
                         <div class="user-details">
                             <div class="user-name">
-                                Jane Smith
+                                Janet Padilla
                             </div>
                             <div class="user-more">
-                                Hello you there?
+                                Se acabo el cambio
                             </div>
                         </div>
                         <div class="user-details-status-wrapper">
@@ -1374,16 +1386,16 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="user-details-wrapper">
-                        <div class="user-profile">
+                    <div class="user-details-wrapper active">
+                        <div class="user-profile ">
                             <img src="assets/img/profiles/h.jpg" alt="" data-src="assets/img/profiles/h.jpg" data-src-retina="assets/img/profiles/h2x.jpg" width="35" height="35">
                         </div>
                         <div class="user-details">
                             <div class="user-name">
-                                David Nester
+                                David Perez
                             </div>
                             <div class="user-more">
-                                Busy, Do not disturb
+                                En hora de comida
                             </div>
                         </div>
                         <div class="user-details-status-wrapper">
@@ -1400,10 +1412,10 @@
                         </div>
                         <div class="user-details">
                             <div class="user-name">
-                                Jane Smith
+                                Janet Padilla
                             </div>
                             <div class="user-more">
-                                Hello you there?
+                                Se acabo el cambio
                             </div>
                         </div>
                         <div class="user-details-status-wrapper">
@@ -1420,10 +1432,10 @@
                         </div>
                         <div class="user-details">
                             <div class="user-name">
-                                David Nester
+                                David Perez
                             </div>
                             <div class="user-more">
-                                Busy, Do not disturb
+                                En hora de comida
                             </div>
                         </div>
                         <div class="user-details-status-wrapper">

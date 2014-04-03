@@ -158,17 +158,18 @@ blockquote small {
 /* ==========================================================================
    Header
    ========================================================================== */
- .navbar, .navbar-inverse {
+ .navbar {
     background-color:#fff;
     background-image:none;
     border:none;
     border-radius:0px;
-    box-shadow: 1px 0 3px rgba(0, 0, 0, 0.15);
+    box-shadow: 7px 0 10px rgba(0, 0, 0, 0.15);
     border-bottom: 5px #18C53D solid;
 }
 .header-seperation {
     /*background-color: #393B41;*/
     /*background-color:#22262e;*/
+    /*background-color: #505358*/
 }
 .header .navbar-inner {
     filter:none !important;
@@ -200,6 +201,7 @@ blockquote small {
     width: 100%;
     z-index: 999;
     min-height: 60px;
+    box-shadow: 7px 0px 9px rgba(0, 0, 0, 0.15);
 }
 .header .btn-navbar {
     margin-bottom: 0px;
@@ -211,6 +213,7 @@ blockquote small {
     box-shadow: none;
     color: #fff;
     border: 0;
+    box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.15);
 }
 .header .btn-navbar:hover {
     text-decoration: none;
@@ -234,9 +237,10 @@ blockquote small {
     display:block;
     float:left;
     height:60px;
+    text-align: center;
 }
 .header .header-quick-nav {
-    padding-right: 10px;
+    padding-right: 15px;
 }
 .header .header-quick-nav .input-append .add-on, .input-prepend .add-on {
 }
@@ -244,7 +248,7 @@ blockquote small {
     height:12px !important;
 }
 .header .notifcation-center {
-    background-color:#1b1e24;
+    background-color:#18C53D;
     margin-top: 12px;
     margin-right:15px !important;
     display:inline-flex;
@@ -276,7 +280,7 @@ blockquote small {
     margin: 0px;
 }
 .header .nav > li.dropdown .active {
-    background-color:#0d0f12;
+    /*background-color:#0d0f12;*/
 }
 .header .nav > li.dropdown .dropdown-toggle i {
     font-size: 15px;
@@ -357,6 +361,9 @@ blockquote small {
     text-align:right;
     font-size:12px;
 }
+.user-details {
+    color: #FF5A00;
+}
 .header .chat-toggler > i {
     color: #808080;
     text-align:right;
@@ -392,7 +399,7 @@ blockquote small {
     border-radius:3px;
 }
 .header .quick-section {
-    margin-left:20px;
+    margin-left:15px;
     margin-top: 16px;
     margin-right: 10px;
     display:inline-block;
@@ -453,7 +460,7 @@ blockquote small {
    Sidebar
    ========================================================================== */
  .menu-title {
-    color: #808285;
+    color: #FF5A00;
     font-size: 10.5px;
     padding-left: 31px;
     padding-right: 31px;
@@ -492,13 +499,14 @@ blockquote small {
     width:200px;
 }
 .page-sidebar > ul > li > a {
-    color: #8b91a0;
+    color: #18C53D;
 }
 .page-sidebar > ul > li:last-child > a {
     border-bottom: 1px solid transparent !important;
 }
 .page-sidebar > ul > li a i {
-    color: #8b91a0;
+    /*color: #8b91a0;*/
+    color: #C7C7C7;
     width: 20px;
     text-align: center;
     display: inline-block;
@@ -538,7 +546,8 @@ blockquote small {
     background: #313131;
 }
 .page-sidebar ul > li > a > .arrow:before, .page-sidebar > ul > li > a > .arrow.open:before {
-    color: #919091 !important;
+    /*color: #919091 !important;*/
+    color: #C7C7C7 !important;
 }
 .page-sidebar ul > li.active > a .arrow:before, .page-sidebar > ul > li.active > a .arrow.open:before {
     color: #fff !important;
@@ -613,8 +622,8 @@ blockquote small {
     position: relative;
 }
 .avatar-slide .avatar-detail {
-    margin: 5px auto 25px;
-    padding: 5px 15px;
+    margin: 5px auto 5px;
+    padding: 5px 15px 0;
     text-align: center;
 }
 .avatar-slide .avatar-detail p {
@@ -739,22 +748,19 @@ blockquote small {
 .avatar-chart {
     display: inline-block;
     height: 118px;
+    width: 118px;
     left: 50%;
     margin-left: -59px;
     position: relative;
-    text-align: center;
-    width: 118px;
-}
-.avatar-chart canvas {
-    left: 0;
-    position: absolute;
-    top: 0;
+    background-color: #393B41;
+    border-radius: 50%;
+    border: 4px #18C53D solid;
 }
 .avatar-chart img {
-    left: 11px;
+    left: 3px;
     position: absolute;
-    top: 11px;
-    width: 96px;
+    top: 3px;
+    width: 104px;
 }
 .avatar-chart .percent {
     background-color: #f35958;
@@ -3315,7 +3321,7 @@ form legend, .form-view legend {
 .grid.simple .grid-body.no-border {
     border:0px;
     padding-top:1px;
-
+box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.15);
     border-bottom: 1px solid #EDEDED;
 }
 .grid.simple .grid-body h4 {
@@ -3332,6 +3338,7 @@ form legend, .form-view legend {
 .grid.simple .grid-title.no-border {
     border:0px;
     border-bottom: 2px solid #EDEDED;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.15);
 }
 .grid.simple.transparent .grid-title {
     border:none;
@@ -4629,7 +4636,7 @@ code:hover {
 }
 .nav>li>a:hover, .nav>li>a:focus {
     background-color: transparent;
-    color:#505458;
+    /*color:#505458;*/
 }
 .nav .tools {
     float:right;
