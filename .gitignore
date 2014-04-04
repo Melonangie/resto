@@ -24,3 +24,6 @@ Thumbs.db
 .codekit
 .bower.json
 .editorconfig
+/webarch/HTML5Application/nbproject/private/
+/webarch/HTML5Application1/nbproject/private/
+/eltema/nbproject/private/
