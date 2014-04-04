@@ -24,13 +24,14 @@
             <script type="text/javascript" src="plugins/respond/respond.min.js"></script>
         <![endif]-->
         <!-- CSS Plugins -->
-        <link rel="stylesheet" type="text/css" href="plugins/pace/pace-theme-flash.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="plugins/jquery-slider/css/jquery.sidr.light.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="plugins/pace/pace-theme-flash.css" />
+        <link rel="stylesheet" type="text/css" href="plugins/jquery-slider/css/jquery.sidr.light.css" />
         <!-- Core CSS -->
         <link rel="stylesheet" type="text/css" href="plugins/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" type="text/css" href="plugins/kendo-ui/css/kendo.common.min.css" />
+        <!--<link rel="stylesheet" type="text/css" href="plugins/bootstrap-311/css/kendo.common-bootstrap.min" />-->
         <link rel="stylesheet" type="text/css" href="plugins/bootstrap-311/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="plugins/kendo-ui/css/kendo.common.min.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="plugins/kendo-ui/css/kendo.default.min.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="plugins/kendo-ui/css/kendo.default.min.css" />
         <!-- Estilo CSS -->
         <link rel="stylesheet" type="text/css" href="css/fonts.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -45,6 +46,9 @@
         <!-- Le Javascripts
         ================================================== -->
         <script type="text/javascript" src="plugins/modernizr/modernizr.js"></script>
+        <script type="text/javascript" src="plugins/jquery.min"></script>
+        <script type="text/javascript" src="plugins/kendo-ui/js/kendo.web.min.js"></script>
+        <script type="text/javascript" src="plugins/kendo-ui/js/kendo.culture.es-MX.min.js"></script>
     </head>
     <body>
 
@@ -270,8 +274,8 @@
 
                 <!-- Sidebar Nav
                 ================================================== -->
+                <p class="menu-title visible-lg">MENU</p>
                 <ul>
-                    <p class="menu-title visible-lg visible-md">MENU</p>
                     <!-- <li class="start active ">
                         <a href="index-2.html"> <i class="icon-custom-home"></i>
                             <span class="title"> Taikishi Rio</span>
@@ -479,40 +483,160 @@
                                     <br>
                                     <div class="row">
                                         <div class="col-md-8 col-sm-8 col-xs-8">
-                                            <div class="form-group">
-                                                <label class="form-label">Your Name</label>
-                                                <span class="help">e.g. "Mona Lisa Portrait"</span>
-                                                <div class="controls">
-                                                    <input type="text" class="form-control">
-                                                </div>
+
+                                            <select id="test"></select>
+
+                                            <script>
+                                                var data = [{"Id": 1, "Text": "Item One"}, {"Id": 2, "Text": "Item Two"}]
+
+                                                $('#test').kendoDropDownList({
+                                                    dataSource: data,
+                                                    dataTextField: 'Text',
+                                                    dataValueField: 'Id'
+                                                });
+
+                                                $('#test').on('change', function() {
+                                                    var value,
+                                                            item;
+
+                                                    value = $(this).val();
+                                                    item = $(this).data('kendoDropDownList').dataItem();
+
+                                                    alert(
+                                                            'HTML ' + value + ' is a ' + typeof value + '\n' +
+                                                            'Object ' + item.Id + ' is a ' + typeof item.Id
+                                                            );
+                                                });
+                                            </script>
+
+                                            <div id="people">
+                                                <input checked type="checkbox" id="alex" value="1">
+                                                <input checked type="checkbox" id="bob" value="2">
+                                                <input type="checkbox" id="charlie" value="3">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Password</label>
-                                                <span class="help">e.g. "Mona Lisa Portrait"</span>
-                                                <div class="controls">
-                                                    <input type="password" class="form-control">
-                                                </div>
+                                            <div id="scheduler"></div>
+                                        </div>
+                                        <script>
+                                            $(function() {
+                                                $("#scheduler").kendoScheduler({
+                                                    date: new Date("2013/6/13"),
+                                                    startTime: new Date("2013/6/13 07:00 AM"),
+                                                    height: 600,
+                                                    views: [
+                                                        "day",
+                                                        {type: "workWeek", selected: true},
+                                                        "week",
+                                                        "month",
+                                                        "agenda"
+                                                    ],
+                                                    timezone: "Etc/UTC",
+                                                    dataSource: {
+                                                        batch: true,
+                                                        transport: {
+                                                            read: {
+                                                                url: "http://demos.telerik.com/kendo-ui/service/tasks",
+                                                                dataType: "jsonp"
+                                                            },
+                                                            update: {
+                                                                url: "http://demos.telerik.com/kendo-ui/service/tasks/update",
+                                                                dataType: "jsonp"
+                                                            },
+                                                            create: {
+                                                                url: "http://demos.telerik.com/kendo-ui/service/tasks/create",
+                                                                dataType: "jsonp"
+                                                            },
+                                                            destroy: {
+                                                                url: "http://demos.telerik.com/kendo-ui/service/tasks/destroy",
+                                                                dataType: "jsonp"
+                                                            },
+                                                            parameterMap: function(options, operation) {
+                                                                if (operation !== "read" && options.models) {
+                                                                    return {models: kendo.stringify(options.models)};
+                                                                }
+                                                            }
+                                                        },
+                                                        schema: {
+                                                            model: {
+                                                                id: "taskId",
+                                                                fields: {
+                                                                    taskId: {from: "TaskID", type: "number"},
+                                                                    title: {from: "Title", defaultValue: "No title", validation: {required: true}},
+                                                                    start: {type: "date", from: "Start"},
+                                                                    end: {type: "date", from: "End"},
+                                                                    startTimezone: {from: "StartTimezone"},
+                                                                    endTimezone: {from: "EndTimezone"},
+                                                                    description: {from: "Description"},
+                                                                    recurrenceId: {from: "RecurrenceID"},
+                                                                    recurrenceRule: {from: "RecurrenceRule"},
+                                                                    recurrenceException: {from: "RecurrenceException"},
+                                                                    ownerId: {from: "OwnerID", defaultValue: 1},
+                                                                    isAllDay: {type: "boolean", from: "IsAllDay"}
+                                                                }
+                                                            }
+                                                        },
+                                                        filter: {
+                                                            logic: "or",
+                                                            filters: [
+                                                                {field: "ownerId", operator: "eq", value: 1},
+                                                                {field: "ownerId", operator: "eq", value: 2}
+                                                            ]
+                                                        }
+                                                    },
+                                                    resources: [
+                                                        {
+                                                            field: "ownerId",
+                                                            title: "Owner",
+                                                            dataSource: [
+                                                                {text: "Alex", value: 1, color: "#f8a398"},
+                                                                {text: "Bob", value: 2, color: "#51a0ed"},
+                                                                {text: "Charlie", value: 3, color: "#56ca85"}
+                                                            ]
+                                                        }
+                                                    ]
+                                                });
+
+                                                $("#people :checkbox").change(function(e) {
+                                                    var checked = $.map($("#people :checked"), function(checkbox) {
+                                                        return parseInt($(checkbox).val());
+                                                    });
+
+                                                    var scheduler = $("#scheduler").data("kendoScheduler");
+
+                                                    scheduler.dataSource.filter({
+                                                        operator: function(task) {
+                                                            return $.inArray(task.ownerId, checked) >= 0;
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        </script>
+
+                                        <div class="form-group">
+                                            <label class="form-label">Password</label>
+                                            <span class="help">e.g. "Mona Lisa Portrait"</span>
+                                            <div class="controls">
+                                                <input type="password" class="form-control">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Email</label>
-                                                <span class="help">e.g. "some@example.com"</span>
-                                                <div class="controls">
-                                                    <input type="text" class="form-control">
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Email</label>
+                                            <span class="help">e.g. "some@example.com"</span>
+                                            <div class="controls">
+                                                <input type="text" class="form-control">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Placeholder</label>
-                                                <span class="help">e.g. "some@example.com"</span>
-                                                <div class="controls">
-                                                    <input type="text" placeholder="You can put anything here" class="form-control">
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Placeholder</label>
+                                            <span class="help">e.g. "some@example.com"</span>
+                                            <div class="controls">
+                                                <input type="text" placeholder="You can put anything here" class="form-control">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Disabled</label>
-                                                <span class="help">e.g. "some@example.com"</span>
-                                                <div class="controls">
-                                                    <input type="text" placeholder="You can put anything here" class="form-control" disabled="disabled">
-                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Disabled</label>
+                                            <span class="help">e.g. "some@example.com"</span>
+                                            <div class="controls">
+                                                <input type="text" placeholder="You can put anything here" class="form-control" disabled="disabled">
                                             </div>
                                         </div>
                                     </div>
@@ -521,102 +645,54 @@
                         </div>
                     </div>
                 </div>
-                <!-- / Content -->
             </div>
-            <!-- / Page Content Container -->
+            <!-- / Content -->
         </div>
-        <!-- / Page Container -->
+        <!-- / Page Content Container -->
+    </div>
+    <!-- / Page Container -->
 
-        <!-- Sidebar Chat
-        ================================================== -->
-        <div id="sidr">
-            <div class="chat-window-wrapper">
-                <div class="chat-header">
-                    <div class="pull-left">
-                        <input type="text" placeholder="search">
-                    </div>
-                    <div class="pull-right">
-                        <a href="#" class="">
-                            <div class="iconset top-settings-dark "></div>
-                        </a>
-                    </div>
+    <!-- Sidebar Chat
+    ================================================== -->
+    <div id="sidr">
+        <div class="chat-window-wrapper">
+            <div class="chat-header">
+                <div class="pull-left">
+                    <input type="text" placeholder="search">
                 </div>
-                <div class="side-widget">
-                    <div class="side-widget-title">Restaurante</div>
-                    <div class="user-details-wrapper active">
-                        <div class="user-profile">
-                            <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg" width="35" height="35">
-                        </div>
-                        <div class="user-details">
-                            <div class="user-name">
-                                Janet Padilla
-                            </div>
-                            <div class="user-more">
-                                Se acabo el cambio
-                            </div>
-                        </div>
-                        <div class="user-details-status-wrapper">
-                            <span class="badge badge-important">3</span>
-                        </div>
-                        <div class="user-details-count-wrapper">
-                            <div class="status-icon red"></div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                <div class="pull-right">
+                    <a href="#" class="">
+                        <div class="iconset top-settings-dark "></div>
+                    </a>
                 </div>
-                <div class="side-widget">
-                    <div class="side-widget-title">Gerencia</div>
-                    <div id="favourites-list">
-                        <div class="side-widget-content">
-                            <div class="user-details-wrapper">
-                                <div class="user-profile">
-                                    <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg" width="35" height="35">
-                                </div>
-                                <div class="user-details">
-                                    <div class="user-name">
-                                        Janet Padilla
-                                    </div>
-                                    <div class="user-more">
-                                        Se acabo el cambio
-                                    </div>
-                                </div>
-                                <div class="user-details-status-wrapper">
-
-                                </div>
-                                <div class="user-details-count-wrapper">
-                                    <div class="status-icon green"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="user-details-wrapper">
-                                <div class="user-profile">
-                                    <img src="img/profiles/c.jpg" alt="" data-src="img/profiles/c.jpg" data-src-retina="img/profiles/c2x.jpg" width="35" height="35">
-                                </div>
-                                <div class="user-details">
-                                    <div class="user-name">
-                                        David Perez
-                                    </div>
-                                    <div class="user-more">
-                                        En hora de comida
-                                    </div>
-                                </div>
-                                <div class="user-details-status-wrapper">
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="user-details-status-wrapper">
-                                    <span class="badge badge-important">3</span>
-                                </div>
-                                <div class="user-details-count-wrapper">
-                                    <div class="status-icon red"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
+            </div>
+            <div class="side-widget">
+                <div class="side-widget-title">Restaurante</div>
+                <div class="user-details-wrapper active">
+                    <div class="user-profile">
+                        <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg" width="35" height="35">
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name">
+                            Janet Padilla
+                        </div>
+                        <div class="user-more">
+                            Se acabo el cambio
                         </div>
                     </div>
+                    <div class="user-details-status-wrapper">
+                        <span class="badge badge-important">3</span>
+                    </div>
+                    <div class="user-details-count-wrapper">
+                        <div class="status-icon red"></div>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="side-widget">
-                    <div class="side-widget-title">Comisariato</div>
-                    <div class="side-widget-content" id="friends-list">
+            </div>
+            <div class="side-widget">
+                <div class="side-widget-title">Gerencia</div>
+                <div id="favourites-list">
+                    <div class="side-widget-content">
                         <div class="user-details-wrapper">
                             <div class="user-profile">
                                 <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg" width="35" height="35">
@@ -637,52 +713,12 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="user-details-wrapper active">
-                            <div class="user-profile ">
-                                <img src="img/profiles/h.jpg" alt="" data-src="img/profiles/h.jpg" data-src-retina="img/profiles/h2x.jpg" width="35" height="35">
-                            </div>
-                            <div class="user-details">
-                                <div class="user-name">
-                                    David Perez
-                                </div>
-                                <div class="user-more">
-                                    En hora de comida
-                                </div>
-                            </div>
-                            <div class="user-details-status-wrapper">
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="user-details-count-wrapper">
-                                <div class="status-icon red"></div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
                         <div class="user-details-wrapper">
                             <div class="user-profile">
                                 <img src="img/profiles/c.jpg" alt="" data-src="img/profiles/c.jpg" data-src-retina="img/profiles/c2x.jpg" width="35" height="35">
                             </div>
                             <div class="user-details">
                                 <div class="user-name">
-                                    Janet Padilla
-                                </div>
-                                <div class="user-more">
-                                    Se acabo el cambio
-                                </div>
-                            </div>
-                            <div class="user-details-status-wrapper">
-
-                            </div>
-                            <div class="user-details-count-wrapper">
-                                <div class="status-icon green"></div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="user-details-wrapper">
-                            <div class="user-profile">
-                                <img src="img/profiles/h.jpg" alt="" data-src="img/profiles/h.jpg" data-src-retina="img/profiles/h2x.jpg" width="35" height="35">
-                            </div>
-                            <div class="user-details">
-                                <div class="user-name">
                                     David Perez
                                 </div>
                                 <div class="user-more">
@@ -691,6 +727,9 @@
                             </div>
                             <div class="user-details-status-wrapper">
                                 <div class="clearfix"></div>
+                            </div>
+                            <div class="user-details-status-wrapper">
+                                <span class="badge badge-important">3</span>
                             </div>
                             <div class="user-details-count-wrapper">
                                 <div class="status-icon red"></div>
@@ -700,22 +739,105 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- / Sidebar Chat -->
+            <div class="side-widget">
+                <div class="side-widget-title">Comisariato</div>
+                <div class="side-widget-content" id="friends-list">
+                    <div class="user-details-wrapper">
+                        <div class="user-profile">
+                            <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg" width="35" height="35">
+                        </div>
+                        <div class="user-details">
+                            <div class="user-name">
+                                Janet Padilla
+                            </div>
+                            <div class="user-more">
+                                Se acabo el cambio
+                            </div>
+                        </div>
+                        <div class="user-details-status-wrapper">
 
-        <!-- Le Javascripts
-        ================================================== -->
-        <!-- Core JS -->
-        <script type="text/javascript" src="plugins/jquery.min"></script>
-        <script type="text/javascript" src="plugins/kendo-ui/js/kendo.web.min.js"></script>
-        <script type="text/javascript" src="plugins/bootstrap-311/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="plugins/breakpoints.js"></script>
-        <!-- plugins -->
-        <script type="text/javascript" src="plugins/jquery.slimscroll/jquery.slimscroll.min.js"></script>
-        <script type="text/javascript" src="plugins/jquery-slider/jquery.sidr.min.js"></script>
-        <!-- Page plugins -->
-        <script type="text/javascript" src="plugins/pace/pace.min.js"></script>
-        <script type="text/javascript" src="js/core.js"></script>
-        <script type="text/javascript" src="js/demo.js"></script>
-    </body>
+                        </div>
+                        <div class="user-details-count-wrapper">
+                            <div class="status-icon green"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="user-details-wrapper active">
+                        <div class="user-profile ">
+                            <img src="img/profiles/h.jpg" alt="" data-src="img/profiles/h.jpg" data-src-retina="img/profiles/h2x.jpg" width="35" height="35">
+                        </div>
+                        <div class="user-details">
+                            <div class="user-name">
+                                David Perez
+                            </div>
+                            <div class="user-more">
+                                En hora de comida
+                            </div>
+                        </div>
+                        <div class="user-details-status-wrapper">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="user-details-count-wrapper">
+                            <div class="status-icon red"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="user-details-wrapper">
+                        <div class="user-profile">
+                            <img src="img/profiles/c.jpg" alt="" data-src="img/profiles/c.jpg" data-src-retina="img/profiles/c2x.jpg" width="35" height="35">
+                        </div>
+                        <div class="user-details">
+                            <div class="user-name">
+                                Janet Padilla
+                            </div>
+                            <div class="user-more">
+                                Se acabo el cambio
+                            </div>
+                        </div>
+                        <div class="user-details-status-wrapper">
+
+                        </div>
+                        <div class="user-details-count-wrapper">
+                            <div class="status-icon green"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="user-details-wrapper">
+                        <div class="user-profile">
+                            <img src="img/profiles/h.jpg" alt="" data-src="img/profiles/h.jpg" data-src-retina="img/profiles/h2x.jpg" width="35" height="35">
+                        </div>
+                        <div class="user-details">
+                            <div class="user-name">
+                                David Perez
+                            </div>
+                            <div class="user-more">
+                                En hora de comida
+                            </div>
+                        </div>
+                        <div class="user-details-status-wrapper">
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="user-details-count-wrapper">
+                            <div class="status-icon red"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / Sidebar Chat -->
+
+    <!-- Le Javascripts
+    ================================================== -->
+    <!-- Core JS -->
+    <script type="text/javascript" src="plugins/bootstrap-311/js/bootstrap.min.js"></script>
+    <!-- plugins -->
+    <script type="text/javascript" src="plugins/breakpoints.js"></script>
+    <script type="text/javascript" src="plugins/jquery-slider/jquery.sidr.min.js"></script>
+    <script type="text/javascript" src="plugins/pace/pace.min.js"></script>
+    <!-- Page plugins -->
+    <script type="text/javascript" src="js/core.js"></script>
+    <script type="text/javascript" src="js/demo.js"></script>
+</body>
 </html>
