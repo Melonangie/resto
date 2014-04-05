@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+
+<head>
+    <!-- Basic Page Needs
+        ================================================== -->
+    <title>Administracion | Taikishi</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="Administracion" />
+    <meta name="author" content="Maria Rabelero, Adan Prudencio">
+    <!-- Mobile Metas
+        ================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <!-- CSS
+        ================================================== -->
+    <!--[if lt IE 10]>
+        <meta http-equiv="cleartype" content="on" />
+            <script type="text/javascript" src="plugins/html5shiv/html5shiv.js"></script>
+            <script type="text/javascript" src="plugins/html5shiv/html5shiv-printshiv.js"></script>
+            <script type="text/javascript" src="plugins/respond/respond.min.js"></script>
+        <![endif]-->
+    <!-- CSS Plugins -->
+    <link rel="stylesheet" type="text/css" href="plugins/pace/pace-theme-flash.css" />
+    <link rel="stylesheet" type="text/css" href="plugins/jquery-slider/css/jquery.sidr.light.css" />
+    <!-- Core CSS -->
+    <link rel="stylesheet" type="text/css" href="plugins/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="plugins/bootstrap-311/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="plugins/kendo-ui/css/kendo.common.min.css" />
+    <link rel="stylesheet" type="text/css" href="plugins/kendo-ui/css/kendo.default.min.css" />
+    <!-- Estilo CSS -->
+    <link rel="stylesheet" type="text/css" href="css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+    <!-- Le Favicons
+        ================================================== -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <!-- Le Javascripts
+        ================================================== -->
+    <script type="text/javascript" src="plugins/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="plugins/jquery.min"></script>
+    <script type="text/javascript" src="plugins/kendo-ui/js/kendo.web.min.js"></script>
+    <script type="text/javascript" src="plugins/kendo-ui/js/kendo.culture.es-MX.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Header Section
+        ================================================== -->
+    <header class="header navbar ">
+        <!-- logo -->
+        <div class="header-seperation">
+            <ul class="nav pull-left notifcation-center visible-xs" id="main-menu-toggle-wrapper" style="display:none">
+                <li class="dropdown">
+                    <a id="main-menu-toggle" href="#main-menu" class="">
+                        <div class="iconset top-menu-toggle-white"></div>
+                    </a>
+                </li>
+            </ul>
+            <a href="index-2.html">
+                <img src="img/logo.png" class="logo" alt="" data-src="img/logo.png" data-src-retina="img/logo2x.png" width="130" height="23" />
+            </a>
+            <!-- Small screen - right section -->
+            <ul class="nav pull-right notifcation-center visible-xs">
+                <li class="dropdown" id="header_task_bar">
+                    <a href="index-2.html" class="dropdown-toggle active" data-toggle="">
+                        <div class="iconset top-home"></div>
+                    </a>
+                </li>
+                <li class="dropdown" id="header_inbox_bar">
+                    <a href="email.html" class="dropdown-toggle">
+                        <div class="iconset top-messages"></div>
+                        <span class="badge" id="msgs-badge">2</span>
+                    </a>
+                </li>
+                <li class="dropdown" id="portrait-chat-toggler" style="display:none">
+                    <a href="#sidr" class="chat-menu-toggle">
+                        <div class="iconset top-chat-white "></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Top navigation -->
+        <div class="header-quick-nav">
+            <!-- Left section -->
+            <div class="pull-left">
+                <ul class="nav quick-section">
+                    <li class="quicklinks">
+                        <a href="#" class="" id="layout-condensed-toggle">
+                            <div class="iconset top-menu-toggle-dark"></div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav quick-section">
+                    <li class="quicklinks">
+                        <a href="#" class="">
+                            <div class="iconset top-reload"></div>
+                        </a>
+                    </li>
+                    <li class="quicklinks">
+                        <span class="h-seperate"></span>
+                    </li>
+                    <li class="quicklinks">
+                        <a href="#" class="">
+                            <div class="iconset top-tiles"></div>
+                        </a>
+                    </li>
+                    <li class="quicklinks visible-md">
+                        <span class="h-seperate"></span>
+                    </li>
+                    <li class="m-r-10 input-prepend inside search-form no-boarder">
+                        <span class="add-on">
+                            <span class="iconset top-search"></span>
+                        </span>
+                        <input name="" type="text" class="no-boarder " placeholder="¿Buscabas algo?" style="width:250px;">
+                    </li>
+                </ul>
+            </div>
+            <!-- Right section -->
+            <div class="pull-right">
+                <!-- Name and small avatar -->
+                <div class="chat-toggler">
+                    <a href="#" class="dropdown-toggle" id="my-task-list" data-placement="bottom" data-content='' data-toggle="dropdown" data-original-title="Mensajes">
+                        <div class="user-details">
+                            <div class="username">
+                                <span class="bold">Maria Rabelero</span>
+                            </div>
+                        </div>
+                        <div class="iconset top-down-arrow"></div>
+                    </a>
+                    <!-- Chat popup-->
+                    <div id="notification-list" style="display:none">
+                        <div style="width:300px">
+                            <div class="notification-messages info">
+                                <div class="user-profile">
+                                    <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg" width="35" height="35">
+                                </div>
+                                <div class="message-wrapper">
+                                    <div class="heading">
+                                        Clara Hernandez
+                                    </div>
+                                    <div class="description">
+                                        Junta a las 3 de la tarde.
+                                    </div>
+                                    <div class="date pull-left">
+                                        Mensaje
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="notification-messages danger">
+                                <div class="iconholder">
+                                    <i class="icon-warning-sign"></i>
+                                </div>
+                                <div class="message-wrapper">
+                                    <div class="heading">
+                                        Envio de reporte
+                                    </div>
+                                    <div class="description">
+                                        No se ha enviado el reporte.
+                                    </div>
+                                    <div class="date pull-left">
+                                        2 mins
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="notification-messages success">
+                                <div class="user-profile">
+                                    <img src="img/profiles/h.jpg" alt="" data-src="img/profiles/h.jpg" data-src-retina="img/profiles/h2x.jpg" width="35" height="35">
+                                </div>
+                                <div class="message-wrapper">
+                                    <div class="heading">
+                                        Tienes 5 mensajes
+                                    </div>
+                                    <div class="description">
+                                        5 mensajes sin leer.
+                                    </div>
+                                    <div class="date pull-left">
+                                        1 hora
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right section -->
+                    <div class="profile-pic">
+                        <img src="img/profiles/avatar_small.jpg" alt="" data-src="img/profiles/avatar_small.jpg" data-src-retina="img/profiles/avatar_small2x.jpg" width="35" height="35" />
+                    </div>
+                </div>
+                <!-- Configuration-->
+                <ul class="nav quick-section ">
+                    <li class="quicklinks">
+                        <span class="h-seperate"></span>
+                    </li>
+                    <li class="quicklinks">
+                        <a data-toggle="dropdown" class="dropdown-toggle  pull-right " href="#" id="user-options">
+                            <div class="iconset top-settings-dark "></div>
+                        </a>
+                        <ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="user-options">
+                            <li><a href="user-profile.html"> Mi Cuenta </a>
+                            </li>
+                            <li><a href="calender.html"> Preferencias </a>
+                            </li>
+                            <li><a href="email.html"> Mis mensajes <span class="badge badge-important animated bounceIn">2</span></a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="login.html"><i class="icon-off"></i> Salir </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="quicklinks">
+                        <span class="h-seperate"></span>
+                    </li>
+                    <!-- Chat toggler-->
+                    <li class="quicklinks">
+                        <a id="chat-menu-toggle" href="#sidr" class="chat-menu-toggle">
+                            <div class="iconset top-chat-dark ">
+                                <!--   <span class="badge badge-important hide" id="chat-message-count">1</span> -->
+                            </div>
+                        </a>
+                        <!-- Some popup-->
+                        <div class="simple-chat-popup chat-menu-toggle hide">
+                            <div class="simple-chat-popup-arrow"></div>
+                            <div class="simple-chat-popup-inner">
+                                <div style="width:100px">
+                                    <div class="semi-bold">David Salas</div>
+                                    <div class="message">Corte de caja a la 1pm.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- / Header Section -->
+
+    <!-- Page Container
+        ================================================== -->
+    <div class="page-container  row">
+
+        <!-- Sidebar
+            ================================================== -->
+        <div class="page-sidebar" id="main-menu">
+
+            <!-- Avatar
+                ================================================== -->
+            <div class="user-info-wrapper">
+                <div class="avatar-slide visible-md visible-lg">
+                    <span class="avatar-chart">
+                        <img src="img/profiles/avatar.jpg" class="img-circle" alt="" data-src="img/profiles/avatar.jpg" data-src-retina="img/profiles/avatar2x.jpg" />
+                    </span>
+                    <div class="avatar-detail">
+                        <p>
+                            <!-- <strong>Bienvenido </strong> -->
+                            Gerente</p>
+                        <p><a href="#">Taikishi Rio</a>
+                        </p>
+                        <!-- <span>12:00 PM</span> -->
+                        <span>Turno Matutino</span>
+                    </div>
+                </div>
+            </div>
+            <!-- /Avatar -->
+
+            <!-- Sidebar Nav
+                ================================================== -->
+            <p class="menu-title visible-lg">MENU</p>
+            <ul>
+                <!-- <li class="start active ">
+                        <a href="index-2.html"> <i class="icon-custom-home"></i>
+                            <span class="title"> Taikishi Rio</span>
+                            <span class="selected"></span>
+                        </a>
+                    </li> -->
+                <li class="start">
+                    <a href="javascript:;">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <span class="title">Ordenes</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li> <a href="typography.html"> Ver Ordenes </a>
+                        </li>
+                        <li> <a href="messages_notifications.html"> Nueva Orden </a>
+                        </li>
+                        <li> <a href="icons.html"> Ordenes por suplir </a>
+                        </li>
+                        <li> <a href="buttons.html"> Buscar Orden </a>
+                        </li>
+                        <li> <a href="tabs_accordian.html"> Reportes </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+                        <span class="glyphicon glyphicon glyphicon-th"></span>
+                        <span class="title">Productos</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li> <a href="form_elements.html"> Ver Productos </a>
+                        </li>
+                        <li> <a href="form_validations.html"> Dar de alta producto </a>
+                        </li>
+                        <li> <a href="form_validations.html"> Modificar producto </a>
+                        </li>
+                        <li> <a href="form_validations.html"> Categorias </a>
+                        </li>
+                        <li> <a href="form_validations.html"> Reportes de ventas </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <span class="title">Almacen</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li> <a href="tables.html"> Ver inventario </a>
+                        </li>
+                        <li> <a href="datatables.html"> Ver Faltantes </a>
+                        </li>
+                        <li> <a href="datatables.html"> Precios </a>
+                        </li>
+                        <li> <a href="datatables.html"> Reportes </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span class="title">Usuarios</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li> <a href="tables.html"> Ver usuarios </a>
+                        </li>
+                        <li> <a href="datatables.html"> Crear usuario  </a>
+                        </li>
+                        <li> <a href="datatables.html"> Conectados </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+                        <span class="glyphicon glyphicon-cog"></span>
+                        <span class="title">Configuracion</span>
+                    </a>
+                </li>
+
+                <li class="hidden-lg hidden-md hidden-xs" id="more-widgets">
+                    <a href="javascript:;"> <i class="icon-ellipsis-horizontal"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="side-bar-widgets">
+                            <p class="menu-title">TAREAS
+                                <span class="pull-right"><a href="#" class="create-folder"><i class="icon-plus"></i></a>
+                                </span>
+                            </p>
+                            <ul class="folders">
+                                <li>
+                                    <a href="#">
+                                        <div class="status-icon green"></div>Hacer planeacion</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="status-icon red"></div>Hacer inventario</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="status-icon blue"></div>Hacer Reportes</a>
+                                </li>
+                                <li class="folder-input" style="display:none">
+                                    <input type="text" placeholder="Nombre de la tarea" class="no-boarder folder-name" name="" id="folder-name">
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /Sidebar Nav -->
+
+            <!-- Sidebar Widgets
+               ================================================== -->
+            <div class="side-bar-widgets">
+                <p class="menu-title">TAREAS
+                    <span class="pull-right"><a href="#" class="create-folder"><i class="icon-plus"></i></a>
+                    </span>
+                </p>
+                <ul class="folders">
+                    <li>
+                        <a href="#">
+                            <div class="status-icon green"></div>Hacer planeacion</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="status-icon red"></div>Hacer inventario</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="status-icon blue"></div>Hacer Reportes</a>
+                    </li>
+                    <li class="folder-input" style="display:none">
+                        <input type="text" placeholder="Nombre de la tarea" class="no-boarder folder-name" name="">
+                    </li>
+                </ul>
+            </div>
+            <!-- /Sidebar Widgets -->
+
+            <a href="#" class="scrollup">Scroll</a>
+            <div class="clearfix"></div>
+        </div>
+        <!-- /Sidebar Nav -->
+
+        <!-- Sidebar Footer
+            ================================================== -->
+        <div class="footer-widget">
+            <div class="progress transparent progress-small no-radius no-margin">
+                <div class="progress-bar progress-bar-success animate-progress-bar" data-percentage="79%" style="width: 79%;"></div>
+            </div>
+            <div class="pull-right">
+                <div class="details-status">
+                    <span class="animate-number" data-value="86" data-animation-duration="560">86</span>%
+                </div>
+                <a href="lockscreen.html"><i class="icon-off"></i></a>
+            </div>
+        </div>
+        <!-- / Header Section -->
+
+        <!-- Page Content Container
+            ================================================== -->
+        <div class="page-content">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">INICIO</a>
+                </li>
+                <li>
+                    <a href="#">MENU</a>
+                </li>
+                <li class="active">Submenu
+                </li>
+            </ul>
+
+            <!-- Page
+                ================================================== -->
+            <div class="content">
+                <!-- Page header-->
+                <div class="page-title"><i class="fa fa-arrow-circle-o-left"></i>
+                    <h3>Nueva
+                        <span class="semi-bold">orden</span>
+                    </h3>
+                </div>
+                <!-- Page content-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="grid simple corner-flip">
+                            <div class="grid-title no-border ">
+                                <h3>
+                                    <span class="semi-bold">Simple</span>Elemets
+                                    <br />
+                                    <label class="color">iCheck for Bootstrap</label>
+                                </h3>
+                                <div class="tools">
+                                    <a href="javascript:;" class="collapse"></a>
+                                    <a href="#grid-config" data-toggle="modal" class="config"></a>
+                                    <a href="javascript:;" class="reload"></a>
+                                    <a href="javascript:;" class="remove"></a>
+                                </div>
+                                <div class="flip"></div>
+                            </div>
+                            <div class="grid-body no-border">
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                        <select id="test"></select>
+
+                                        <script>
+                                        var data = [{
+                                            "Id": 1,
+                                            "Text": "Item One"
+                                        }, {
+                                            "Id": 2,
+                                            "Text": "Item Two"
+                                        }]
+
+                                         $('#test').kendoDropDownList({
+                                            dataSource: data,
+                                            dataTextField: 'Text',
+                                            dataValueField: 'Id'
+                                        });
+
+                                        $('#test').on('change', function() {
+                                            var value,
+                                                item;
+
+                                            value = $(this).val();
+                                            item = $(this).data('kendoDropDownList').dataItem();
+
+                                            alert(
+                                                'HTML ' + value + ' is a ' + typeof value + '\n' +
+                                                'Object ' + item.Id + ' is a ' + typeof item.Id
+                                            );
+                                        });
+                                        </script>
+
+
+                                        <div id="example" class="k-content">
+                                            <div id="clientsDb">
+
+                                                <div id="grid" style="height: 365px"></div>
+
+                                            </div>
+
+                                            <script>
+                                            $(document).ready(function() {
+                                                $("#grid").kendoGrid({
+                                                    dataSource: {
+                                                        type: "odata",
+                                                        transport: {
+                                                            read: "http://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
+                                                        },
+                                                        pageSize: 10
+                                                    },
+                                                    groupable: true,
+                                                    sortable: true,
+                                                    pageable: {
+                                                        refresh: true,
+                                                        pageSizes: true,
+                                                        buttonCount: 5
+                                                    },
+                                                    columns: [{
+                                                        field: "ContactName",
+                                                        title: "Contact Name",
+                                                        width: 200
+                                                    }, {
+                                                        field: "ContactTitle",
+                                                        title: "Contact Title",
+                                                        width: 250
+                                                    }, {
+                                                        field: "CompanyName",
+                                                        title: "Company Name"
+                                                    }, {
+                                                        field: "Country",
+                                                        width: 150
+                                                    }]
+                                                });
+                                            });
+                                            </script>
+
+                                                <form id="employeeForm" data-role="validator" novalidate="novalidate">
+                                                    <h3>Employee</h3>
+                                                    <ul>
+                                                        <li>
+                                                            <label for="FirstName">First Name:</label>
+                                                            <input type="text" class="k-textbox" name="FirstName" id="FirstName" required="required" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="LastName">Last Name:</label>
+                                                            <input type="text" class="k-textbox" name="LastName" id="LastName" required="required" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="HireDate">Hire Date:</label>
+                                                            <input type="text" data-role='datepicker' id="HireDate" name="HireDate" data-type="date" required="required" />
+                                                            <span data-for='HireDate' class='k-invalid-msg'></span>
+                                                        </li>
+                                                        <li>
+                                                            <label for="RetireDate">Retire Date:</label>
+                                                            <input type="text" data-role='datepicker' id="RetireDate" data-type="date" name="RetireDate" data-greaterdate-field="HireDate" data-greaterdate-msg='Retire date should be after Hire date' />
+                                                            <span data-for='RetireDate' class='k-invalid-msg'></span>
+                                                        </li>
+                                                        <li class="actions">
+                                                            <button type="button" data-role="button" data-sprite-css-class="k-icon k-i-tick" data-click='save'>Save</button>
+                                                        </li>
+                                                    </ul>
+                                                </form>
+
+                                            <script type="text/javascript">
+                                            $(function() {
+                                                var container = $("#employeeForm");
+                                                kendo.init(container);
+                                                container.kendoValidator({
+                                                    rules: {
+                                                        greaterdate: function(input) {
+                                                            if (input.is("[data-greaterdate-msg]") && input.val() != "") {
+                                                                var date = input.data("kendoDatePicker").value(),
+                                                                    otherDate = $("[name='" + input.data("greaterdateField") + "']").data("kendoDatePicker").value();
+                                                                return otherDate == null || otherDate.getTime() < date.getTime();
+                                                            }
+
+                                                            return true;
+                                                        }
+                                                    }
+                                                });
+                                            });
+
+                                            function save(e) {
+                                                var validator = $("#employeeForm").data("kendoValidator");
+                                                if (validator.validate()) {
+                                                    alert("Employee Saved");
+                                                }
+                                            }
+                                            </script>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Content -->
+            </div>
+            <!-- / Page Content Container -->
+        </div>
+        <!-- / Page Container -->
+
+        <!-- Sidebar Chat
+    ================================================== -->
+        <div id="sidr">
+            <div class="chat-window-wrapper">
+                <div class="chat-header">
+                    <div class="pull-left">
+                        <input type="text" placeholder="search">
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" class="">
+                            <div class="iconset top-settings-dark "></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="side-widget">
+                    <div class="side-widget-title">Restaurante</div>
+                    <div class="user-details-wrapper active">
+                        <div class="user-profile">
+                            <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg" width="35" height="35">
+                        </div>
+                        <div class="user-details">
+                            <div class="user-name">
+                                Janet Padilla
+                            </div>
+                            <div class="user-more">
+                                Se acabo el cambio
+                            </div>
+                        </div>
+                        <div class="user-details-status-wrapper">
+                            <span class="badge badge-important">3</span>
+                        </div>
+                        <div class="user-details-count-wrapper">
+                            <div class="status-icon red"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="side-widget">
+                    <div class="side-widget-title">Gerencia</div>
+                    <div id="favourites-list">
+                        <div class="side-widget-content">
+                            <div class="user-details-wrapper">
+                                <div class="user-profile">
+                                    <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg" width="35" height="35">
+                                </div>
+                                <div class="user-details">
+                                    <div class="user-name">
+                                        Janet Padilla
+                                    </div>
+                                    <div class="user-more">
+                                        Se acabo el cambio
+                                    </div>
+                                </div>
+                                <div class="user-details-status-wrapper">
+
+                                </div>
+                                <div class="user-details-count-wrapper">
+                                    <div class="status-icon green"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="user-details-wrapper">
+                                <div class="user-profile">
+                                    <img src="img/profiles/c.jpg" alt="" data-src="img/profiles/c.jpg" data-src-retina="img/profiles/c2x.jpg" width="35" height="35">
+                                </div>
+                                <div class="user-details">
+                                    <div class="user-name">
+                                        David Perez
+                                    </div>
+                                    <div class="user-more">
+                                        En hora de comida
+                                    </div>
+                                </div>
+                                <div class="user-details-status-wrapper">
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="user-details-status-wrapper">
+                                    <span class="badge badge-important">3</span>
+                                </div>
+                                <div class="user-details-count-wrapper">
+                                    <div class="status-icon red"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="side-widget">
+                    <div class="side-widget-title">Comisariato</div>
+                    <div class="side-widget-content" id="friends-list">
+                        <div class="user-details-wrapper">
+                            <div class="user-profile">
+                                <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg" width="35" height="35">
+                            </div>
+                            <div class="user-details">
+                                <div class="user-name">
+                                    Janet Padilla
+                                </div>
+                                <div class="user-more">
+                                    Se acabo el cambio
+                                </div>
+                            </div>
+                            <div class="user-details-status-wrapper">
+
+                            </div>
+                            <div class="user-details-count-wrapper">
+                                <div class="status-icon green"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="user-details-wrapper active">
+                            <div class="user-profile ">
+                                <img src="img/profiles/h.jpg" alt="" data-src="img/profiles/h.jpg" data-src-retina="img/profiles/h2x.jpg" width="35" height="35">
+                            </div>
+                            <div class="user-details">
+                                <div class="user-name">
+                                    David Perez
+                                </div>
+                                <div class="user-more">
+                                    En hora de comida
+                                </div>
+                            </div>
+                            <div class="user-details-status-wrapper">
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="user-details-count-wrapper">
+                                <div class="status-icon red"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="user-details-wrapper">
+                            <div class="user-profile">
+                                <img src="img/profiles/c.jpg" alt="" data-src="img/profiles/c.jpg" data-src-retina="img/profiles/c2x.jpg" width="35" height="35">
+                            </div>
+                            <div class="user-details">
+                                <div class="user-name">
+                                    Janet Padilla
+                                </div>
+                                <div class="user-more">
+                                    Se acabo el cambio
+                                </div>
+                            </div>
+                            <div class="user-details-status-wrapper">
+
+                            </div>
+                            <div class="user-details-count-wrapper">
+                                <div class="status-icon green"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="user-details-wrapper">
+                            <div class="user-profile">
+                                <img src="img/profiles/h.jpg" alt="" data-src="img/profiles/h.jpg" data-src-retina="img/profiles/h2x.jpg" width="35" height="35">
+                            </div>
+                            <div class="user-details">
+                                <div class="user-name">
+                                    David Perez
+                                </div>
+                                <div class="user-more">
+                                    En hora de comida
+                                </div>
+                            </div>
+                            <div class="user-details-status-wrapper">
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="user-details-count-wrapper">
+                                <div class="status-icon red"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / Sidebar Chat -->
+
+        <!-- Le Javascripts
+    ================================================== -->
+        <!-- Core JS -->
+        <script type="text/javascript" src="plugins/bootstrap-311/js/bootstrap.min.js"></script>
+        <!-- plugins -->
+        <script type="text/javascript" src="plugins/breakpoints.js"></script>
+        <script type="text/javascript" src="plugins/jquery-slider/jquery.sidr.min.js"></script>
+        <script type="text/javascript" src="plugins/pace/pace.min.js"></script>
+        <!-- Page plugins -->
+        <script type="text/javascript" src="js/core.js"></script>
+        <script type="text/javascript" src="js/demo.js"></script>
+</body>
+
+</html>

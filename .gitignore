@@ -1,29 +1,15 @@
+*.DS_Store
+.DS_Store
+Thumbs.db
+.wbk
+.bowerrc
+.bower.json
+.editorconfig
 /documentacion/Copia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
 /documentacion/~$pia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
 /documentacion/Backup of Rabelero (TRABAJO RECEPCIONAL).wbk
 /documentacion/~$belero (TRABAJO RECEPCIONAL.docx
 /documentacion/summary.txt
-/foundation/bower_components/foundation/bower.json
-/foundation/bower_components/foundation/sache.json
-/foundation/bower_components/jquery-placeholder
-/foundation/bower_components/jquery.cookie
-/foundation/bower_components/fastclick
-/foundation/bower_components/modernizr
-/foundation/bower_components/jquery
-/foundation/node_modules
-/foundation/bower.json
-/foundation/Gruntfile.js
-/foundation/package.json
-/foundation/.bowerrc
-scss/.sass-cache
-.DS_Store
-Thumbs.db
-.wbk
-.bowerrc
-.sass-cache
-.codekit
-.bower.json
-.editorconfig
-/webarch/HTML5Application/nbproject/private/
-/webarch/HTML5Application1/nbproject/private/
-/eltema/nbproject/private/
+/FrontendTheme/css/*
+/FrontendTheme/bower_components/*
+/FrontendTheme/node_modules/*
