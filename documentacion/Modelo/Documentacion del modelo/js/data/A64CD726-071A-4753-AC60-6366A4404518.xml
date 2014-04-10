@@ -1,3 +1,0 @@
-tocTab[tocTab.length] = new Array("0.2:1", "", "Modelo de Datos", "EARoot/EA2/EA189.htm", "175.png", "127", "0", "", "Logical diagram0","{1AF4EA83-3E05-4d60-8205-4AFEA093E79F}");
-tocTab[tocTab.length] = new Array("0.2.1", "1", "Modelo Conceptual ", "EARoot/EA2/EA198.htm", "4.png", "", "", "{209EDF81-12CC-4433-ADF0-DC6910B19B3D}", "Package");
-tocTab[tocTab.length] = new Array("0.2.2", "1", "tablas", "EARoot/EA2/EA199.htm", "4.png", "", "", "{223059CA-8381-4623-BA47-755C1B63DA59}", "Package");
