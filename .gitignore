@@ -1,15 +1,28 @@
+/Documentacion/db schema/queries
+/Documentacion/Modelo/Dominio/*
+/Documentacion/Modelo/Documentacion del modelo/*
+/Documentacion/Modelo/Requerimientos/*
+/Documentacion/x documentar/*
+/Documentacion/Copia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
+/Documentacion/~$pia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
+/Documentacion/Backup of Rabelero (TRABAJO RECEPCIONAL).wbk
+/Documentacion/~$belero (TRABAJO RECEPCIONAL).docx
+/taikishi-admin/bootstrap/compiled.php
+/taikishi-admin/vendor/*
+/taikishi-admin/composer.phar
+/taikishi-admin/composer.lock
+/taikishi-admin/.env.local.php
+/taikishi-admin/.env.php
+/letema/css/*
+/letema/bower_components/*
+/letema/node_modules/*
+/letema/.bowerr
 *.DS_Store
 .DS_Store
 Thumbs.db
-.wbk
-.bowerrc
-.bower.json
-.editorconfig
-/documentacion/Copia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
-/documentacion/~$pia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
-/documentacion/Backup of Rabelero (TRABAJO RECEPCIONAL).wbk
-/documentacion/~$belero (TRABAJO RECEPCIONAL.docx
-/documentacion/summary.txt
-/FrontendTheme/css/*
-/FrontendTheme/bower_components/*
-/FrontendTheme/node_modules/*
+*.wbk
+*.tiff
+composer.phar
+composer.lock
+.env.local.php
+.env.php
