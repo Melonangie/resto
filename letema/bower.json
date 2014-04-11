@@ -1,0 +1,17 @@
+{
+	"name"   : "letema",
+	"version": "0.0.1",
+	"dependencies": {
+		"foundation"       : "zurb/bower-foundation",
+		"html5-boilerplate": "*",
+		"jquery.slimscroll": "*",
+		"normalize-css"    : "*",
+		"animate.css"      : "*",
+		"html5shiv"        : "*",
+		"kendo-ui"         : "*",
+		"Buttons"          : "*",
+		"bourbon"          : "*",
+		"respond"          : "*",
+		"entypo"           : "*"
+    }
+}
