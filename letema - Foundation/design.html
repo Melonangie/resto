@@ -1,0 +1,511 @@
+<!doctype html>
+<html class="no-js" lang="es">
+
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <title>Administracion | Taikishi</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html">
+    <meta name="description" content="Administracion" />
+    <meta name="author" content="Maria Rabelero, Adan Prudencio">
+    <!-- Mobile Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <!-- CSS
+    ================================================== -->
+    <!--[if lt IE 10]>
+        <meta http-equiv="cleartype" content="on" />
+        <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
+         <script src="bower_components/html5shiv/dist/html5shiv-printshiv.js"></script>
+        <script src="bower_components/respond/dest/respond.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="CSS/desktop_ie.css"/>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="bower_components/kendo-ui/styles/kendo.common.min.css" />
+    <link type="text/css" rel="stylesheet" href="bower_components/kendo-ui/styles/kendo.metro.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/app.css" />
+    <!-- Le Favicons
+    ================================================== -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <!-- Le Javascripts
+    ================================================== -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">Esta usando un explorador
+            <strong>muy viejo</strong>. Por favor
+            <a href="http://browsehappy.com/">actualice
+            su explorador</a>.</p>
+        <![endif]-->
+
+    <div class="off-canvas-wrap">
+        <div class="inner-wrap">
+
+            <!-- My Page wrapper
+            ================================================== -->
+            <div id="page-wrap">
+
+                <!-- Header
+                ================================================== -->
+                <header id="header" class="tab-bar fixed">
+
+                    <!-- small screens -->
+                    <div class="hide-for-large-up">
+                        <section class="left-small">
+                            <a class="left-off-canvas-toggle menu-icon">
+                                <span></span>
+                            </a>
+                        </section>
+                        <section class="right-small">
+                            <a class="right-off-canvas-toggle menu-icon">
+                                <span></span>
+                            </a>
+                        </section>
+                    </div>
+
+                    <!-- normal screens -->
+                    <div class="logo-area clearfix">
+                        <a href="#" class="logo"></a>
+                    </div>
+                    <!-- //logo-area-->
+
+                    <div class="tools-bar show-for-large-up">
+                        <!-- left -->
+                        <div class="left">
+                            <a href="#menu" class="icon-toolsbar"><i class="glyphicons show_lines"></i></a>
+                        </div>
+                        <!-- right -->
+                        <div class="right">
+                            <a href="#" data-dropdown="header-dropdown" data-options="is_hover:true">
+                                <strong>Hola</strong>, Maria &raquo;
+                            </a>
+                            <ul id="header-dropdown" class="tiny f-dropdown" data-dropdown-content>
+                                <li><a href="#"><i class="glyphicons old_man"></i> Mi Perfil</a>
+                                </li>
+                                <li><a href="#"><i class="glyphicons cogwheel"></i> Mis preferncias </a>
+                                </li>
+                                <li><a href="#"><i class="glyphicons bookmark"></i> Mis Sitios</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="#"><i class="glyphicons power"></i> Salir </a>
+                                </li>
+                            </ul>
+                            <a href="#" class="nav-collapse avatar-header">
+                                <img alt="" src="img/profiles/avatar.jpg" height="34" width="34" class="circle">
+                                <span class="badge">3</span>
+                            </a>
+                            <span class="h-seperate"></span>
+                            <a class="right-off-canvas-toggle">
+                                <i class="glyphicons parents"></i>
+                            </a>
+                            <span class="h-seperate"></span>
+                            <a data-original-title="Full Screen" href="#" class="fullscreen" data-toggle="tooltip" title="" data-container="body" data-placement="left">
+                                <i class="glyphicons resize_full"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <!-- //tools-bar-->
+                </header>
+
+                <!-- Sidebar
+                ================================================== -->
+                <aside id="sidebar">
+
+
+
+                    <div class="left-off-canvas-menu">
+
+                        <div class="avatar">
+                            <div class="avatar-image">
+                                <img src="img/profiles/avatar.jpg" class="circle" alt="" data-src="img/profiles/avatar.jpg" data-src-retina="img/profiles/avatar2x.jpg" />
+                            </div>
+                            <div class="avatar-detail">
+                                <p>Maria Rabelero</p>
+                                <p><a href="#"><i class="glyphicons building"></i> Taikishi Rio</a>
+                                </p>
+                                <!-- <span>12:00 PM</span> -->
+                                <span><i class="glyphicons group"></i> &nbsp;Gerente</span>
+                            </div>
+                            <ul class=" button-group avatar-link">
+                                <li><a href="#" class="small button" title="Portfolio"><i class="glyphicons briefcase"></i></a>
+                                </li>
+                                <li><a href="#" class="small button" id="notificacion" title="notificacion"><i class="glyphicons bell"></i>
+                                    <em class="green active"></em>
+</a>
+                                </li>
+                                <li><a href="#" class="small button" id="mensajes" title="Messages"><i class="glyphicons envelope"></i>
+                                    <em class="red"></em>
+                                    </a>
+                                </li>
+                                <li><a href="#" class="small button right-off-canvas-toggle" title="Contact List"><i class="glyphicons book_open"></i></a>
+                                </li>
+                            </ul>
+
+
+                        </div>
+                        <!-- /Avatar -->
+
+                        <div id="notificacion-modal">
+                            <div class="armchair">
+                                <img src="img/profiles/d.jpg" alt="Artek Alvar Aalto - Armchair 402" />Artek Alvar Aalto - Armchair 402</div>
+                            <p>Alvar Aalto is one of the greatest names in modern architecture and design. Glassblowers at the iittala factory still meticulously handcraft the legendary vases that are variations on one theme, fluid organic shapes that let the end user decide the use. Interpretations of the shape in new colors and materials add to the growing Alvar Aalto Collection that remains true to his original design.</p>
+
+                            <p>Born Hugo Alvar Henrik Aalto (February 3, 1898 - May 11, 1976) in Kuortane, Finland, was noted for his humanistic approach to modernism. He studied architecture at the Helsinki University of Technology from 1916 to 1921. In 1924 he married architect Aino Marsio.</p>
+
+                            <p>Alvar Aalto was one of the first and most influential architects of the Scandinavian modern movement, and a member of the Congres Internationaux d'Architecture Moderne. Major architectural works include the Finlandia Hall in Helsinki, Finland, and the campus of Helsinki University of Technology.</p>
+
+                            <p>Source: <a href="http://www.aalto.com/about-alvar-aalto.html" title="About Alvar Aalto">www.aalto.com</a>
+                            </p>
+                        </div>
+                        <div id="mensajes-modal">
+                            <div class="armchair">
+                                <img src="img/profiles/h.jpg" alt="Artek Alvar Aalto - Armchair 402" />Artek Alvar Aalto - Armchair 402</div>
+                            <p>Alvar Aalto is one of the greatest names in modern architecture and design. Glassblowers at the iittala factory still meticulously handcraft the legendary vases that are variations on one theme, fluid organic shapes that let the end user decide the use. Interpretations of the shape in new colors and materials add to the growing Alvar Aalto Collection that remains true to his original design.</p>
+
+                            <p>Born Hugo Alvar Henrik Aalto (February 3, 1898 - May 11, 1976) in Kuortane, Finland, was noted for his humanistic approach to modernism. He studied architecture at the Helsinki University of Technology from 1916 to 1921. In 1924 he married architect Aino Marsio.</p>
+
+                            <p>Alvar Aalto was one of the first and most influential architects of the Scandinavian modern movement, and a member of the Congres Internationaux d'Architecture Moderne. Major architectural works include the Finlandia Hall in Helsinki, Finland, and the campus of Helsinki University of Technology.</p>
+
+                            <p>Source: <a href="http://www.aalto.com/about-alvar-aalto.html" title="About Alvar Aalto">www.aalto.com</a>
+                            </p>
+                        </div>
+                        <!-- /modals -->
+
+                        <nav>
+                            <ul id="nav">
+                                <li>
+                                    <i class="glyphicons shopping_cart"></i> Ordenes
+                                    <ul>
+                                        <li> <a href="typography.html"> Ver Ordenes </a>
+                                        </li>
+                                        <li> <a href="messages_notifications.html"> Nueva Orden </a>
+                                        </li>
+                                        <li> <a href="icons.html"> Ordenes por suplir </a>
+                                        </li>
+                                        <li> <a href="buttons.html"> Buscar Orden </a>
+                                        </li>
+                                        <li> <a href="tabs_accordian.html"> Reportes </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="">
+                                    <i class="glyphicons cutlery"></i> Productos
+                                    <ul>
+                                        <li> <a href="form_elements.html"> Ver Productos </a>
+                                        </li>
+                                        <li> <a href="form_validations.html"> Dar de alta producto </a>
+                                        </li>
+                                        <li> <a href="form_validations.html"> Modificar producto </a>
+                                        </li>
+                                        <li> <a href="form_validations.html"> Categorias </a>
+                                        </li>
+                                        <li> <a href="form_validations.html"> Reportes de ventas </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <i class="glyphicons cargo"></i> Almacen
+                                    <ul>
+                                        <li> <a href="tables.html"> Ver inventario </a>
+                                        </li>
+                                        <li> <a href="datatables.html"> Ver Faltantes </a>
+                                        </li>
+                                        <li> <a href="datatables.html"> Precios </a>
+                                        </li>
+                                        <li> <a href="datatables.html"> Reportes </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <i class="glyphicons parents"></i> Usuarios
+                                    <ul>
+                                        <li> <a href="tables.html"> Ver usuarios </a>
+                                        </li>
+                                        <li> <a href="datatables.html"> Crear usuario  </a>
+                                        </li>
+                                        <li> <a href="datatables.html"> Conectados </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="glyphicons cogwheel"></i> Configuracion</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- /navigation -->
+                    </div>
+                    <!-- /left-off-canvas-menu -->
+
+                    <div class="right-off-canvas-menu">
+                        <div id="chat-widget">
+
+                            <div class="chat-search">
+                                <input type="text" placeholder="search">
+                            </div>
+                            <!-- /Search -->
+
+                            <div class="chat-group">
+                                <div class="chat-title">Restaurante</div>
+                                <div class="chat-profile ">
+                                    <div class="chat-pic">
+                                        <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg">
+                                    </div>
+                                    <div class="chat-user">
+                                        <div class="user-name">
+                                            Janet Padilla
+                                        </div>
+                                        <div class="user-more">
+                                            En junta
+                                        </div>
+                                    </div>
+                                    <div class="chat-count">
+                                    </div>
+                                    <div class="chat-status orange">
+                                        <i class="glyphicons comments"></i>
+                                    </div>
+                                </div>
+                                <!-- /grpup -->
+
+                                <div class="chat-group">
+                                    <div class="chat-title">Gerencia</div>
+
+                                    <div class="chat-profile ">
+                                        <div class="chat-pic">
+                                            <img src="img/profiles/h.jpg" alt="" data-src="img/profiles/h.jpg" data-src-retina="img/profiles/h2x.jpg">
+                                        </div>
+                                        <div class="chat-user">
+                                            <div class="user-name">
+                                                David Perez
+                                            </div>
+                                            <div class="user-more">
+                                                En hora de comida. hacinedo el corte
+                                            </div>
+                                        </div>
+                                        <div class="chat-count">
+                                        </div>
+                                        <div class="chat-status red">
+                                            <i class="glyphicons comments"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="chat-profile active">
+                                        <div class="chat-pic">
+                                            <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg">
+                                        </div>
+                                        <div class="chat-user">
+                                            <div class="user-name">
+                                                Janet Padilla
+                                            </div>
+                                            <div class="user-more">
+                                                En hora de comida
+                                            </div>
+                                        </div>
+                                        <div class="chat-count">
+                                        </div>
+                                        <div class="chat-status green">
+                                            <i class="glyphicons comments"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- /group -->
+
+                            <div class="chat-group">
+                                <div class="chat-title">Comisariato</div>
+
+                                <div class="chat-profile ">
+                                    <div class="chat-pic">
+                                        <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg">
+                                    </div>
+                                    <div class="chat-user">
+                                        <div class="user-name">
+                                            David Perez
+                                        </div>
+                                        <div class="user-more">
+                                            En hora de comida
+                                        </div>
+                                    </div>
+                                    <div class="chat-count">
+                                    </div>
+                                    <div class="chat-status red">
+                                        <i class="glyphicons comments"></i>
+                                    </div>
+                                </div>
+
+                                <div class="chat-profile active">
+                                    <div class="chat-pic">
+                                        <img src="img/profiles/d.jpg" alt="" data-src="img/profiles/d.jpg" data-src-retina="img/profiles/d2x.jpg">
+                                    </div>
+                                    <div class="chat-user">
+                                        <div class="user-name">
+                                            Janet Padilla
+                                        </div>
+                                        <div class="user-more">
+                                            Hola
+                                        </div>
+                                    </div>
+                                    <div class="chat-count">
+                                        <span class="round alert label">3</span>
+                                    </div>
+                                    <div class="chat-status green">
+                                        <i class="glyphicons comments"></i>
+                                    </div>
+                                </div>
+
+                                <div class="chat-profile active">
+                                    <div class="chat-pic">
+                                        <img src="img/profiles/c.jpg" alt="" data-src="img/profiles/c.jpg" data-src-retina="img/profiles/c2x.jpg">
+                                    </div>
+                                    <div class="chat-user">
+                                        <div class="user-name">
+                                            Janet Padilla
+                                        </div>
+                                        <div class="user-more">
+                                            ...
+                                        </div>
+                                    </div>
+                                    <div class="chat-count">
+                                        <span class="round alert label">3</span>
+                                    </div>
+                                    <div class="chat-status green">
+                                        <i class="glyphicons comments"></i>
+                                    </div>
+                                </div>
+
+                                <div class="chat-profile ">
+                                    <div class="chat-pic">
+                                        <img src="img/profiles/h.jpg" alt="" data-src="img/profiles/h.jpg" data-src-retina="img/profiles/h2x.jpg">
+                                    </div>
+                                    <div class="chat-user">
+                                        <div class="user-name">
+                                            David Perez
+                                        </div>
+                                        <div class="user-more">
+                                            Trabajando
+                                        </div>
+                                    </div>
+                                    <div class="chat-count">
+                                    </div>
+                                    <div class="chat-status orange">
+                                        <i class="glyphicons comments"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /group -->
+
+                        </div>
+                        <!-- chat-widget -->
+                    </div>
+
+                </aside>
+
+                <!-- Main section
+                ================================================== -->
+                <div id="main-content">
+
+                    <!-- Breadcrumb Section -->
+                    <ul class="breadcrumbs">
+                        <li><a href="#">Home</a>
+                        </li>
+                        <li><a href="#">Features</a>
+                        </li>
+                        <li class="unavailable"><a href="#">Gene Splicing</a>
+                        </li>
+                        <li class="current"><a href="#">Cloning</a>
+                        </li>
+                    </ul>
+                    <!-- /breadcrumb-->
+
+
+                    <div class="row">
+                        <div class="large-12 small-12 small-centered large-centered columns">
+
+                        <!-- Page header-->
+                            <div class="page-title"><i class="glyphicons paperclip"></i>
+                                <h3>Nueva
+                                    <span class="semi-bold">orden</span>
+                                </h3>
+                            </div>
+
+                            <!-- Page content-->
+                            <div class="grid simple corner-flip">
+                                <div class="grid-title no-border ">
+                                    <h3>
+                                        <span class="semi-bold">Simple</span>Elemets
+                                        <br />
+                                         <span class="secondary radius label  color">iCheck for Bootstrap</span>
+                                    </h3>
+                                    <div class="tools">
+                                        <a href="javascript:;" class="collapse"></a>
+                                        <a href="#grid-config" data-toggle="modal" class="config"></a>
+                                        <a href="javascript:;" class="reload"></a>
+                                        <a href="javascript:;" class="remove"></a>
+                                    </div>
+                                    <div class="flip"></div>
+                                </div>
+                                <div class="grid-body no-border">
+                                    <br>
+                                    <div class="row">
+                                        <div class="large-12 small-12 small-centered large-centered  columns">
+
+                                            <div id="people">
+                                                <input checked type="checkbox" id="alex" value="1">
+                                                <input checked type="checkbox" id="bob" value="2">
+                                                <input type="checkbox" id="charlie" value="3">
+                                            </div>
+                                            <div id="scheduler"></div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /main-content  -->
+            </div>
+            <!-- /page-wrap -->
+
+            <a class="exit-off-canvas"></a>
+        </div>
+        <!-- /inner-wrap -->
+    </div>
+    <!-- /off-canvas-wrap -->
+
+
+    <!-- Le Javascripts
+    ================================================== -->
+    <!-- Core JS Framework-->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.offcanvas.js"></script>
+    <script src="bower_components/foundation/js/foundation/foundation.dropdown.js"></script>
+    <script src="bower_components/kendo-ui/js/kendo.web.min.js"></script>
+    <script src="bower_components/kendo-ui/js/cultures/kendo.culture.es-MX.min.js"></script>
+    <!-- Core JS Plugins
+   <script src="bower_components/jquery.breakpoints/breakpoints.js"></script>-->
+    <script src="bower_components/pace/pace.min.js"></script>
+    <script src="bower_components/jScrollPane/script/jquery.jscrollpane.min.js"></script>
+    <script src="bower_components/jScrollPane/script/jquery.mousewheel.js"></script>
+    <!-- Page Level JS -->
+    <script src="js/app.js"></script>
+    <script src="js/test.js"></script>
+
+
+</body>
+
+</html>

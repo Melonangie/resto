@@ -13,10 +13,12 @@
 /taikishi-admin/composer.lock
 /taikishi-admin/.env.local.php
 /taikishi-admin/.env.php
-/letema/css/*
-/letema/bower_components/*
-/letema/node_modules/*
-/letema/.bowerr
+/letema - Foundation/bower_components/*
+/letema - Foundation/node_modules/*
+/letema - Foundation/.bowerr
+/eltema-Twitter Bootstrap/bower_components/*
+/eltema-Twitter Bootstrap/node_modules/*
+/eltema-Twitter Bootstrap/.bowerr
 *.DS_Store
 .DS_Store
 Thumbs.db
