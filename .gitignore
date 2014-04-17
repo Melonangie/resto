@@ -1,22 +1,14 @@
-/Documentacion/db schema/queries
-/Documentacion/Modelo/Dominio/*
-/Documentacion/Modelo/Documentacion del modelo/*
-/Documentacion/Modelo/Requerimientos/*
-/Documentacion/x documentar/*
 /Documentacion/Copia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
 /Documentacion/~$pia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
 /Documentacion/Backup of Rabelero (TRABAJO RECEPCIONAL).wbk
 /Documentacion/~$belero (TRABAJO RECEPCIONAL).docx
+/taikishi-admin/nbproject/private/*
 /taikishi-admin/bootstrap/compiled.php
 /taikishi-admin/vendor/*
 /taikishi-admin/composer.phar
 /taikishi-admin/composer.lock
 /taikishi-admin/.env.local.php
 /taikishi-admin/.env.php
-/letema-Foundation/node_modules/*
-/letema-Foundation/.bowerr
-/eltema-TwitterBootstrap/node_modules/*
-/eltema-TwitterBootstrap/.bowerr
 *.DS_Store
 .DS_Store
 Thumbs.db
