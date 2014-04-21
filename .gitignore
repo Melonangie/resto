@@ -1,20 +1,19 @@
+# Documentacion
 /Documentacion/Copia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
 /Documentacion/~$pia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
 /Documentacion/Backup of Rabelero (TRABAJO RECEPCIONAL).wbk
 /Documentacion/~$belero (TRABAJO RECEPCIONAL).docx
-/taikishi-admin/nbproject/private/*
-/taikishi-admin/bootstrap/compiled.php
-/taikishi-admin/vendor/*
-/taikishi-admin/composer.phar
-/taikishi-admin/composer.lock
-/taikishi-admin/.env.local.php
-/taikishi-admin/.env.php
-*.DS_Store
+
+# Laravel Framework
+/Backend/netbeans/Backend/nbproject/private/
+/Backend/nbproject/private/
+/Backend/bootstrap/compiled.php
+/Backend/vendor/
+/Backend/composer.phar
+/Backend/composer.lock
+/Backend/.env.*.php
+/Backend/.env.
+
+# OS
 .DS_Store
 Thumbs.db
-*.wbk
-*.tiff
-composer.phar
-composer.lock
-.env.local.php
-.env.php
