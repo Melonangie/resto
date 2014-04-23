@@ -95,8 +95,8 @@ return array(
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
          // Development
-        // 'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-        // 'Way\Generators\GeneratorsServiceProvider'
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Way\Generators\GeneratorsServiceProvider'
 
     ),
 

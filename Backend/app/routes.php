@@ -16,5 +16,17 @@ Route::get('/', function () {
 });
 
 Route::group(array('prefix' => 'v1', 'before' => 'api.auth|api.limit'), function () {
-
+    Route::resource('rols', 'RolsController');
+    Route::resource('users', 'UsersController');
+    Route::resource('companies', 'CompaniesController');
+    Route::resource('positions', 'PositionsController');
+    Route::resource('departments', 'DepartmentsController');
+    Route::resource('employees', 'EmployeesController');
+    Route::resource('people', 'PeopleController');
+    Route::resource('units', 'UnitsController');
+    Route::resource('categories', 'CategoriesController');
+    Route::resource('types', 'TypesController');
+    Route::resource('items', 'ItemsController');
+    Route::resource('recipes', 'RecipesController');
+    Route::resource('ingredients', 'IngredientsController');
 });
