@@ -1,20 +1,16 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.3.0"
-use Faker\Factory as Faker;
+class TypesTableSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('types')->delete();
 
-class TypesTableSeeder extends Seeder {
-
-	public function run()
-	{
-		$faker = Faker::create();
-
-		foreach(range(1, 10) as $index)
-		{
-			Type::create([
-
-			]);
-		}
-	}
-
+        DB::table('types')->insert([
+            array('tipo' => 'verdura'),
+            array('tipo' => 'ingrediente'),
+            array('tipo' => 'marisco'),
+            array('tipo' => 'salsa'),
+            ]);
+    }
 }

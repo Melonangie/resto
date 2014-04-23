@@ -1,107 +1,104 @@
 <?php
 
-class EmployeesController extends \BaseController {
+class EmployeesController extends \BaseController
+{
+    /**
+     * Display a listing of employees
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $employees = Employee::all();
 
-	/**
-	 * Display a listing of employees
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$employees = Employee::all();
+        return View::make('employees.index', compact('employees'));
+    }
 
-		return View::make('employees.index', compact('employees'));
-	}
+    /**
+     * Show the form for creating a new employee
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return View::make('employees.create');
+    }
 
-	/**
-	 * Show the form for creating a new employee
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return View::make('employees.create');
-	}
+    /**
+     * Store a newly created employee in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        $validator = Validator::make($data = Input::all(), Employee::$rules);
 
-	/**
-	 * Store a newly created employee in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		$validator = Validator::make($data = Input::all(), Employee::$rules);
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
+        Employee::create($data);
 
-		Employee::create($data);
+        return Redirect::route('employees.index');
+    }
 
-		return Redirect::route('employees.index');
-	}
+    /**
+     * Display the specified employee.
+     *
+     * @param  int      $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $employee = Employee::findOrFail($id);
 
-	/**
-	 * Display the specified employee.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$employee = Employee::findOrFail($id);
+        return View::make('employees.show', compact('employee'));
+    }
 
-		return View::make('employees.show', compact('employee'));
-	}
+    /**
+     * Show the form for editing the specified employee.
+     *
+     * @param  int      $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $employee = Employee::find($id);
 
-	/**
-	 * Show the form for editing the specified employee.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$employee = Employee::find($id);
+        return View::make('employees.edit', compact('employee'));
+    }
 
-		return View::make('employees.edit', compact('employee'));
-	}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int      $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        $employee = Employee::findOrFail($id);
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		$employee = Employee::findOrFail($id);
+        $validator = Validator::make($data = Input::all(), Employee::$rules);
 
-		$validator = Validator::make($data = Input::all(), Employee::$rules);
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
+        $employee->update($data);
 
-		$employee->update($data);
+        return Redirect::route('employees.index');
+    }
 
-		return Redirect::route('employees.index');
-	}
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int      $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        Employee::destroy($id);
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		Employee::destroy($id);
-
-		return Redirect::route('employees.index');
-	}
-
+        return Redirect::route('employees.index');
+    }
 }

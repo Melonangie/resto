@@ -1,21 +1,20 @@
 <?php
 
-class Ingredient extends Eloquent {
-
-	/**
+class Ingredient extends Eloquent
+{
+    /**
      * Add your validation rules here.
-     * 
+     *
      * @var array
      */
-	public static $rules = [
-		// 'title' => 'required'
-	];
+    public static $rules = [
+        // 'title' => 'required'
+    ];
 
-	/**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-	protected $fillable = [];
-
+    protected $fillable = [];
 }

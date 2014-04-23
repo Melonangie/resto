@@ -1,20 +1,14 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.3.0"
-use Faker\Factory as Faker;
+class UnitsTableSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('units')->delete();
 
-class UnitsTableSeeder extends Seeder {
-
-	public function run()
-	{
-		$faker = Faker::create();
-
-		foreach(range(1, 10) as $index)
-		{
-			Unit::create([
-
-			]);
-		}
-	}
-
+        Unit::create(['unidad' => 'litro', 'medida' => 'lt']);
+        Unit::create(['unidad' => 'kilo', 'medida' => 'kg']);
+        Unit::create(['unidad' => 'gramo', 'medida' => 'gr']);
+        Unit::create(['unidad' => 'onza', 'medida' => 'oz']);
+    }
 }

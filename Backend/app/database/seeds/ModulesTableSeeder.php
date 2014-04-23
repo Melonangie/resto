@@ -1,20 +1,18 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.3.0"
-use Faker\Factory as Faker;
+class ModulesTableSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('modules')->delete();
 
-class ModulesTableSeeder extends Seeder {
-
-	public function run()
-	{
-		$faker = Faker::create();
-
-		foreach(range(1, 10) as $index)
-		{
-			Module::create([
-
-			]);
-		}
-	}
-
+        DB::table('modules')->insert([
+            array('modulo' => 'Mercancias', 'uri' => 'items'),
+            array('modulo' => 'Recetas', 'uri' => 'recipes'),
+            array('modulo' => 'Permiso', 'uri' => 'rols'),
+            array('modulo' => 'Usuarios', 'uri' => 'users'),
+            array('modulo' => 'Empresas', 'uri' => 'companies'),
+            array('modulo' => 'Empleados', 'uri' => 'employees'),
+            ]);
+    }
 }

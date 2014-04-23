@@ -22,7 +22,7 @@ class CreateCompaniesTable extends Migration
             $table->string('pais', 30)->nullable();
             $table->string('cp', 10)->nullable();
             $table->string('rfc', 50)->unique()->nullable();
-            $table->string('web', 60)->nullable();
+            $table->string('url', 60)->nullable();
             $table->string('logo')->nullable();
             $table->string('giro')->nullable();
             $table->string('descripcion')->nullable();

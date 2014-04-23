@@ -3,18 +3,20 @@
 // Composer: "fzaninotto/faker": "v1.3.0"
 use Faker\Factory as Faker;
 
-class PositionsTableSeeder extends Seeder {
+class PositionsTableSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('positions')->delete();
 
-	public function run()
-	{
-		$faker = Faker::create();
-
-		foreach(range(1, 10) as $index)
-		{
-			Position::create([
-
-			]);
-		}
-	}
+        DB::table('positions')->insert([
+            array('puesto' => 'cajero'),
+            array('puesto' => 'auxiliar'),
+            array('puesto' => 'mesero'),
+            array('puesto' => 'cocinero'),
+            array('puesto' => 'gerente'),
+            array('puesto' => 'administrativo'),
+            ]);
+    }
 
 }

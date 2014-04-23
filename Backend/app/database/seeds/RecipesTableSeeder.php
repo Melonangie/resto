@@ -1,20 +1,16 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.3.0"
-use Faker\Factory as Faker;
+class RecipesTableSeeder extends Seeder
+{
+    public function run()
+    {
+        DB::table('recipes')->delete();
 
-class RecipesTableSeeder extends Seeder {
-
-	public function run()
-	{
-		$faker = Faker::create();
-
-		foreach(range(1, 10) as $index)
-		{
-			Recipe::create([
-
-			]);
-		}
-	}
-
+        foreach (range(1, 10) as $index) {
+            Recipe::create([
+                'receta' => 'receta'.$index,
+                'costo' => rand(100, 99999)/100,
+            ]);
+        }
+    }
 }

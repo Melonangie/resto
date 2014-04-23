@@ -4,7 +4,10 @@
 // Event Listeners
 // ------------------------------------------------------------
 
-User::creating(function($user)
-{
-	$user->api_key = User::createApiKey();
+User::creating(function ($user) {
+    $user->api_key = User::createApiKey();
+});
+
+Item::creating(function ($user) {
+    $item->codigo = User::createApiKey();
 });
