@@ -16,7 +16,7 @@ class CreateRecipesTable extends Migration
             $table->increments('id');
             $table->string('receta', 100)->unique();
             $table->decimal('costo', 4, 2)->nullable();
-            $table->text('descripcion')->nullable();
+            $table->string('descripcion')->nullable();
             $table->timestamps();
         });
     }

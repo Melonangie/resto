@@ -26,6 +26,8 @@ class User extends Eloquent implements UserInterface
     public static $rules = [
         'username' => 'required|alpha_num|between:6,50|unique',
         'password' => 'required|min:6',
+        'employee_id' => 'required|integer',
+        'rol_id' => 'required|integer',
     ];
 
     /**
@@ -33,16 +35,16 @@ class User extends Eloquent implements UserInterface
      *
      * @var array
      */
-    protected $fillable = ['username', 'password'];
+    protected $fillable = ['username', 'password', 'employee_id', 'rol_id'];
 
     /**
-     * Lists relationship.
+     * User relationship.
      *
-     * @return Illuminate\Database\Eloquent\Relations\HasOne
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function userrol()
+    public function employee()
     {
-        return $this->hasOne('UserRol');
+        return $this->belongsTo('Employee');
     }
 
     /**

@@ -7,10 +7,10 @@ class TypesTableSeeder extends Seeder
         DB::table('types')->delete();
 
         DB::table('types')->insert([
-            array('tipo' => 'verdura'),
-            array('tipo' => 'ingrediente'),
-            array('tipo' => 'marisco'),
-            array('tipo' => 'salsa'),
+            array('tipo' => 'verdura', 'abreviacion'=> 've'),
+            array('tipo' => 'ingrediente', 'abreviacion'=> 'in'),
+            array('tipo' => 'marisco', 'abreviacion'=> 'ma'),
+            array('tipo' => 'salsa', 'abreviacion'=> 'sa'),
             ]);
     }
 }

@@ -25,8 +25,8 @@ class CreateEmployeesTable extends Migration
             $table->string('materno', 60);
             $table->string('direccion');
             $table->string('email', 100)->nullable();
-            $table->string('telefono_casa', 13)->nullable();
-            $table->string('telefono_oficina', 13)->nullable();
+            $table->string('telefono_casa', 20)->nullable();
+            $table->string('telefono_oficina', 20)->nullable();
             $table->string('extension', 6)->nullable();
             $table->string('foto')->nullable();
             $table->string('curp', 60)->unique()->nullable();

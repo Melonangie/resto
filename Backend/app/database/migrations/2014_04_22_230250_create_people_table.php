@@ -20,12 +20,13 @@ class CreatePeopleTable extends Migration
             $table->string('nombre', 60);
             $table->string('paterno', 60);
             $table->string('materno', 60);
-            $table->string('telefono', 13)->nullable();;
+            $table->string('direccion');
+            $table->string('email', 100)->nullable();
+            $table->string('telefono', 13)->nullable();
             $table->string('extension', 6)->nullable();
             $table->string('celular', 20)->nullable();
             $table->string('radio', 20)->nullable();
             $table->string('fax', 20)->nullable();
-            $table->string('email', 100)->nullable();
             $table->timestamps();
         });
     }
