@@ -3,18 +3,31 @@
 class Ingrediente extends Eloquent
 {
     /**
-     * Add your validation rules here.
+     * La tabla de la base de datos usada por el modelo.
+     *
+     * @var string
+     */
+    protected $table = 'ingredientes';
+
+    /**
+     * Reglas de validacion.
      *
      * @var array
      */
     public static $rules = [
-        // 'title' => 'required'
+        'receta_id' => 'integer',
+        'articulo_id' => 'integer',
+        'cantidad' => 'regex:/[\d]{1,4},[\d]{1,2}/',
     ];
 
     /**
-     * The attributes that are mass assignable.
+     * Los atributos que son asignable en masa.
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'recipe_id',
+        'item_id',
+        'cantidad'
+    ];
 }

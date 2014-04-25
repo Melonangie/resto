@@ -3,18 +3,42 @@
 class Unidad extends Eloquent
 {
     /**
-     * Add your validation rules here.
+     * La tabla de la base de datos usada por el modelo.
+     *
+     * @var string
+     */
+    protected $table = 'unidades';
+
+    /**
+     * Reglas de validacion.
      *
      * @var array
      */
     public static $rules = [
-        // 'title' => 'required'
+        'unidad' => 'required|alpha_num|between:1,50|unique',
+        'medida' => 'required|alpha|max:5|unique',
+        'descripcion' => 'alpha_num',
     ];
 
     /**
-     * The attributes that are mass assignable.
+     * Los atributos que son asignable en masa.
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'unidad',
+        'medida',
+        'equivalencia',
+        'descripcion'
+    ];
+
+    /**
+     * Relacion Unidad - Articulo.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function articulo()
+    {
+        return $this->hasOne('Articulo');
+    }
 }

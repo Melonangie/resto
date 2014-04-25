@@ -3,12 +3,20 @@
 class Modulo extends Eloquent
 {
     /**
+     * La tabla de la base de datos usada por el modelo.
+     *
+     * @var string
+     */
+    protected $table = 'modulos';
+
+    /**
      * Add your validation rules here.
      *
      * @var array
      */
     public static $rules = [
-        // 'title' => 'required'
+        'modulo' => 'required|alpha_num|between:6,60',
+        'uri' => 'alpha_dash',
     ];
 
     /**
@@ -16,5 +24,5 @@ class Modulo extends Eloquent
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $guarded = array('*');
 }

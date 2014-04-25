@@ -6,28 +6,48 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class User extends Eloquent implements UserInterface, RemindableInterface
 {
     /**
-     * The database table used by the model.
+     * La tabla de la base de datos usada por el modelo.
      *
      * @var string
      */
     protected $table = 'users';
 
     /**
-     * The attributes excluded from the model's JSON form.
+     * Reglas de validacion.
      *
      * @var array
      */
-    protected $hidden = array('password', 'api_key');
+    public static $rules = [
+        'username' => 'required|alpha_num|between:6,50|unique',
+        'password' => 'required|min:6',
+        'empleado_id' => 'required|integer',
+        'rol_id' => 'required|integer',
+    ];
 
     /**
-     * The attributes that are mass assignable.
+     * Los atributos que no son visibles en el JSON del modelo.
      *
      * @var array
      */
-    protected $fillable = array('username', 'password');
+    protected $hidden = [
+        'password',
+        'api_key'
+    ];
 
     /**
-     * Get the unique identifier for the user.
+     * Los atributos que son asignable en masa.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'username',
+        'password',
+        'empleado_id',
+        'rol_id'
+    ];
+
+    /**
+     * Identificador unico del usuario.
      *
      * @return mixed
      */
@@ -37,7 +57,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface
     }
 
     /**
-     * Get the password for the user.
+     * Clave del usuario.
      *
      * @return string
      */
@@ -99,7 +119,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface
     }
 
     /**
-     * Generate a random, unique API key.
+     * Genera una llave API unica.
      *
      * @return string
      */
