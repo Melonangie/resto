@@ -16,7 +16,7 @@ class Tipo extends Eloquent
      */
     public static $rules = [
         'tipo' => 'required|alpha|between:3,50',
-        'abreviacion|unique' => 'required|alpha|size:2',
+        'abreviacion' => 'required|alpha|size:3|unique',
         'descripcion' => 'alpha_num',
     ];
 
@@ -32,12 +32,12 @@ class Tipo extends Eloquent
     ];
 
     /**
-     * Relacion Tipo - Articulo.
+     * Relacion Tipo - Articulos.
      *
      * @return Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function articulo()
+    public function articulos()
     {
-        return $this->hasOne('Articulo');
+        return $this->hasMany('Articulo');
     }
 }

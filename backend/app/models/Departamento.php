@@ -30,12 +30,12 @@ class Departamento extends Eloquent
     ];
 
     /**
-     * Relacion Departamento - Empleados.
+     * Relacion Departamento - Empleado.
      *
-     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function empleados()
+    public function empleado()
     {
-        return $this->belongsTo('empleados');
+        return $this->hasMany('Empleado');
     }
 }

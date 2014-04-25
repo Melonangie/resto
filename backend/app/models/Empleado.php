@@ -63,4 +63,34 @@ class Empleado extends Eloquent
     {
         return $this->hasOne('User');
     }
+
+    /**
+     * Relacion Empleado - Puesto.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function puesto()
+    {
+        return $this->belongsTo('Puesto');
+    }
+
+    /**
+     * Relacion Empleado - Departamento.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function departamento()
+    {
+        return $this->belongsTo('Departamento');
+    }
+
+    /**
+     * Relacion Empleado - Empresa.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function empresa()
+    {
+        return $this->belongsTo('Empresa');
+    }
 }

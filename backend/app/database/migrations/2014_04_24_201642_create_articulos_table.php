@@ -16,10 +16,10 @@ class CreateArticulosTable extends Migration
             $table->increments('id');
             $table->string('nombre', 60);
             $table->string('codigo', 20)->unique()->nullable();
-            $table->integer('tipo_id')->unsigned()->index();
-            $table->foreign('tipo_id')->references('id')->on('tipos')->onDelete('cascade')->on_update('cascade');
             $table->integer('catalogo_id')->unsigned()->index();
             $table->foreign('catalogo_id')->references('id')->on('catalogos')->onDelete('cascade')->on_update('cascade');
+            $table->integer('tipo_id')->unsigned()->index();
+            $table->foreign('tipo_id')->references('id')->on('tipos')->onDelete('cascade')->on_update('cascade');
             $table->integer('unidad_id')->unsigned()->index();
             $table->foreign('unidad_id')->references('id')->on('unidades')->onDelete('cascade')->on_update('cascade');
             $table->integer('cantidad_por_unidad');

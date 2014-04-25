@@ -38,4 +38,14 @@ class Rol extends Eloquent
     {
         return $this->hasMany('User');
     }
+
+    /**
+     * Relacion Rol - Modulo.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function modulo()
+    {
+        return $this->belongsToMany('Modulo');
+    }
 }

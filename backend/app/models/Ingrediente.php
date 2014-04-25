@@ -15,9 +15,9 @@ class Ingrediente extends Eloquent
      * @var array
      */
     public static $rules = [
-        'receta_id' => 'integer',
-        'articulo_id' => 'integer',
-        'cantidad' => 'regex:/[\d]{1,4},[\d]{1,2}/',
+        'receta_id' => 'required|integer',
+        'articulo_id' => 'required|integer',
+        'cantidad' => 'required|regex:/[\d]{1,4},[\d]{1,2}/',
     ];
 
     /**

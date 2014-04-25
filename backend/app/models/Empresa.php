@@ -52,10 +52,20 @@ class Empresa extends Eloquent
     /**
      * Relacion Empresa - Empleados.
      *
-     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function empleados()
     {
-        return $this->belongsTo('Empleado');
+        return $this->hasMany('Empleado');
+    }
+
+    /**
+     * Relacion Empresa - Persona.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function personas()
+    {
+        return $this->hasMany('Persona');
     }
 }

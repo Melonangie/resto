@@ -32,12 +32,34 @@ class Receta extends Eloquent
     ];
 
     /**
+     * Relacion Receta - Ingredientes.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function ingredientes()
+    {
+        return $this->hasMany('Ingrediente');
+    }
+
+    /**
      * Relacion Receta - Articulos.
      *
-     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function articulos()
     {
         return $this->belongsToMany('Articulo');
+    }
+
+    /**
+     * Genera un codigo unico para una receta.
+     *
+     * @return string
+     */
+    public static function generateCodigo($data)
+    {
+        $tipo = DB::table('tipos')->where('id', $data['tipo_id'])->pluck('abreviacion');
+
+        return 'rec-'.$tipo.'-'.sprintf('%04d', $data['id']);
     }
 }

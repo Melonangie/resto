@@ -33,12 +33,12 @@ class Unidad extends Eloquent
     ];
 
     /**
-     * Relacion Unidad - Articulo.
+     * Relacion Unidad - Articulos.
      *
-     * @return Illuminate\Database\Eloquent\Relations\HasOne
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function articulo()
+    public function articulos()
     {
-        return $this->hasOne('Articulo');
+        return $this->hasMany('Articulo');
     }
 }

@@ -25,4 +25,14 @@ class Modulo extends Eloquent
      * @var array
      */
     protected $guarded = array('*');
+
+    /**
+     * Relacion Modulo - Roles.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles()
+    {
+        return $this->belongsToMany('Rol');
+    }
 }

@@ -7,7 +7,7 @@ class Puesto extends Eloquent
      *
      * @var string
      */
-    protected $table = 'articulos';
+    protected $table = 'puestos';
 
     /**
      * Reglas de validacion.
@@ -32,10 +32,10 @@ class Puesto extends Eloquent
     /**
      * Relacion Puesto - Empleado.
      *
-     * @return Illuminate\Database\Eloquent\Relations\HasOne
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function empleado()
+    public function empleados()
     {
-        return $this->hasOne('Empleado');
+        return $this->hasMany('Empleado');
     }
 }

@@ -9,8 +9,8 @@ class ArticulosTableSeeder extends Seeder
         foreach (range(1, 10) as $index) {
             Articulo::create([
                 'nombre' => 'material'.$index,
-                'tipo_id' => rand(1, 4),
-                'catalogo_id' => rand(1, 4),
+                'tipo_id' => rand(1, 5),
+                'catalogo_id' => rand(1, 5),
                 'unidad_id' => rand(1, 4),
                 'cantidad_por_unidad' => rand(1, 36),
                 'precio_compra' => rand(100, 99999)/100,

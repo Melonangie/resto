@@ -34,10 +34,10 @@ class Catalogo extends Eloquent
     /**
      * Relacion Catologo - Articulos.
      *
-     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function articulos()
     {
-        return $this->belongsTo('articulos');
+        return $this->hasMany('Articulo');
     }
 }

@@ -127,4 +127,24 @@ class User extends Eloquent implements UserInterface, RemindableInterface
     {
         return Str::random(32);
     }
+
+    /**
+     * Relacion Usuario - Empleado.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function empleado()
+    {
+        return $this->belongsTo('Empleado');
+    }
+
+    /**
+     * Relacion Usuario - Rol.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rol()
+    {
+        return $this->belongsTo('Rol');
+    }
 }

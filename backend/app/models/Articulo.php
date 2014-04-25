@@ -54,15 +54,45 @@ class Articulo extends Eloquent
     }
 
     /**
-     * Generate a random, unique API key.
+     * Relacion Articulo - Tipo.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function tipo()
+    {
+        return $this->belongsTo('Tipo');
+    }
+
+    /**
+     * Relacion Articulo - Catalogo.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function catalogo()
+    {
+        return $this->belongsTo('Catalogo');
+    }
+
+    /**
+     * Relacion Articulo - Recetas.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function receta()
+    {
+        return $this->belongsToMany('Receta');
+    }
+
+    /**
+     * Genera un codigo unico para un articulo.
      *
      * @return string
      */
-    public static function generateCodigoArticulo($data)
+    public static function generateCodigo($data)
     {
-        // $item = json_decode($data;
-        $item = User::findOrFail($data->category_id);
+        $catalogo = DB::table('catalogos')->where('id', $data['catalogo_id'])->pluck('abreviacion');
+        $tipo = DB::table('tipos')->where('id', $data['tipo_id'])->pluck('abreviacion');
 
-        return $item->abreviacion.'-'.$item->categoria.'-'.sprintf('%04d', $item->id);
+        return $catalogo.'-'.$tipo.'-'.sprintf('%04d', $data['id']);
     }
 }
