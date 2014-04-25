@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('angierabelero.local','localhost', '*.dev', '*.app', '*.local'),
+    'local' => array('angierabelero.local', 'localhost', '*.dev', '*.app'),
 
 ));
 

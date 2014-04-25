@@ -10,8 +10,9 @@ class UsersTableSeeder extends Seeder
             User::create([
                 'username' => 'usuario' . $index,
                 'password' => 'password' . $index,
+                'empleado_id' => rand(1, 10),
                 'rol_id' => rand(1, 3),
-                ]);
+            ]);
         }
     }
 }

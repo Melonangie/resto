@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Auth\UserInterface;
+use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface
+class User extends Eloquent implements UserInterface, RemindableInterface
 {
     /**
      * The database table used by the model.
@@ -16,36 +17,14 @@ class User extends Eloquent implements UserInterface
      *
      * @var array
      */
-    protected $hidden = ['password', 'api_key'];
-
-    /**
-     * Add your validation rules here.
-     *
-     * @var array
-     */
-    public static $rules = [
-        'username' => 'required|alpha_num|between:6,50|unique',
-        'password' => 'required|min:6',
-        'employee_id' => 'required|integer',
-        'rol_id' => 'required|integer',
-    ];
+    protected $hidden = array('password', 'api_key');
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['username', 'password', 'employee_id', 'rol_id'];
-
-    /**
-     * User relationship.
-     *
-     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function employee()
-    {
-        return $this->belongsTo('Employee');
-    }
+    protected $fillable = array('username', 'password');
 
     /**
      * Get the unique identifier for the user.
@@ -65,27 +44,6 @@ class User extends Eloquent implements UserInterface
     public function getAuthPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * Password mutator.
-     *
-     * @param  string $password
-     * @return void
-     */
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = Hash::make($password);
-    }
-
-    /**
-     * Generate a random, unique API key.
-     *
-     * @return string
-     */
-    public static function createApiKey()
-    {
-        return Str::random(32);
     }
 
     /**
@@ -127,5 +85,26 @@ class User extends Eloquent implements UserInterface
     public function getReminderEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Password mutator.
+     *
+     * @param  string $password
+     * @return void
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
+
+    /**
+     * Generate a random, unique API key.
+     *
+     * @return string
+     */
+    public static function createApiKey()
+    {
+        return Str::random(32);
     }
 }

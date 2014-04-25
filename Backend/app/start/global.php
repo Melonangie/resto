@@ -13,10 +13,10 @@
 
 ClassLoader::addDirectories(array(
 
-	app_path().'/commands',
-	app_path().'/controllers',
-	app_path().'/models',
-	app_path().'/database/seeds',
+    app_path().'/commands',
+    app_path().'/controllers',
+    app_path().'/models',
+    app_path().'/database/seeds',
 
 ));
 
@@ -31,11 +31,11 @@ ClassLoader::addDirectories(array(
 |
 */
 
+// Log::useFiles(storage_path().'/logs/laravel.log');
+
 $logFile = 'log-'.php_sapi_name().'.txt';
 
 Log::useDailyFiles(storage_path().'/logs/'.$logFile);
-
-// Log::useFiles(storage_path().'/logs/laravel.log');
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +50,11 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 |
 */
 
-require app_path().'/errors.php';
+// App::error(function (Exception $exception, $code) {
+//     Log::error($exception);
+// });
+
+require __DIR__.'/../errors.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -63,9 +67,8 @@ require app_path().'/errors.php';
 |
 */
 
-App::down(function()
-{
-	return Response::make("Be right back!", 503);
+App::down(function () {
+    return Response::make("Be right back!", 503);
 });
 
 /*
@@ -79,7 +82,7 @@ App::down(function()
 |
 */
 
-require app_path().'/filters.php';
+require __DIR__.'/../filters.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -88,4 +91,4 @@ require app_path().'/filters.php';
 |
 */
 
-require app_path().'/events.php';
+require __DIR__.'/../events.php';

@@ -52,7 +52,7 @@ return array(
     |
     */
 
-    'key' => 'YourSecretKey!!!',
+    'key' => 'CFil0p29cILU3v6nDG7xN1VQ5h7WbFFw',
 
     /*
     |--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ return array(
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
-         // Development
+        // Developer
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Way\Generators\GeneratorsServiceProvider'
 

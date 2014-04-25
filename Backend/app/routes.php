@@ -16,17 +16,18 @@ Route::get('/', function () {
 });
 
 Route::group(array('prefix' => 'v1', 'before' => 'api.auth|api.limit'), function () {
+    Route::resource('empresas', 'EmpresasController');
+    Route::resource('departamentos', 'DepartamentosController');
+    Route::resource('puestos', 'PuestosController');
+    Route::resource('personas', 'PersonasController');
+    Route::resource('empleados', 'EmpleadosController');
+    Route::resource('unidades', 'UnidadesController');
+    Route::resource('catalogos', 'CatalogosController');
+    Route::resource('tipos', 'TiposController');
+    Route::resource('articulos', 'ArticulosController');
+    Route::resource('recetas', 'RecetasController');
+    Route::resource('ingredientes', 'IngredientesController');
+    Route::resource('modulos', 'ModulosController');
     Route::resource('rols', 'RolsController');
     Route::resource('users', 'UsersController');
-    Route::resource('companies', 'CompaniesController');
-    Route::resource('positions', 'PositionsController');
-    Route::resource('departments', 'DepartmentsController');
-    Route::resource('employees', 'EmployeesController');
-    Route::resource('people', 'PeopleController');
-    Route::resource('units', 'UnitsController');
-    Route::resource('categories', 'CategoriesController');
-    Route::resource('types', 'TypesController');
-    Route::resource('items', 'ItemsController');
-    Route::resource('recipes', 'RecipesController');
-    Route::resource('ingredients', 'IngredientsController');
 });
