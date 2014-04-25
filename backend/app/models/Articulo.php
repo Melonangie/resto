@@ -32,4 +32,14 @@ class Articulo extends Eloquent
      * @var array
      */
     protected $fillable = ['nombre', 'type_id', 'category_id', 'unit_id', 'cantidad_por_unidad', 'precio_compra', 'precio_venta', 'foto', 'descripcion'];
+
+    /**
+     * Lists relationship.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function unidad()
+    {
+        return $this->hasOne('Unidad');
+    }
 }
