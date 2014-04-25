@@ -5,6 +5,13 @@
 /Documentacion/~$belero (TRABAJO RECEPCIONAL).docx
 
 # Laravel Framework
+/Backend/vendor/
+/Backend/app/storage/
+/Backend/bootstrap/compiled.php
+/Backend/composer.phar
+/Backend/composer.lock
+/Backend/.env.*.php
+/Backend/.env.
 /backend/vendor/
 /backend/app/storage/
 /backend/bootstrap/compiled.php
