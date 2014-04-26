@@ -1,78 +1,54 @@
 <?php
 
-class TiposController extends BaseController
+class TiposController extends \BaseController
 {
     /**
-     * Display a listing of tipos
+     * Despliega todos los tipos.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $tipos = Tipo::all();
-
-        return View::make('tipos.index', compact('tipos'));
+        return Tipo::all();
     }
 
     /**
-     * Show the form for creating a new tipo
+     * Almacena un nuevo tipo en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('tipos.create');
-    }
-
-    /**
-     * Store a newly created company in tipo.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), Tipo::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Tipo::create($data);
+        $tipo = Tipo::create($data);
 
-        return Redirect::route('tipos.index');
+        return Response::json($tipo->toArray(), 201);
     }
 
     /**
-     * Display the specified tipo.
+     * Despliega el tipo especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $tipo = Tipo::findOrFail($id);
-
-        return View::make('tipos.show', compact('tipo'));
+        return Tipo::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified tipo.
+     * Actualiza el tipo especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $tipo = Tipo::find($id);
-
-        return View::make('tipos.edit', compact('tipo'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,27 @@ class TiposController extends BaseController
         $validator = Validator::make($data = Input::all(), Tipo::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Tipo::create($data);
+        $tipo->update($data);
 
-        return Redirect::route('tipos.index');
+        return Response::json($tipo->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el tipo especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         Tipo::destroy($id);
 
-        return Redirect::route('tipos.index');
+        return Response::make(null, 204);
     }
 }

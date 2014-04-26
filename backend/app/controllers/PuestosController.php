@@ -1,78 +1,54 @@
 <?php
 
-class PuestosController extends BaseController
+class PuestosController extends \BaseController
 {
     /**
-     * Display a listing of puestos
+     * Despliega todos los puestos.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $puestos = Puesto::all();
-
-        return View::make('puestos.index', compact('puestos'));
+        return Puesto::all();
     }
 
     /**
-     * Show the form for creating a new puesto
+     * Almacena un nuevo puesto en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('puestos.create');
-    }
-
-    /**
-     * Store a newly created company in puesto.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), Puesto::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Puesto::create($data);
+        $puesto = Puesto::create($data);
 
-        return Redirect::route('puestos.index');
+        return Response::json($puesto->toArray(), 201);
     }
 
     /**
-     * Display the specified puesto.
+     * Despliega el puesto especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $puesto = Puesto::findOrFail($id);
-
-        return View::make('puestos.show', compact('puesto'));
+        return Puesto::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified puesto.
+     * Actualiza el puesto especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $puesto = Puesto::find($id);
-
-        return View::make('puestos.edit', compact('puesto'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,27 @@ class PuestosController extends BaseController
         $validator = Validator::make($data = Input::all(), Puesto::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Puesto::create($data);
+        $puesto->update($data);
 
-        return Redirect::route('puestos.index');
+        return Response::json($puesto->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el puesto especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         Puesto::destroy($id);
 
-        return Redirect::route('puestos.index');
+        return Response::make(null, 204);
     }
 }

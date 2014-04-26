@@ -15,9 +15,9 @@ class Unidad extends Eloquent
      * @var array
      */
     public static $rules = [
-        'unidad' => 'required|alpha_num|between:1,50|unique',
-        'medida' => 'required|alpha|max:5|unique',
-        'descripcion' => 'alpha_num',
+        'nombre' => 'required|alpha_dash|between:2,30|unique:unidades,nombre',
+        'abreviacion' => 'required|alpha|max:5|unique:unidades,medida',
+        'descripcion' => 'alpha_dash',
     ];
 
     /**
@@ -26,8 +26,8 @@ class Unidad extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'unidad',
-        'medida',
+        'nombre',
+        'abreviacion',
         'equivalencia',
         'descripcion'
     ];

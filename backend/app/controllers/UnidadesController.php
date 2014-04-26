@@ -1,78 +1,54 @@
 <?php
 
-class UnidadesController extends BaseController
+class UnidadesController extends \BaseController
 {
     /**
-     * Display a listing of unidads
+     * Despliega todos los unidads.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $unidades = Unidad::all();
-
-        return View::make('unidades.index', compact('unidades'));
+        return Unidad::all();
     }
 
     /**
-     * Show the form for creating a new unidad
+     * Almacena un nuevo unidad en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('unidades.create');
-    }
-
-    /**
-     * Store a newly created company in unidad.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), Unidad::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Unidad::create($data);
+        $unidad = Unidad::create($data);
 
-        return Redirect::route('unidades.index');
+        return Response::json($unidad->toArray(), 201);
     }
 
     /**
-     * Display the specified unidad.
+     * Despliega el unidad especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $unidad = Unidad::findOrFail($id);
-
-        return View::make('unidades.show', compact('unidad'));
+        return Unidad::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified unidad.
+     * Actualiza el unidad especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $unidad = Unidad::find($id);
-
-        return View::make('unidades.edit', compact('unidad'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,27 @@ class UnidadesController extends BaseController
         $validator = Validator::make($data = Input::all(), Unidad::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Unidad::create($data);
+        $unidad->update($data);
 
-        return Redirect::route('unidades.index');
+        return Response::json($unidad->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el unidad especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         Unidad::destroy($id);
 
-        return Redirect::route('unidades.index');
+        return Response::make(null, 204);
     }
 }

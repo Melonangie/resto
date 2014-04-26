@@ -1,78 +1,54 @@
 <?php
 
-class DepartamentosController extends BaseController
+class DepartamentosController extends \BaseController
 {
     /**
-     * Display a listing of departamentos
+     * Despliega todos los departamentos.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $departamentos = Departamento::all();
-
-        return View::make('departamentos.index', compact('departamentos'));
+        return Departamento::all();
     }
 
     /**
-     * Show the form for creating a new departamento
+     * Almacena un nuevo departamento en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('departamentos.create');
-    }
-
-    /**
-     * Store a newly created company in departamento.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), Departamento::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Departamento::create($data);
+        $departamento = Departamento::create($data);
 
-        return Redirect::route('departamentos.index');
+        return Response::json($departamento->toArray(), 201);
     }
 
     /**
-     * Display the specified departamento.
+     * Despliega el departamento especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $departamento = Departamento::findOrFail($id);
-
-        return View::make('departamentos.show', compact('departamento'));
+        return Departamento::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified departamento.
+     * Actualiza el departamento especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $departamento = Departamento::find($id);
-
-        return View::make('departamentos.edit', compact('departamento'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,28 @@ class DepartamentosController extends BaseController
         $validator = Validator::make($data = Input::all(), Departamento::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Departamento::create($data);
+        $departamento->update($data);
 
-        return Redirect::route('departamentos.index');
+        return Response::json($departamento->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el departamento especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         Departamento::destroy($id);
 
-        return Redirect::route('departamentos.index');
+        return Response::make(null, 204);
     }
+
 }

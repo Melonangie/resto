@@ -15,23 +15,23 @@ class Empleado extends Eloquent
      * @var array
      */
     public static $rules = [
-        'empresa_id' => 'required|integer',
-        'departamento_id' => 'required|integer',
-        'puesto_id' => 'required|integer',
-        'nombre' => 'required|alpha|between:2,60',
-        'paterno' => 'required|alpha|between:2,60',
-        'materno' => 'required|alpha|between:2,60',
-        'direccion' => 'alpha|between:2,50',
+        'empresa_nombre' => 'required|exists:empresas,nombre',
+        'departamento_nombre' => 'required|exists:departamentos,nombre',
+        'puesto_id' => 'required|exists:puestos,nombre',
+        'nombre' => 'required|alpha_dash|between:2,60',
+        'paterno' => 'required|alpha_dash|between:2,60',
+        'materno' => 'required|alpha_dash|between:2,60',
+        'direccion' => 'alpha_dash',
         'email' => 'email',
         'telefono_casa' => 'alpha_num|between:6,20',
         'telefono_oficina' => 'alpha_num|between:6,20',
-        'extension' => 'integer',
+        'extension' => 'alpha_num|max:6',
         'foto' => 'alpha_dash',
-        'curp' => 'alpha_num|between:12,60',
+        'curp' => 'alpha_num|between:12,60|unique:empleados,curp',
         'nacimiento' => 'date',
         'alta' => 'date',
         'baja' => 'date',
-        'notas' => 'alpha_num',
+        'notas' => 'alpha_dash',
     ];
 
     /**
@@ -40,9 +40,9 @@ class Empleado extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'empresa_id',
-        'departamento_id',
-        'position_id',
+        'empresa_nombre',
+        'departamento_nombre',
+        'puesto_nombre',
         'nombre',
         'paterno',
         'materno',
@@ -51,7 +51,12 @@ class Empleado extends Eloquent
         'telefono_casa',
         'telefono_oficina',
         'extension',
-        'foto'
+        'foto',
+        'curp',
+        'nacimiento',
+        'alta',
+        'baja',
+        'notas',
     ];
 
     /**

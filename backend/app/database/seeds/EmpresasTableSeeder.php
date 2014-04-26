@@ -10,8 +10,8 @@ class EmpresasTableSeeder extends Seeder
 
         foreach (range(1, 5) as $index) {
             Empresa::create([
-                'tipo' => 'franquicia',
                 'nombre' => $faker->bs,
+                'tipo' => 'franquicia',
                 'direccion' => $faker->streetAddress,
                 'ciudad' => $faker->city,
                 'estado' => $faker->state,
@@ -22,8 +22,8 @@ class EmpresasTableSeeder extends Seeder
         }
         foreach (range(1, 3) as $index) {
             Empresa::create([
-                'tipo' => 'proveedor',
                 'nombre' => $faker->bs,
+                'tipo' => 'proveedor',
                 'direccion' => $faker->streetAddress,
                 'ciudad' => $faker->city,
                 'estado' => $faker->state,
@@ -34,8 +34,8 @@ class EmpresasTableSeeder extends Seeder
         }
         foreach (range(1, 2) as $index) {
             Empresa::create([
-                'tipo' => 'cliente',
                 'nombre' => $faker->bs,
+                'tipo' => 'cliente',
                 'direccion' => $faker->streetAddress,
                 'ciudad' => $faker->city,
                 'estado' => $faker->state,

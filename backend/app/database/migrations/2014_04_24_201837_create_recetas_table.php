@@ -14,10 +14,10 @@ class CreateRecetasTable extends Migration
     {
         Schema::create('recetas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('receta', 20)->unique();
+            $table->string('nombre', 50)->unique();
             $table->string('codigo', 20)->unique()->nullable();
-            $table->integer('tipo_id')->unsigned()->index();
-            $table->foreign('tipo_id')->references('id')->on('tipos')->onDelete('cascade')->on_update('cascade');
+            $table->string('tipo_nombre')->unsigned()->index();
+            $table->foreign('tipo_nombre')->references('nombre')->on('tipos')->onDelete('cascade')->on_update('cascade');
             $table->float('costo', 4, 2)->nullable();
             $table->string('descripcion')->nullable();
             $table->timestamps();

@@ -11,10 +11,14 @@ class EmpleadosTableSeeder extends Seeder
         $faker = Faker::create('es_ES');
 
         foreach (range(1, 10) as $index) {
+            $empresa = DB::table('empresas')->where('id', rand(1, 10))->pluck('nombre');
+            $departamento = DB::table('departamentos')->where('id', rand(1, 4))->pluck('nombre');
+            $puesto = DB::table('puestos')->where('id', rand(1, 6))->pluck('nombre');
+            var_dump($puesto);
             Empleado::create([
-                'empresa_id' => $index,
-                'departamento_id' => rand(1, 4),
-                'puesto_id' => rand(1, 6),
+                'empresa_nombre' => $empresa,
+                'departamento_nombre' => $departamento,
+                'puesto_nombre' => $puesto,
                 'nombre' => $faker->firstName,
                 'paterno' => $faker->lastName,
                 'materno' => $faker->lastName,

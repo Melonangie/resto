@@ -1,78 +1,54 @@
 <?php
 
-class EmpresasController extends BaseController
+class EmpresasController extends \BaseController
 {
     /**
-     * Display a listing of empresas
+     * Despliega todos los empresas.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $empresas = Empresa::all();
-
-        return View::make('empresas.index', compact('empresas'));
+        return Empresa::all();
     }
 
     /**
-     * Show the form for creating a new empresa
+     * Almacena un nuevo empresa en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('empresas.create');
-    }
-
-    /**
-     * Store a newly created company in empresa.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), Empresa::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Empresa::create($data);
+        $empresa = Empresa::create($data);
 
-        return Redirect::route('empresas.index');
+        return Response::json($empresa->toArray(), 201);
     }
 
     /**
-     * Display the specified empresa.
+     * Despliega el empresa especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $empresa = Empresa::findOrFail($id);
-
-        return View::make('empresas.show', compact('empresa'));
+        return Empresa::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified empresa.
+     * Actualiza el empresa especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $empresa = Empresa::find($id);
-
-        return View::make('empresas.edit', compact('empresa'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,27 @@ class EmpresasController extends BaseController
         $validator = Validator::make($data = Input::all(), Empresa::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Empresa::create($data);
+        $empresa->update($data);
 
-        return Redirect::route('empresas.index');
+        return Response::json($empresa->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el empresa especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         Empresa::destroy($id);
 
-        return Redirect::route('empresas.index');
+        return Response::make(null, 204);
     }
 }

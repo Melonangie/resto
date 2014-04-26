@@ -12,12 +12,11 @@ class PersonasTableSeeder extends Seeder
         $tipos = ['contacto', 'cliente', 'otro'];
 
         foreach (range(1, 10) as $index) {
+            $empresa = DB::table('empresas')->where('id', rand(1, 10))->pluck('nombre');
             Persona::create([
                 'tipo' => $tipos[array_rand($tipos)],
-                'empresa_id' => $index,
-                'nombre' => $faker->firstName,
-                'paterno' => $faker->lastName,
-                'materno' => $faker->lastName,
+                'empresa_nombre' => $empresa,
+                'nombre' => $faker->Name,
                 'direccion' => $faker->address,
                 'email' => $faker->email,
                 'telefono' => $faker->phoneNumber,

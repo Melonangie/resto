@@ -15,8 +15,8 @@ class Modulo extends Eloquent
      * @var array
      */
     public static $rules = [
-        'modulo' => 'required|alpha_num|between:6,60',
-        'uri' => 'alpha_dash',
+        'nombre' => 'required|alpha|between:4,60|unique:modulos,nombre',
+        'uri' => 'alpha_dash|unique:modulos,uri',
     ];
 
     /**

@@ -1,78 +1,54 @@
 <?php
 
-class UsersController extends BaseController
+class UsersController extends \BaseController
 {
     /**
-     * Display a listing of users
+     * Despliega todos los users.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $users = User::all();
-
-        return View::make('users.index', compact('users'));
+        return User::all();
     }
 
     /**
-     * Show the form for creating a new user
+     * Almacena un nuevo user en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('users.create');
-    }
-
-    /**
-     * Store a newly created company in user.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), User::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        User::create($data);
+        $user = User::create($data);
 
-        return Redirect::route('users.index');
+        return Response::json($user->toArray(), 201);
     }
 
     /**
-     * Display the specified user.
+     * Despliega el user especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
-
-        return View::make('users.show', compact('user'));
+        return User::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified user.
+     * Actualiza el user especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $user = User::find($id);
-
-        return View::make('users.edit', compact('user'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,27 @@ class UsersController extends BaseController
         $validator = Validator::make($data = Input::all(), User::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        User::create($data);
+        $user->update($data);
 
-        return Redirect::route('users.index');
+        return Response::json($user->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el user especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         User::destroy($id);
 
-        return Redirect::route('users.index');
+        return Response::make(null, 204);
     }
 }

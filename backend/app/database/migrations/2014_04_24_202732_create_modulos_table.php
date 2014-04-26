@@ -14,7 +14,7 @@ class CreateModulosTable extends Migration
     {
         Schema::create('modulos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('modulo', 50)->unique();
+            $table->string('nombre', 50)->unique();
             $table->string('uri', 60)->unique();
         });
 

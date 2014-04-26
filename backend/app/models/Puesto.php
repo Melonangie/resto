@@ -10,13 +10,20 @@ class Puesto extends Eloquent
     protected $table = 'puestos';
 
     /**
+     * Sin usar tiempo.
+     *
+     * @var boolean
+     */
+    public $timestamps = false;
+
+    /**
      * Reglas de validacion.
      *
      * @var array
      */
     public static $rules = [
-        'puesto' => 'required|alpha|between:3,50|unique',
-        'descripcion' => 'alpha_num',
+        'nombre' => 'required|alpha|between:3,50|unique:puestos,nombre',
+        'descripcion' => 'alpha_dash',
     ];
 
     /**
@@ -25,7 +32,7 @@ class Puesto extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'puesto',
+        'nombre',
         'descripcion'
     ];
 

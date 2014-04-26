@@ -7,11 +7,11 @@ class CatalogosTableSeeder extends Seeder
         DB::table('catalogos')->delete();
 
         DB::table('catalogos')->insert([
-            array('catologo' => 'receta', 'abreviacion'=> 'rec'),
-            array('catologo' => 'plastico', 'abreviacion'=> 'pla'),
-            array('catologo' => 'lata', 'abreviacion'=> 'lat'),
-            array('catologo' => 'botella', 'abreviacion'=> 'bot'),
-            array('catologo' => 'caja', 'abreviacion'=> 'caj'),
+            array('nombre' => 'receta', 'abreviacion'=> 'rec'),
+            array('nombre' => 'plastico', 'abreviacion'=> 'pla'),
+            array('nombre' => 'lata', 'abreviacion'=> 'lat'),
+            array('nombre' => 'botella', 'abreviacion'=> 'bot'),
+            array('nombre' => 'caja', 'abreviacion'=> 'caj'),
         ]);
     }
 }

@@ -15,9 +15,10 @@ class Receta extends Eloquent
      * @var array
      */
     public static $rules = [
-        'receta' => 'required|alpha_num|between:6,100',
+        'nombre' => 'required|alpha_dash|between:3,50|unique:recetas,nombre',
+        'tipo_nombre' => 'required|exists:tipos,nombre',
         'costo' => 'regex:/[\d]{1,4},[\d]{1,2}/',
-        'descripcion' => 'alpha_num',
+        'descripcion' => 'alpha_dash',
     ];
 
     /**
@@ -26,7 +27,8 @@ class Receta extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'receta',
+        'nombre',
+        'tipo_nombre',
         'costo',
         'descripcion'
     ];
@@ -58,7 +60,7 @@ class Receta extends Eloquent
      */
     public static function generateCodigo($data)
     {
-        $tipo = DB::table('tipos')->where('id', $data['tipo_id'])->pluck('abreviacion');
+        $tipo = DB::table('tipos')->where('nombre', $data['tipo_nombre'])->pluck('abreviacion');
 
         return 'rec-'.$tipo.'-'.sprintf('%04d', $data['id']);
     }

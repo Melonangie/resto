@@ -1,78 +1,54 @@
 <?php
 
-class PersonasController extends BaseController
+class PersonasController extends \BaseController
 {
     /**
-     * Display a listing of personas
+     * Despliega todos los personas.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $personas = Persona::all();
-
-        return View::make('personas.index', compact('personas'));
+        return Persona::all();
     }
 
     /**
-     * Show the form for creating a new persona
+     * Almacena un nuevo persona en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('personas.create');
-    }
-
-    /**
-     * Store a newly created company in persona.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), Persona::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Persona::create($data);
+        $persona = Persona::create($data);
 
-        return Redirect::route('personas.index');
+        return Response::json($persona->toArray(), 201);
     }
 
     /**
-     * Display the specified persona.
+     * Despliega el persona especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $persona = Persona::findOrFail($id);
-
-        return View::make('personas.show', compact('persona'));
+        return Persona::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified persona.
+     * Actualiza el persona especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $persona = Persona::find($id);
-
-        return View::make('personas.edit', compact('persona'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,27 @@ class PersonasController extends BaseController
         $validator = Validator::make($data = Input::all(), Persona::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Persona::create($data);
+        $persona->update($data);
 
-        return Redirect::route('personas.index');
+        return Response::json($persona->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el persona especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         Persona::destroy($id);
 
-        return Redirect::route('personas.index');
+        return Response::make(null, 204);
     }
 }

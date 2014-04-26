@@ -28,6 +28,6 @@ Route::group(array('prefix' => 'v1', 'before' => 'api.auth|api.limit'), function
     Route::resource('recetas', 'RecetasController');
     Route::resource('ingredientes', 'IngredientesController');
     Route::resource('modulos', 'ModulosController');
-    Route::resource('rols', 'RolsController');
+    Route::resource('roles', 'RolesController');
     Route::resource('users', 'UsersController');
 });

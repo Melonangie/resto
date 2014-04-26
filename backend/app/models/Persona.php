@@ -15,16 +15,16 @@ class Persona extends Eloquent
      * @var array
      */
     public static $rules = [
-        'tipo' => 'required|alpha',
-        'empresa_id' => 'required|integer',
-        'nombre' => 'alpha|between:2,60',
-        'paterno' => 'alpha|between:2,60',
-        'materno' => 'alpha|between:2,60',
+        'tipo' => 'required|in:contacto,cliente,otro,cliente',
+        'empresa_nombre' => 'required|exists:empresas,nombre',
+        'nombre' => 'alpha_dash|between:2,60',
+        'paterno' => 'alpha_dash|between:2,60',
+        'materno' => 'alpha_dash|between:2,60',
         'email' => 'email',
         'telefono' => 'alpha_num|between:6,20',
         'extension' => 'integer',
         'celular' => 'alpha_num|between:6,20',
-        'radio' => 'alpha_num|between:6,20',
+        'radio' => 'alpha_dash|between:6,20',
         'fax' => 'alpha_num|between:6,20',
     ];
 
@@ -35,10 +35,11 @@ class Persona extends Eloquent
      */
     protected $fillable = [
         'tipo',
-        'empresa_id',
+        'empresa_nombre',
         'nombre',
         'paterno',
         'materno',
+        'direccion',
         'email',
         'telefono',
         'extension',

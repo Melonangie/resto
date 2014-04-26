@@ -15,18 +15,18 @@ class Empresa extends Eloquent
      * @var array
      */
     public static $rules = [
-        'tipo' => 'required|alpha',
-        'giro' => 'alpha_num|between:5,60',
-        'nombre' => 'required|alpha_num',
-        'direccion' => 'required|alpha',
+        'nombre' => 'required|alpha_dash|min:5',
+        'tipo' => 'required|in:principal,franquicia,proveedor,cliente',
+        'giro' => 'alpha|between:5,60',
+        'direccion' => 'required|alpha_dash',
         'ciudad' => 'alpha|between:2,50',
         'estado' => 'alpha|between:2,50',
         'pais' => 'alpha|between:2,50',
         'cp' => 'integer|digits:5',
-        'rfc' => 'alpha_num|between:12,60',
+        'rfc' => 'alpha_num|between:12,60|unique:empresas,rfc',
         'url' => 'url',
         'logo' => 'alpha_dash',
-        'descripcion' => 'alpha_num',
+        'descripcion' => 'alpha_dash',
     ];
 
     /**
@@ -35,9 +35,9 @@ class Empresa extends Eloquent
      * @var array
      */
     protected $fillable = [
+        'nombre',
         'tipo',
         'giro',
-        'nombre',
         'direccion',
         'ciudad',
         'estado',

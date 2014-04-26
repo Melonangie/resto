@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('api_key', 32)->unique();
             $table->integer('empleado_id')->unsigned()->index();
             $table->foreign('empleado_id')->references('id')->on('empleados')->onDelete('cascade')->on_update('cascade');
-            $table->integer('rol_id')->unsigned()->index();
-            $table->foreign('rol_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->string('rol_nombre')->unsigned()->index();
+            $table->foreign('rol_nombre')->references('nombre')->on('roles')->onDelete('cascade');
             $table->timestamps();
         });
 

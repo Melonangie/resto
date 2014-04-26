@@ -18,10 +18,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface
      * @var array
      */
     public static $rules = [
-        'username' => 'required|alpha_num|between:6,50|unique',
+        'username' => 'required|alpha_dash|between:6,50|unique:users,username',
         'password' => 'required|min:6',
-        'empleado_id' => 'required|integer',
-        'rol_id' => 'required|integer',
+        'empleado_id' => 'required|exists:empresas,id',
+        'rol_nombre' => 'required|exists:roles,nombre',
     ];
 
     /**
@@ -43,7 +43,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface
         'username',
         'password',
         'empleado_id',
-        'rol_id'
+        'rol_nombre'
     ];
 
     /**

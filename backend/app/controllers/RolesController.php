@@ -1,78 +1,54 @@
 <?php
 
-class RolesController extends BaseController
+class RolesController extends \BaseController
 {
     /**
-     * Display a listing of roles
+     * Despliega todos los rols.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $roles = Rol::all();
-
-        return View::make('roles.index', compact('roles'));
+        return Rol::all();
     }
 
     /**
-     * Show the form for creating a new rol
+     * Almacena un nuevo rol en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('roles.create');
-    }
-
-    /**
-     * Store a newly created company in rol.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), Rol::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Rol::create($data);
+        $rol = Rol::create($data);
 
-        return Redirect::route('roles.index');
+        return Response::json($rol->toArray(), 201);
     }
 
     /**
-     * Display the specified rol.
+     * Despliega el rol especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $rol = Rol::findOrFail($id);
-
-        return View::make('roles.show', compact('rol'));
+        return Rol::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified rol.
+     * Actualiza el rol especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $rol = Rol::find($id);
-
-        return View::make('roles.edit', compact('rol'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,27 @@ class RolesController extends BaseController
         $validator = Validator::make($data = Input::all(), Rol::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Rol::create($data);
+        $rol->update($data);
 
-        return Redirect::route('roles.index');
+        return Response::json($rol->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el rol especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         Rol::destroy($id);
 
-        return Redirect::route('roles.index');
+        return Response::make(null, 204);
     }
 }

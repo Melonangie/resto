@@ -14,7 +14,7 @@ class CreateCatalogosTable extends Migration
     {
         Schema::create('catalogos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('catologo', 50)->unique();
+            $table->string('nombre', 30)->unique();
             $table->string('abreviacion', 3)->unique();
             $table->string('descripcion')->nullable();
         });

@@ -10,14 +10,21 @@ class Catalogo extends Eloquent
     protected $table = 'catalogos';
 
     /**
+     * Sin usar tiempo.
+     *
+     * @var boolean
+     */
+    public $timestamps = false;
+
+    /**
      * Reglas de validacion.
      *
      * @var array
      */
     public static $rules = [
-        'catologo' => 'required|alpha|between:3,50|unique',
-        'abreviacion' => 'required|alpha|size:3|unique',
-        'descripcion' => 'alpha_num',
+        'nombre' => 'required|alpha|between:3,50|unique:catalogos,nombre',
+        'abreviacion' => 'required|alpha|size:3|unique:catalogos,abreviacion',
+        'descripcion' => 'alpha_dash',
     ];
 
     /**
@@ -26,7 +33,7 @@ class Catalogo extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'catologo',
+        'nombre',
         'abreviacion',
         'descripcion'
     ];

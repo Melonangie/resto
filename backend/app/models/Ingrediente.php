@@ -15,9 +15,9 @@ class Ingrediente extends Eloquent
      * @var array
      */
     public static $rules = [
-        'receta_id' => 'required|integer',
-        'articulo_id' => 'required|integer',
-        'cantidad' => 'required|regex:/[\d]{1,4},[\d]{1,2}/',
+        'receta_nombre' => 'required|exists:recetas,nombre',
+        'articulo_nombre' => 'required|exists:articulos,nombre',
+        'cantidad' => 'required|regex:/[\d]{1,4}.[\d]{1,2}/',
     ];
 
     /**
@@ -26,8 +26,8 @@ class Ingrediente extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'recipe_id',
-        'item_id',
+        'receta_nombre',
+        'articulo_nombre',
         'cantidad'
     ];
 }

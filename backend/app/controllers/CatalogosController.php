@@ -1,78 +1,54 @@
 <?php
 
-class CatalogosController extends BaseController
+class CatalogosController extends \BaseController
 {
     /**
-     * Display a listing of catalogos
+     * Despliega todos los catalogos.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $catalogos = Catalogo::all();
-
-        return View::make('catalogos.index', compact('catalogos'));
+        return Catalogo::all();
     }
 
     /**
-     * Show the form for creating a new catalogo
+     * Almacena un nuevo catalogo en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('catalogos.create');
-    }
-
-    /**
-     * Store a newly created company in catalogo.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), Catalogo::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Catalogo::create($data);
+        $catalogo = Catalogo::create($data);
 
-        return Redirect::route('catalogos.index');
+        return Response::json($catalogo->toArray(), 201);
     }
 
     /**
-     * Display the specified catalogo.
+     * Despliega el catalogo especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $catalogo = Catalogo::findOrFail($id);
-
-        return View::make('catalogos.show', compact('catalogo'));
+        return Catalogo::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified catalogo.
+     * Actualiza el catalogo especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $catalogo = Catalogo::find($id);
-
-        return View::make('catalogos.edit', compact('catalogo'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,27 @@ class CatalogosController extends BaseController
         $validator = Validator::make($data = Input::all(), Catalogo::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Catalogo::create($data);
+        $catalogo->update($data);
 
-        return Redirect::route('catalogos.index');
+        return Response::json($catalogo->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el catalogo especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         Catalogo::destroy($id);
 
-        return Redirect::route('catalogos.index');
+        return Response::make(null, 204);
     }
 }

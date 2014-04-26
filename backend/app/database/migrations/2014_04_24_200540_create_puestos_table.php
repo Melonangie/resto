@@ -14,7 +14,7 @@ class CreatePuestosTable extends Migration
     {
         Schema::create('puestos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('puesto', 50)->unique();
+            $table->string('nombre', 50)->unique();
             $table->string('descripcion')->nullable();
         });
 

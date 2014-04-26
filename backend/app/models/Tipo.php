@@ -10,14 +10,21 @@ class Tipo extends Eloquent
     protected $table = 'tipos';
 
     /**
+     * Sin usar tiempo.
+     *
+     * @var boolean
+     */
+    public $timestamps = false;
+
+    /**
      * Add your validation rules here.
      *
      * @var array
      */
     public static $rules = [
-        'tipo' => 'required|alpha|between:3,50',
-        'abreviacion' => 'required|alpha|size:3|unique',
-        'descripcion' => 'alpha_num',
+        'nombre' => 'required|alpha|between:3,50|unique:tipos,nombre',
+        'abreviacion' => 'required|alpha|size:3|unique:tipos,abreviacion',
+        'descripcion' => 'alpha_dash',
     ];
 
     /**
@@ -26,7 +33,7 @@ class Tipo extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'tipo',
+        'nombre',
         'abreviacion',
         'descripcion'
     ];

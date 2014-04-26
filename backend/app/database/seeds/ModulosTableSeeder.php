@@ -7,12 +7,12 @@ class ModulosTableSeeder extends Seeder
         DB::table('modulos')->delete();
 
         DB::table('modulos')->insert([
-            array('modulo' => 'Mercancias', 'uri' => 'items'),
-            array('modulo' => 'Recetas', 'uri' => 'recipes'),
-            array('modulo' => 'Permiso', 'uri' => 'rols'),
-            array('modulo' => 'Usuarios', 'uri' => 'users'),
-            array('modulo' => 'Empresas', 'uri' => 'companies'),
-            array('modulo' => 'Empleados', 'uri' => 'employees'),
+            array('nombre' => 'Mercancias', 'uri' => 'items'),
+            array('nombre' => 'Recetas', 'uri' => 'recipes'),
+            array('nombre' => 'Permiso', 'uri' => 'rols'),
+            array('nombre' => 'Usuarios', 'uri' => 'users'),
+            array('nombre' => 'Empresas', 'uri' => 'companies'),
+            array('nombre' => 'Empleados', 'uri' => 'employees'),
         ]);
     }
 }

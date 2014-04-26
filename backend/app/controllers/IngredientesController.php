@@ -1,78 +1,54 @@
 <?php
 
-class IngredientesController extends BaseController
+class IngredientesController extends \BaseController
 {
     /**
-     * Display a listing of ingredientes
+     * Despliega todos los ingredientes.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $ingredientes = Ingrediente::all();
-
-        return View::make('ingredientes.index', compact('ingredientes'));
+        return Ingrediente::all();
     }
 
     /**
-     * Show the form for creating a new ingrediente
+     * Almacena un nuevo ingrediente en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('ingredientes.create');
-    }
-
-    /**
-     * Store a newly created company in ingrediente.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), Ingrediente::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Ingrediente::create($data);
+        $ingrediente = Ingrediente::create($data);
 
-        return Redirect::route('ingredientes.index');
+        return Response::json($ingrediente->toArray(), 201);
     }
 
     /**
-     * Display the specified ingrediente.
+     * Despliega el ingrediente especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $ingrediente = Ingrediente::findOrFail($id);
-
-        return View::make('ingredientes.show', compact('ingrediente'));
+        return Ingrediente::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified ingrediente.
+     * Actualiza el ingrediente especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $ingrediente = Ingrediente::find($id);
-
-        return View::make('ingredientes.edit', compact('ingrediente'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,27 @@ class IngredientesController extends BaseController
         $validator = Validator::make($data = Input::all(), Ingrediente::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Ingrediente::create($data);
+        $ingrediente->update($data);
 
-        return Redirect::route('ingredientes.index');
+        return Response::json($ingrediente->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el ingrediente especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         Ingrediente::destroy($id);
 
-        return Redirect::route('ingredientes.index');
+        return Response::make(null, 204);
     }
 }

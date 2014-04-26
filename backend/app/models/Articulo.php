@@ -15,15 +15,15 @@ class Articulo extends Eloquent
      * @var array
      */
     public static $rules = [
-        'nombre' => 'required|alpha_num|between:6,60|unique',
-        'type_id' => 'required|integer',
-        'category_id' => 'required|integer',
-        'unit_id' => 'required|integer',
+        'nombre' => 'required|alpha_dash|between:5,60|unique:articulos,nombre',
+        'catalogo_nombre' => 'required|exists:catalogos,nombre',
+        'tipo_nombre' => 'required|exists:tipos,nombre',
+        'unidad_nombre' => 'required|integer',
         'cantidad_por_unidad' => 'required|integer',
         'precio_compra' => 'regex:/[\d]{1,4},[\d]{1,2}/',
         'precio_venta' => 'regex:/[\d]{1,4},[\d]{1,2}/',
         'foto' => 'url',
-        'descripcion' => 'alpha_num',
+        'descripcion' => 'alpha_dash',
     ];
 
     /**
@@ -33,15 +33,15 @@ class Articulo extends Eloquent
      */
     protected $fillable = [
         'nombre',
-        'type_id',
-        'category_id',
-        'unit_id',
+        'catalogo_nombre',
+        'tipo_nombre',
+        'unidad_nombre',
         'cantidad_por_unidad',
         'precio_compra',
         'precio_venta',
         'foto',
         'descripcion'
-        ];
+    ];
 
     /**
      * Relacion Articulo - Ingredientes.
@@ -90,8 +90,8 @@ class Articulo extends Eloquent
      */
     public static function generateCodigo($data)
     {
-        $catalogo = DB::table('catalogos')->where('id', $data['catalogo_id'])->pluck('abreviacion');
-        $tipo = DB::table('tipos')->where('id', $data['tipo_id'])->pluck('abreviacion');
+        $catalogo = DB::table('catalogos')->where('nombre', $data['catalogo_nombre'])->pluck('abreviacion');
+        $tipo = DB::table('tipos')->where('nombre', $data['tipo_nombre'])->pluck('abreviacion');
 
         return $catalogo.'-'.$tipo.'-'.sprintf('%04d', $data['id']);
     }

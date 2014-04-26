@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,8 +14,8 @@ class CreateUnidadesTable extends Migration
     {
         Schema::create('unidades', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('unidad', 50)->unique();
-            $table->string('medida', 5)->unique();
+            $table->string('nombre', 30)->unique();
+            $table->string('abreviacion', 5)->unique();
             $table->integer('equivalencia')->nullable();
             $table->string('descripcion')->nullable();
         });

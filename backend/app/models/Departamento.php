@@ -10,13 +10,20 @@ class Departamento extends Eloquent
     protected $table = 'departamentos';
 
     /**
+     * Sin usar tiempo.
+     *
+     * @var boolean
+     */
+    public $timestamps = false;
+
+    /**
      * Reglas de validacion.
      *
      * @var array
      */
     public static $rules = [
-        'departamento' => 'required|alpha|between:3,50|unique',
-        'descripcion' => 'required|min:6'
+        'nombre' => 'required|alpha|between:3,50|unique:departamentos,departamento',
+        'descripcion' => 'alpha_dash'
     ];
 
     /**
@@ -25,7 +32,7 @@ class Departamento extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'departamento',
+        'nombre',
         'descripcion'
     ];
 

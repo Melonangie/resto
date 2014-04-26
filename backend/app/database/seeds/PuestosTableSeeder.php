@@ -7,12 +7,12 @@ class PuestosTableSeeder extends Seeder
         DB::table('puestos')->delete();
 
         DB::table('puestos')->insert([
-            array('puesto' => 'cajero'),
-            array('puesto' => 'auxiliar'),
-            array('puesto' => 'mesero'),
-            array('puesto' => 'cocinero'),
-            array('puesto' => 'gerente'),
-            array('puesto' => 'administrativo'),
+            array('nombre' => 'cajero'),
+            array('nombre' => 'auxiliar'),
+            array('nombre' => 'mesero'),
+            array('nombre' => 'cocinero'),
+            array('nombre' => 'gerente'),
+            array('nombre' => 'administrativo'),
         ]);
     }
 }

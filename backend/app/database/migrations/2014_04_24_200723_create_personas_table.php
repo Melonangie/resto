@@ -15,11 +15,9 @@ class CreatePersonasTable extends Migration
         Schema::create('personas', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('tipo', ['contacto', 'cliente', 'otro']);
-            $table->integer('empresa_id')->unsigned()->index();
-            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade')->on_update('cascade');
-            $table->string('nombre', 60);
-            $table->string('paterno', 60);
-            $table->string('materno', 60);
+            $table->string('empresa_nombre')->unsigned()->index();
+            $table->foreign('empresa_nombre')->references('nombre')->on('empresas')->onDelete('cascade')->on_update('cascade');
+            $table->string('nombre')->unique();
             $table->string('direccion')->nullable();
             $table->string('email', 100)->nullable();
             $table->string('telefono', 20)->nullable();

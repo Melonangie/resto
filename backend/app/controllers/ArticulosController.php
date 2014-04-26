@@ -3,76 +3,52 @@
 class ArticulosController extends BaseController
 {
     /**
-     * Display a listing of articulos
+     * Despliega todos los articulos.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $articulos = Articulo::all();
-
-        return View::make('articulos.index', compact('articulos'));
+        return Articulo::all();
     }
 
     /**
-     * Show the form for creating a new articulo
+     * Almacena un nuevo articulo en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('articulos.create');
-    }
-
-    /**
-     * Store a newly created company in articulo.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), Articulo::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Articulo::create($data);
+        $articulo = Articulo::create($data);
 
-        return Redirect::route('articulos.index');
+        return Response::json($articulo->toArray(), 201);
     }
 
     /**
-     * Display the specified articulo.
+     * Despliega el articulo especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $articulo = Articulo::findOrFail($id);
-
-        return View::make('articulos.show', compact('articulo'));
+        return Articulo::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified articulo.
+     * Actualiza el articulo especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $articulo = Articulo::find($id);
-
-        return View::make('articulos.edit', compact('articulo'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,27 @@ class ArticulosController extends BaseController
         $validator = Validator::make($data = Input::all(), Articulo::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Articulo::create($data);
+        $articulo->update($data);
 
-        return Redirect::route('articulos.index');
+        return Response::json($articulo->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el articulo especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         Articulo::destroy($id);
 
-        return Redirect::route('articulos.index');
+        return Response::make(null, 204);
     }
 }

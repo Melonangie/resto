@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 // ------------------------------------------------------------
 // Error Handlers
@@ -60,4 +61,13 @@ App::error(function (PermissionException $e) {
     return Response::json(array(
         'error' => $e->getMessage() ?: $default_message,
     ), 403);
+});
+
+// ModelNotFoundException handler
+App::error(function (ModelNotFoundException $e) {
+    $default_message = 'The requested resource was not found';
+
+    return Response::json(array(
+        'error' => $e->getMessage() ?: $default_message,
+    ), 404);
 });

@@ -1,78 +1,54 @@
 <?php
 
-class RecetasController extends BaseController
+class RecetasController extends \BaseController
 {
     /**
-     * Display a listing of recetas
+     * Despliega todos los recetas.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $recetas = Receta::all();
-
-        return View::make('recetas.index', compact('recetas'));
+        return Receta::all();
     }
 
     /**
-     * Show the form for creating a new receta
+     * Almacena un nuevo receta en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('recetas.create');
-    }
-
-    /**
-     * Store a newly created company in receta.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), Receta::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Receta::create($data);
+        $receta = Receta::create($data);
 
-        return Redirect::route('recetas.index');
+        return Response::json($receta->toArray(), 201);
     }
 
     /**
-     * Display the specified receta.
+     * Despliega el receta especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $receta = Receta::findOrFail($id);
-
-        return View::make('recetas.show', compact('receta'));
+        return Receta::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified receta.
+     * Actualiza el receta especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $receta = Receta::find($id);
-
-        return View::make('recetas.edit', compact('receta'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,27 @@ class RecetasController extends BaseController
         $validator = Validator::make($data = Input::all(), Receta::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Receta::create($data);
+        $receta->update($data);
 
-        return Redirect::route('recetas.index');
+        return Response::json($receta->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el receta especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         Receta::destroy($id);
 
-        return Redirect::route('recetas.index');
+        return Response::make(null, 204);
     }
 }

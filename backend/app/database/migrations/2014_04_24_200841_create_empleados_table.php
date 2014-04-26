@@ -14,16 +14,16 @@ class CreateEmpleadosTable extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('empresa_id')->unsigned()->index();
-            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade')->on_update('cascade');
-            $table->integer('departamento_id')->unsigned()->index();
-            $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade')->on_update('cascade');
-            $table->integer('puesto_id')->unsigned()->index();
-            $table->foreign('puesto_id')->references('id')->on('puestos')->onDelete('cascade')->on_update('cascade');
+            $table->string('empresa_nombre')->unsigned()->index();
+            $table->foreign('empresa_nombre')->references('nombre')->on('empresas')->onDelete('cascade')->on_update('cascade');
+            $table->string('departamento_nombre')->unsigned()->index();
+            $table->foreign('departamento_nombre')->references('nombre')->on('departamentos')->onDelete('cascade')->on_update('cascade');
+            $table->string('puesto_nombre')->unsigned()->index();
+            $table->foreign('puesto_nombre')->references('nombre')->on('puestos')->onDelete('cascade')->on_update('cascade');
             $table->string('nombre', 60);
             $table->string('paterno', 60);
             $table->string('materno', 60);
-            $table->string('direccion');
+            $table->string('direccion')->nullable();
             $table->string('email', 100)->nullable();
             $table->string('telefono_casa', 20)->nullable();
             $table->string('telefono_oficina', 20)->nullable();

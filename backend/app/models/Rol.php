@@ -10,13 +10,20 @@ class Rol extends Eloquent
     protected $table = 'roles';
 
     /**
+     * Sin usar tiempo.
+     *
+     * @var boolean
+     */
+    public $timestamps = false;
+
+    /**
      * Reglas de validacion.
      *
      * @var array
      */
     public static $rules = [
-        'rol' => 'required|alpha|between:3,50|unique',
-        'descripcion' => 'alpha_num'
+        'nombre' => 'required|alpha|between:3,50|unique:roles,nombre',
+        'descripcion' => 'alpha_dash'
     ];
 
     /**
@@ -25,7 +32,7 @@ class Rol extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'departamento',
+        'nombre',
         'descripcion'
     ];
 

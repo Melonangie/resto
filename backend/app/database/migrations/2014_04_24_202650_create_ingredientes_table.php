@@ -14,10 +14,10 @@ class CreateIngredientesTable extends Migration
     {
         Schema::create('ingredientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('receta_id')->unsigned()->index();
-            $table->foreign('receta_id')->references('id')->on('recetas')->onDelete('cascade');
-            $table->integer('articulo_id')->unsigned()->index();
-            $table->foreign('articulo_id')->references('id')->on('articulos')->onDelete('cascade');
+            $table->string('receta_nombre')->unsigned()->index();
+            $table->foreign('receta_nombre')->references('nombre')->on('recetas')->onDelete('cascade');
+            $table->string('articulo_nombre')->unsigned()->index();
+            $table->foreign('articulo_nombre')->references('nombre')->on('articulos')->onDelete('cascade');
             $table->float('cantidad', 3, 1);
             $table->timestamps();
         });

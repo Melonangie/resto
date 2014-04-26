@@ -1,78 +1,54 @@
 <?php
 
-class EmpleadosController extends BaseController
+class EmpleadosController extends \BaseController
 {
     /**
-     * Display a listing of empleados
+     * Despliega todos los empleados.
      *
-     * @return Response
+     * @return Respuesta
      */
     public function index()
     {
-        $empleados = Empleado::all();
-
-        return View::make('empleados.index', compact('empleados'));
+        return Empleado::all();
     }
 
     /**
-     * Show the form for creating a new empleado
+     * Almacena un nuevo empleado en la base de datos.
      *
-     * @return Response
-     */
-    public function create()
-    {
-        return View::make('empleados.create');
-    }
-
-    /**
-     * Store a newly created company in empleado.
-     *
-     * @return Response
+     * @return Respuesta
      */
     public function store()
     {
         $validator = Validator::make($data = Input::all(), Empleado::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Empleado::create($data);
+        $empleados = Empleado::create($data);
 
-        return Redirect::route('empleados.index');
+        return Response::json($empleados->toArray(), 201);
     }
 
     /**
-     * Display the specified empleado.
+     * Despliega el empleado especificado.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function show($id)
     {
-        $empleado = Empleado::findOrFail($id);
-
-        return View::make('empleados.show', compact('empleado'));
+        return Empleado::findOrFail($id);
     }
 
     /**
-     * Show the form for editing the specified empleado.
+     * Actualiza el empleado especificado en la base de datos.
      *
-     * @param  int      $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $empleado = Empleado::find($id);
-
-        return View::make('empleados.edit', compact('empleado'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function update($id)
     {
@@ -81,24 +57,27 @@ class EmpleadosController extends BaseController
         $validator = Validator::make($data = Input::all(), Empleado::$rules);
 
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Response::json(array(
+                'error' => 'error de validacion',
+                'mensajes' => $validator->messages()->all(),
+            ), 400);
         }
 
-        Empleado::create($data);
+        $empleado->update($data);
 
-        return Redirect::route('empleados.index');
+        return Response::json($empleado->toArray());
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina el empleado especificado de la base de datos.
      *
-     * @param  int      $id
-     * @return Response
+     * @param  int       $id
+     * @return Respuesta
      */
     public function destroy($id)
     {
         Empleado::destroy($id);
 
-        return Redirect::route('empleados.index');
+        return Response::make(null, 204);
     }
 }
