@@ -1,7 +1,0 @@
-http -a 'DHqo4ZEh13u5ce2FIaG5NjPHXj6ADV7F':password1 POST http://taikishi-admin.net/v1/
-
-http -a 'DHqo4ZEh13u5ce2FIaG5NjPHXj6ADV7F':password1 PUT http://taikishi-admin.net/v1/
-
-http -a 'DHqo4ZEh13u5ce2FIaG5NjPHXj6ADV7F':password1 DELETE http://taikishi-admin.net/v1/
-
-http -a 'DHqo4ZEh13u5ce2FIaG5NjPHXj6ADV7F':password1 http://taikishi-admin.net/v1/
