@@ -8,6 +8,7 @@
 /api/vendor/
 /api/.env.*.php
 /api/.env.
+/api/_ide_helper.php
 
 # OS
 .DS_Store
