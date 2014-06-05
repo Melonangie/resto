@@ -1,25 +1,18 @@
-# Documentacion
-/Documentacion/Copia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
-/Documentacion/~$pia de seguridad de Rabelero (TRABAJO RECEPCIONAL).wbk
-/Documentacion/Backup of Rabelero (TRABAJO RECEPCIONAL).wbk
-/Documentacion/~$belero (TRABAJO RECEPCIONAL).docx
-
 # Laravel Framework
-/api/vendor/
 /api/app/storage/
+/api/vendor/
 /api/bootstrap/compiled.php
 /api/composer.phar
 /api/composer.lock
-/api/.env.*.php
-/api/.env.
+/api/error_log
 /api/vendor/
-/api/app/storage/
-/api/bootstrap/compiled.php
-/api/composer.phar
-/api/composer.lock
 /api/.env.*.php
 /api/.env.
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Others
+/.git
+/schema/queries
