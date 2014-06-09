@@ -1,14 +1,13 @@
 # Laravel Framework
-/api/app/storage/
-/api/vendor/
-/api/bootstrap/compiled.php
-/api/composer.phar
-/api/composer.lock
-/api/error_log
-/api/vendor/
-/api/.env.*.php
-/api/.env.
-/api/_ide_helper.php
+/API/app/storage/
+/API/vendor/
+/API/bootstrap/compiled.php
+/API/composer.phar
+/API/composer.lock
+/API/error_log
+/API/.env.*.php
+/API/.env.
+/API/_ide_helper.php
 
 # OS
 .DS_Store

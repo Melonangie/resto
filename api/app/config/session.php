@@ -136,4 +136,5 @@ return array(
 	*/
 
 	'secure' => true,
+
 );

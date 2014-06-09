@@ -54,6 +54,10 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+Route::filter('basic.once', function () {
+    return Auth::onceBasic('usuario');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter
@@ -98,36 +102,31 @@ Route::filter('csrf', function()
 |
 */
 
-Route::filter('api.auth', function()
-{
-	if (!Request::getUser())
-	{
-		App::abort(401, 'A valid API key is required');
-	}
+Route::filter('api.auth', function () {
+    if (!Request::getUser()) {
+        App::abort(401, 'A valid API key is required');
+    }
 
-	$user = User::where('api_key', '=', Request::getUser())->first();
+    $user = User::where('api_key', '=', Request::getUser())->first();
 
-	if (!$user)
-	{
-		App::abort(401);
-	}
+    if (!$user) {
+        App::abort(401);
+    }
 
-	Auth::login($user);
+    Auth::login($user);
 });
 
-Route::filter('api.limit', function()
-{
-	$key = sprintf('api:%s', Auth::user()->api_key);
+Route::filter('api.limit', function () {
+    $key = sprintf('api:%s', Auth::user()->api_key);
 
-	// Create the key if it doesn't exist
-	Cache::add($key, 0, 60);
+    // Create the key if it doesn't exist
+    Cache::add($key, 0, 60);
 
-	// Increment by 1
-	$count = Cache::increment($key);
+    // Increment by 1
+    $count = Cache::increment($key);
 
-	// Fail if hourly requests exceeded
-	if ($count > Config::get('api.requests_per_hour'))
-	{
-		App::abort(403, 'Hourly request limit exceeded');
-	}
+    // Fail if hourly requests exceeded
+    if ($count > Config::get('api.requests_per_hour')) {
+        App::abort(403, 'Hourly request limit exceeded');
+    }
 });

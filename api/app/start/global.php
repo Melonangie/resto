@@ -13,16 +13,15 @@
 
 ClassLoader::addDirectories(array(
 
-    app_path().'/commands',
-    app_path().'/controllers',
-    app_path().'/exceptions',
+	app_path().'/commands',
+	app_path().'/controllers',
     app_path().'/models/ajustes',
     app_path().'/models/almacen',
     app_path().'/models/empresa',
     app_path().'/models/mercancia',
     app_path().'/models/pos',
     app_path().'/models/produccion',
-    app_path().'/database/seeds',
+	app_path().'/database/seeds',
 
 ));
 
@@ -37,8 +36,7 @@ ClassLoader::addDirectories(array(
 |
 */
 
-//Log::useFiles(storage_path().'/logs/laravel.log');
-
+// Log::useFiles(storage_path().'/logs/laravel.log');
 $logFile = 'log-'.php_sapi_name().'.txt';
 
 Log::useDailyFiles(storage_path().'/logs/'.$logFile);

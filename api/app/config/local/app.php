@@ -17,21 +17,6 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
-	| Encryption Key
-	|--------------------------------------------------------------------------
-	|
-	| This key is used by the Illuminate encrypter service and should be set
-	| to a random, 32 character string, otherwise these encrypted strings
-	| will not be safe. Please do this before deploying an application!
-	|
-	*/
-
-	'key' => 'YourSecretKey!!!',
-
-	'cipher' => MCRYPT_RIJNDAEL_128,
-
-	/*
-	|--------------------------------------------------------------------------
 	| Autoloaded Service Providers
 	|--------------------------------------------------------------------------
 	|
@@ -71,8 +56,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		// Development
-		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-		'Way\Generators\GeneratorsServiceProvider'
+		// 'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+		// 'Way\Generators\GeneratorsServiceProvider'
 
 	),
 );
