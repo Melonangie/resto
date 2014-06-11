@@ -1,0 +1,31 @@
+alias ..="cd .."
+alias ...="cd ../.."
+alias h='cd ~'
+
+alias c='pygmentize -O style=monokai -f console256 -g'
+alias grep='grep --colour=auto'
+alias la='ls -alFh --color=auto'
+alias l='ls -A --color=auto'
+
+alias resto='cd /home/vagrant/Sites/resto/API'
+
+alias g:sca="php artisan generate:scaffold"
+alias g:piv="php artisan generate:pivot"
+alias g:seed="php artisan generate:seed"
+alias rollback="php artisan migrate:rollback"
+alias migrate="php artisan migrate"
+alias seed="php artisan db:seed"
+
+
+function serve() {
+	if [[ "$1" && "$2" ]]
+	then
+		sudo dos2unix /vagrant/scripts/serve.sh
+		sudo bash /vagrant/scripts/serve.sh "$1" "$2"
+	else
+		echo "Error: missing required parameters."
+		echo "Usage: "
+		echo "  serve domain path"
+	fi
+}
+
