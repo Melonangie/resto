@@ -67,3 +67,9 @@ App::error(function(PermissionException $e)
 		'error' => $e->getMessage() ?: $default_message,
 	), 403);
 });
+
+// Validation Exception Handler
+App::error(function(ValidationException $e, $code)
+{
+  return Response::json($e->getMessages(), $code);
+});
