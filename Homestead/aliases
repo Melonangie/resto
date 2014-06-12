@@ -5,7 +5,7 @@ alias h='cd ~'
 alias c='pygmentize -O style=monokai -f console256 -g'
 alias grep='grep --colour=auto'
 alias la='ls -alFh --color=auto'
-alias l='ls -A --color=auto'
+alias ls='ls -A --color=auto'
 
 alias resto='cd /home/vagrant/Sites/resto/API'
 

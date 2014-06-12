@@ -63,5 +63,17 @@ class Homestead
         end
       end
     end
+
+    # Install my programs
+    config.vm.provision "shell" do |instal|
+      instal.inline = "echo LC_ALL=\"en_US.UTF-8\" >> /etc/environment"
+      instal.inline = "bash /vagrant/scripts/install.sh"
+    end
+
+        # Install my programs
+    config.vm.provision "shell" do |config|
+      config.privileged = false
+      config.inline = "/vagrant/scripts/config.sh"
+    end
   end
 end
