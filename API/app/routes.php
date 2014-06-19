@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
+Route::get('/', function () {
+    return View::make('hello');
+});
+
+Route::group(array('prefix' => 'v1', 'before' => 'api.auth|api.limit'), function () {
 });

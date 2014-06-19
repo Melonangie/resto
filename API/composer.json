@@ -1,16 +1,26 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
-	"license": "MIT",
+    "name": "Taikishi-Admin Backend",
+    "description": "Backend de la aplicacion para control de mercancias",
+    "keywords": ["laravel", "restful", "api"],
+    "license": "GPLv3",
 	"require": {
 		"laravel/framework": "4.2.*"
+	},
+	"require-dev": {
+		"way/generators": "2.*",
+		"fzaninotto/faker": "v1.3.0",
+		"barryvdh/laravel-ide-helper": "1.*"
 	},
 	"autoload": {
 		"classmap": [
 			"app/commands",
 			"app/controllers",
-			"app/models",
+            "app/models/ajustes",
+            "app/models/almacen",
+            "app/models/empresa",
+            "app/models/mercancia",
+            "app/models/pos",
+            "app/models/produccion",
 			"app/database/migrations",
 			"app/database/seeds",
 			"app/tests/TestCase.php"
@@ -32,5 +42,5 @@
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "stable"
+	"minimum-stability": "dev"
 }
