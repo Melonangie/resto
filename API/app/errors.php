@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 // ------------------------------------------------------------
 // Error Handlers
 // ------------------------------------------------------------
@@ -50,6 +52,25 @@ App::error(function (NotFoundException $e) {
 
     return Response::json(array(
         'error' => $e->getMessage() ?: $default_message,
+    ), 404);
+});
+
+// ModelNotFoundException handler
+App::error(function (ModelNotFoundException $e) {
+    $default_message = 'No se encontro lo q buscabes';
+
+    return Response::json(array(
+        'error' => $e->getMessage() ?: $default_message,
+    ), 404);
+});
+
+// ValidationException handler
+App::error(function (ValidationException $e) {
+    $messages = $e->getMessages()->all();
+
+    return Response::json(array(
+        'error' => 'No paso la validacion',
+        'mensajes' => $messages
     ), 404);
 });
 
