@@ -13,15 +13,16 @@
 
 ClassLoader::addDirectories(array(
 
-    app_path().'/commands',
-    app_path().'/controllers',
+	app_path().'/commands',
+	app_path().'/controllers',
+    app_path().'/models',
     app_path().'/models/ajustes',
     app_path().'/models/almacenes',
     app_path().'/models/empresas',
     app_path().'/models/mercancia',
     app_path().'/models/pos',
     app_path().'/models/produccion',
-    app_path().'/database/seeds',
+	app_path().'/database/seeds',
 
 ));
 
@@ -66,8 +67,9 @@ require __DIR__.'/../errors.php';
 |
 */
 
-App::down(function () {
-    return Response::make("Be right back!", 503);
+App::down(function()
+{
+	return Response::make("Be right back!", 503);
 });
 
 /*
@@ -81,7 +83,7 @@ App::down(function () {
 |
 */
 
-require __DIR__.'/../filters.php';
+require app_path().'/filters.php';
 
 /*
 |--------------------------------------------------------------------------

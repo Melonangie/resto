@@ -1,5 +1,4 @@
 # Laravel Framework
-/API/app/storage/
 /API/vendor/
 /API/bootstrap/compiled.php
 /API/composer.phar
@@ -15,3 +14,4 @@ Thumbs.db
 
 # Others
 /schema/queries
+/API/nbproject/private/

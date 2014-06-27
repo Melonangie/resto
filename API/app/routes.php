@@ -11,9 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return View::make('hello');
+Route::get('/', function()
+{
+	return View::make('hello');
 });
 
-Route::group(array('prefix' => 'v1', 'before' => 'api.auth|api.limit'), function () {
+Route::group(array('namespace' => 'Ajustes'), function()
+{
+Route::get('lol', 'UsuariosController@index');
 });
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+|
+*/
+//
+//Route::group(array('prefix' => 'v1', 'before' => 'api.auth|api.limit'), function()
+//{
+//    Route::group(array('namespace' => 'Ajustes'), function () {
+//        Route::resource('usuarios', 'UsuariosController');
+//    });
+//});

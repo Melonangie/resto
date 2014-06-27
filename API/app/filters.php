@@ -11,12 +11,15 @@
 |
 */
 
-App::before(function ($request) {
-    //
+App::before(function($request)
+{
+	//
 });
 
-App::after(function ($request, $response) {
-    //
+
+App::after(function($request, $response)
+{
+	//
 });
 
 /*
@@ -30,18 +33,25 @@ App::after(function ($request, $response) {
 |
 */
 
-Route::filter('auth', function () {
-    if (Auth::guest()) {
-        if (Request::ajax()) {
-            return Response::make('Unauthorized', 401);
-        } else {
-            return Redirect::guest('login');
-        }
-    }
+Route::filter('auth', function()
+{
+	if (Auth::guest())
+	{
+		if (Request::ajax())
+		{
+			return Response::make('Unauthorized', 401);
+		}
+		else
+		{
+			return Redirect::guest('login');
+		}
+	}
 });
 
-Route::filter('auth.basic', function () {
-    return Auth::basic();
+
+Route::filter('auth.basic', function()
+{
+	return Auth::basic();
 });
 
 /*
@@ -55,8 +65,9 @@ Route::filter('auth.basic', function () {
 |
 */
 
-Route::filter('guest', function () {
-    if (Auth::check()) return Redirect::to('/');
+Route::filter('guest', function()
+{
+	if (Auth::check()) return Redirect::to('/');
 });
 
 /*
@@ -70,10 +81,12 @@ Route::filter('guest', function () {
 |
 */
 
-Route::filter('csrf', function () {
-    if (Session::token() != Input::get('_token')) {
-        throw new Illuminate\Session\TokenMismatchException;
-    }
+Route::filter('csrf', function()
+{
+	if (Session::token() != Input::get('_token'))
+	{
+		throw new Illuminate\Session\TokenMismatchException;
+	}
 });
 
 /*
@@ -85,21 +98,25 @@ Route::filter('csrf', function () {
 |
 */
 
-Route::filter('api.auth', function () {
-    if (!Request::getUser()) {
+Route::filter('api.auth', function()
+{
+    if (!Request::getUser())
+    {
         App::abort(401, 'A valid API key is required');
     }
 
     $user = User::where('api_key', '=', Request::getUser())->first();
 
-    if (!$user) {
+    if (!$user)
+    {
         App::abort(401);
     }
 
     Auth::login($user);
 });
 
-Route::filter('api.limit', function () {
+Route::filter('api.limit', function()
+{
     $key = sprintf('api:%s', Auth::user()->api_key);
 
     // Create the key if it doesn't exist
@@ -109,7 +126,23 @@ Route::filter('api.limit', function () {
     $count = Cache::increment($key);
 
     // Fail if hourly requests exceeded
-    if ($count > Config::get('api.requests_per_hour')) {
+    if ($count > Config::get('api.requests_per_hour'))
+    {
+        App::abort(403, 'Hourly request limit exceeded');
+    }
+});
+
+Route::filter('api.test', function()
+{
+    // Create the key if it doesn't exist
+    Cache::add($key, 0, 60);
+
+    // Increment by 1
+    $count = Cache::increment($key);
+
+    // Fail if hourly requests exceeded
+    if ($count > Config::get('api.requests_per_hour'))
+    {
         App::abort(403, 'Hourly request limit exceeded');
     }
 });

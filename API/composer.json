@@ -6,19 +6,18 @@
 	"require": {
 		"laravel/framework": "4.2.*"
 	},
-	"require-dev": {
-		"way/generators": "2.*",
-		"fzaninotto/faker": "v1.3.0",
-		"barryvdh/laravel-ide-helper": "1.*"
-	},
+    "require-dev": {
+        "way/generators": "2.*",
+        "fzaninotto/faker": "v1.3.0"
+    },
 	"autoload": {
 		"classmap": [
 			"app/commands",
 			"app/controllers",
             "app/models/ajustes",
-            "app/models/almacen",
-            "app/models/empresa",
-            "app/models/mercancia",
+            "app/models/almacenes",
+            "app/models/empresas",
+            "app/models/mercancias",
             "app/models/pos",
             "app/models/produccion",
 			"app/database/migrations",
@@ -42,5 +41,5 @@
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "dev"
+	"minimum-stability": "stable"
 }

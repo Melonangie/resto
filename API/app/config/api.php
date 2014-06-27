@@ -1,3 +1,5 @@
 <?php
 
-return ['requests_per_hour' => 100];
+return array(
+	'requests_per_hour' => 100,
+);

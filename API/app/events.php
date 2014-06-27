@@ -1,9 +1,12 @@
 <?php
 
+use Ajustes\Usuario;
+
 // ------------------------------------------------------------
 // Event Listeners
 // ------------------------------------------------------------
 
-// User::creating(function ($user) {
-//     $user->api_key = User::createApiKey();
-// });
+Usuario::creating(function($usuario)
+{
+    $usuario->api_key = Usuario::createApiKey();
+});
